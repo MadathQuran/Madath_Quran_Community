@@ -1,0 +1,39 @@
+{
+  "id": 1,
+  "name": "سورة الفاتحة",
+  "englishName": "Al-Fatihah",
+  "ayahs": [
+    [
+      {"word":"بِسْمِ","transliteration":"Bismi","rootWord":"س م و","correctMeaning":"In (the) name","options":["In (the) name","you had rushed glibly","(of) Judgment","(it) is"]},
+      {"word":"اللهِ","transliteration":"Allahi","rootWord":"أ ل ه","correctMeaning":"(of) Allah","options":["(of) Allah","God fearing","surely they (would) have followed you","Till"]},
+      {"word":"الرَّحْمَٰنِ","transliteration":"alrrahmani","rootWord":"ر ح م","correctMeaning":"the Most Gracious","options":["the Most Gracious","have denied","and Exalted is He","with a people"]},
+      {"word":"الرَّحِيمِ","transliteration":"alrraheemi","rootWord":"ر ح م","correctMeaning":"the Most Merciful","options":["the Most Merciful","that one","early","(will be) radiant"]}
+    ],
+    [
+      {"word":"الْحَمْدُ","transliteration":"Alhamdu","rootWord":"ح م د","correctMeaning":"All praises and thanks","options":["All praises and thanks","with your wealth","like straw","he was oppressed"]},
+      {"word":"لِلّٰهِ","transliteration":"lillahi","rootWord":"أ ل ه","correctMeaning":"(be) to Allah","options":["(be) to Allah","Then surely We will question","(to) men","they turned back"]},
+      {"word":"رَبِّ","transliteration":"rabbi","rootWord":"ر ب ب","correctMeaning":"the Lord","options":["the Lord","[I] perceive","Urge","(is) the success"]},
+      {"word":"الْعَالَمِينَ","transliteration":"alAAalameena","rootWord":"ع ل م","correctMeaning":"of the universe","options":["of the universe","were deluded","(is) apparent","and (the) Day"]}
+    ],
+    [
+      {"word":"الرَّحْمَٰنِ","transliteration":"Alrrahmani","rootWord":"ر ح م","correctMeaning":"The Most Gracious","options":["The Most Gracious","surely of","And give full","Surely our testimony"]},
+      {"word":"الرَّحِيمِ","transliteration":"alrraheemi","rootWord":"ر ح م","correctMeaning":"the Most Merciful","options":["the Most Merciful","hope","pleased you","and complete"]}
+    ],
+    [
+      {"word":"مَـالِكِ","transliteration":"Maliki","rootWord":"م ل ك","correctMeaning":"(The) Master","options":["(The) Master","increase","their light","(be) guided"]},
+      {"word":"يَوْمِ","transliteration":"yawmi","rootWord":"ي و م","correctMeaning":"(of the) Day","options":["(of the) Day","surely (are) signs","(are) witnesses","Their violence"]},
+      {"word":"الدِّينِ","transliteration":"alddeeni","rootWord":"د ي ن","correctMeaning":"(of the) Judgment","options":["(of the) Judgment","gave him","(of) two sons","(is) grave disobedience"]}
+    ],
+    [
+      {"word":"إِيَّاكَ","transliteration":"Iyyaka","rootWord":null,"correctMeaning":"You Alone","options":["You Alone","(is) Our Command","the grateful ones","He causes them to taste"]},
+      {"word":"نَعْبُدُ","transliteration":"naAAbudu","rootWord":"ع ب د","correctMeaning":"we worship","options":["we worship","He could","and oppose","(the) hearts"]},
+      {"word":"وَإِيَّاكَ","transliteration":"waiyyaka","rootWord":null,"correctMeaning":"and You Alone","options":["and You Alone","Will burn","for my life","(their) [the] menstruation"]},
+      {"word":"نَسْتَعِينُ","transliteration":"nastaAAeenu","rootWord":"ع و ن","correctMeaning":"we ask for help","options":["we ask for help","explained in detail","their covenant","you kill them"]}
+    ],
+    [
+      {"word":"اهْدِنَا","transliteration":"Ihdina","rootWord":"ه د ي","correctMeaning":"Guide us","options":["Guide us","called Us","My House","surely they"]},
+      {"word":"الصِّرَاطَ","transliteration":"alssirata","rootWord":"ص ر ط","correctMeaning":"(to) the path","options":["(to) the path","(with) a help","So became dumbfounded","they are thrown"]},
+      {"word":"الْمُسْتَقِيمَ","transliteration":"almustaqeema","rootWord":"ق و م","correctMeaning":"the straight","options":["the straight","(of) the cities","they swore","(They are) dead"]}
+    ]
+  ]
+}

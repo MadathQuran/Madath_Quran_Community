@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quran Word Quiz - Surah List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Noto+Naskh+Arabic&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 32px 16px;
+            min-height: 100vh;
+            box-sizing: border-box;
+            background: #ffffff;
+            color: #333;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            color: #347a49;
+            font-size: 28px;
+        }
+
+        .intro {
+            margin: 0 auto 24px;
+            color: #666;
+        }
+
+        .surah-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 14px;
+            width: min(900px, 100%);
+            margin: 0 auto;
+        }
+
+        .surah-tile {
+            display: block;
+            padding: 18px 14px;
+            border: 1px solid #d4e2d7;
+            border-radius: 14px;
+            background: #f8fbf8;
+            color: #347a49;
+            text-decoration: none;
+            box-shadow: 0 3px 9px rgba(52, 122, 73, 0.08);
+            transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .surah-tile:hover,
+        .surah-tile:focus {
+            background: #eaf5ec;
+            box-shadow: 0 6px 14px rgba(52, 122, 73, 0.16);
+            transform: translateY(-2px);
+            outline: none;
+        }
+
+        .surah-number {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .surah-arabic {
+            display: block;
+            margin-bottom: 5px;
+            font-family: 'Noto Naskh Arabic', serif;
+            font-size: 25px;
+            color: #333;
+        }
+
+        .surah-name {
+            display: block;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quran Word Quiz</h1>
+    <p class="intro">Choose a surah to begin.</p>
+
+    <main class="surah-grid" aria-label="Surah list">
+        <a class="surah-tile" href="index.html?surah=1">
+            <span class="surah-number">Surah 1</span>
+            <span class="surah-arabic" lang="ar" dir="rtl">سورة الفاتحة</span>
+            <span class="surah-name">Al-Fatihah</span>
+        </a>
+        <a class="surah-tile" href="index.html?surah=67">
+            <span class="surah-number">Surah 67</span>
+            <span class="surah-arabic" lang="ar" dir="rtl">سورة الملك</span>
+            <span class="surah-name">Al-Mulk</span>
+        </a>
+        <a class="surah-tile" href="index.html?surah=113">
+            <span class="surah-number">Surah 113</span>
+            <span class="surah-arabic" lang="ar" dir="rtl">سورة الفلق</span>
+            <span class="surah-name">Al-Falaq</span>
+        </a>
+        <a class="surah-tile" href="index.html?surah=114">
+            <span class="surah-number">Surah 114</span>
+            <span class="surah-arabic" lang="ar" dir="rtl">سورة الناس</span>
+            <span class="surah-name">An-Nas</span>
+        </a>
+    </main>
+</body>
+</html>
