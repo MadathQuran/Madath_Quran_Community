@@ -1,3 +1,5 @@
 [
-  {"id": 1, "name": "سورة الفاتحة", "englishName": "Al-Fatihah", "ayahCount": 7}
+  {"id": 1, "name": "سورة الفاتحة", "englishName": "Al-Fatihah", "ayahCount": 7},
+  {"id":113,"name":"سورة الفلق","englishName":"Al-Falaq","ayahCount":5}
 ]
+

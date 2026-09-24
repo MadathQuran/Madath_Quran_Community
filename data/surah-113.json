@@ -1,0 +1,208 @@
+{
+  "id": 113,
+  "name": "سورة الفلق",
+  "englishName": "Al-Falaq",
+  "ayahs": [
+    [
+      {
+        "word": "بِسْمِ",
+        "transliteration": "Bismi",
+        "rootWord": "س م و",
+        "correctMeaning": "In (the) name",
+        "options": ["Guide us", "In (the) name", "of the universe", "The Lord"]
+      },
+      {
+        "word": "اللهِ",
+        "transliteration": "Allahi",
+        "rootWord": "أ ل ه",
+        "correctMeaning": "(of) Allah",
+        "options": ["All praises", "Grace", "(of) Allah", "Master"]
+      },
+      {
+        "word": "الرَّحْمَٰنِ",
+        "transliteration": "alrrahmani",
+        "rootWord": "ر ح م",
+        "correctMeaning": "the Most Gracious",
+        "options": ["the Most Gracious", "Guide us", "The Lord", "of the universe"]
+      },
+      {
+        "word": "الرَّحِيمِ",
+        "transliteration": "alrraheemi",
+        "rootWord": "ر ح م",
+        "correctMeaning": "the Most Merciful",
+        "options": ["Gracious", "those who earned Your wrath", "the Most Merciful", "of the Judgment"]
+      }
+    ],
+    [
+      {
+        "word": "قُلْ",
+        "transliteration": "Qul",
+        "rootWord": "ق و ل",
+        "correctMeaning": "Say",
+        "options": ["Reward", "The Lord", "Day", "Say"]
+      },
+      {
+        "word": "أَعُوذُ",
+        "transliteration": "aAAoothu",
+        "rootWord": "ع و ذ",
+        "correctMeaning": "I seek refuge",
+        "options": ["Path", "Gracious", "I seek refuge", "Justice"]
+      },
+      {
+        "word": "بِرَبِّ",
+        "transliteration": "birabbi",
+        "rootWord": "ر ب ب",
+        "correctMeaning": "in (the) Lord",
+        "options": ["The Lord", "in (the) Lord", "Path", "Gracious"]
+      },
+      {
+        "word": "الْفَلَقِ",
+        "transliteration": "alfalaqi",
+        "rootWord": "ف ل ق",
+        "correctMeaning": "(of) the dawn",
+        "options": ["of the universe", "The Lord", "(of) the dawn", "Day"]
+      }
+    ],
+    [
+      {
+        "word": "مِن",
+        "transliteration": "Min",
+        "rootWord": null,
+        "correctMeaning": "From",
+        "options": ["Master", "All praises", "Forgiveness", "From"]
+      },
+      {
+        "word": "شَرِّ",
+        "transliteration": "sharri",
+        "rootWord": "ش ر ر",
+        "correctMeaning": "(the) evil",
+        "options": ["those who earned Your wrath", "Guide us", "(the) evil", "Favors"]
+      },
+      {
+        "word": "مَا",
+        "transliteration": "ma",
+        "rootWord": null,
+        "correctMeaning": "(of) what",
+        "options": ["Favors", "(of) what", "Reward", "Gracious"]
+      },
+      {
+        "word": "خَلَقَ",
+        "transliteration": "khalaqa",
+        "rootWord": "خ ل ق",
+        "correctMeaning": "He created",
+        "options": ["Merciful", "All praises", "Day", "He created"]
+      }
+    ],
+    [
+      {
+        "word": "وَمِن",
+        "transliteration": "Wamin",
+        "rootWord": null,
+        "correctMeaning": "And from",
+        "options": ["of the Judgment", "And from", "of the universe", "Forgiveness"]
+      },
+      {
+        "word": "شَرِّ",
+        "transliteration": "sharri",
+        "rootWord": "ش ر ر",
+        "correctMeaning": "(the) evil",
+        "options": ["Day", "Straight Path", "Favors", "(the) evil"]
+      },
+      {
+        "word": "غَاسِقٍ",
+        "transliteration": "ghasiqin",
+        "rootWord": "غ س ق",
+        "correctMeaning": "(of) darkness",
+        "options": ["Gracious", "Master", "Favors", "(of) darkness"]
+      },
+      {
+        "word": "إِذَا",
+        "transliteration": "itha",
+        "rootWord": null,
+        "correctMeaning": "when",
+        "options": ["when", "of the universe", "Gracious", "Guide us"]
+      },
+      {
+        "word": "وَقَبَ",
+        "transliteration": "waqaba",
+        "rootWord": "و ق ب",
+        "correctMeaning": "it spreads",
+        "options": ["Forgiveness", "of the Judgment", "it spreads", "Path"]
+      }
+    ],
+    [
+      {
+        "word": "وَمِن",
+        "transliteration": "Wamin",
+        "rootWord": null,
+        "correctMeaning": "And from",
+        "options": ["And from", "Gracious", "Path", "Favors"]
+      },
+      {
+        "word": "شَرِّ",
+        "transliteration": "sharri",
+        "rootWord": "ش ر ر",
+        "correctMeaning": "(the) evil",
+        "options": ["(the) evil", "Favors", "Grace", "Day"]
+      },
+      {
+        "word": "النَّفَّاثَاتِ",
+        "transliteration": "alnnaffathati",
+        "rootWord": "ن ف ث",
+        "correctMeaning": "(of) the blowers",
+        "options": ["(of) the blowers", "Gracious", "Grace", "Day"]
+      },
+      {
+        "word": "فِى",
+        "transliteration": "fee",
+        "rootWord": null,
+        "correctMeaning": "in",
+        "options": ["Straight Path", "in", "Grace", "Day"]
+      },
+      {
+        "word": "الْعُقَدِ",
+        "transliteration": "alAAuqadi",
+        "rootWord": "ع ق د",
+        "correctMeaning": "the knots",
+        "options": ["of the universe", "Gracious", "Favors", "the knots"]
+      }
+    ],
+    [
+      {
+        "word": "وَمِن",
+        "transliteration": "Wamin",
+        "rootWord": null,
+        "correctMeaning": "And from",
+        "options": ["Gracious", "And from", "Reward", "Grace"]
+      },
+      {
+        "word": "شَرِّ",
+        "transliteration": "sharri",
+        "rootWord": "ش ر ر",
+        "correctMeaning": "(the) evil",
+        "options": ["(the) evil", "All praises", "Path", "Favors"]
+      },
+      {
+        "word": "حَاسِدٍ",
+        "transliteration": "hasidin",
+        "rootWord": "ح س د",
+        "correctMeaning": "(of) an envier",
+        "options": ["of the universe", "(of) an envier", "Straight Path", "All praises"]
+      },
+      {
+        "word": "إِذَا",
+        "transliteration": "itha",
+        "rootWord": null,
+        "correctMeaning": "when",
+        "options": ["when", "All praises", "Forgiveness", "Day"]
+      },
+      {
+        "word": "حَسَدَ",
+        "transliteration": "hasada",
+        "rootWord": "ح س د",
+        "correctMeaning": "he envies",
+        "options": ["Grace", "All praises", "of the Judgment", "he envies"]
+      }
+    ]
+  ]
+}
