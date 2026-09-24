@@ -1,5 +1,1 @@
-[
-  {"id": 1, "name": "سورة الفاتحة", "englishName": "Al-Fatihah", "ayahCount": 7},
-  {"id":113,"name":"سورة الفلق","englishName":"Al-Falaq","ayahCount":5}
-]
-
+[{"id":100,"name":"سورة العاديات","englishName":"Al-Adiyat","ayahCount":11},{"id":101,"name":"سورة القارعة","englishName":"Al-Qariah","ayahCount":11},{"id":102,"name":"سورة التكاثر","englishName":"At-Takathur","ayahCount":8},{"id":103,"name":"سورة العصر","englishName":"Al-Asr","ayahCount":3},{"id":104,"name":"سورة الهمزة","englishName":"Al-Humazah","ayahCount":9},{"id":105,"name":"سورة الفيل","englishName":"Al-Fil","ayahCount":5},{"id":106,"name":"سورة قريش","englishName":"Quraysh","ayahCount":4},{"id":107,"name":"سورة الماعون","englishName":"Al-Maun","ayahCount":7},{"id":108,"name":"سورة الكوثر","englishName":"Al-Kawthar","ayahCount":3},{"id":109,"name":"سورة الكافرون","englishName":"Al-Kafirun","ayahCount":6},{"id":110,"name":"سورة النصر","englishName":"An-Nasr","ayahCount":3},{"id":111,"name":"سورة المسد","englishName":"Al-Masad","ayahCount":5},{"id":112,"name":"سورة الإخلاص","englishName":"Al-Ikhlas","ayahCount":4},{"id":113,"name":"سورة الفلق","englishName":"Al-Falaq","ayahCount":5},{"id":114,"name":"سورة الناس","englishName":"An-Nas","ayahCount":6}]

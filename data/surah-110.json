@@ -1,0 +1,20 @@
+1. PO Deletion
+The PO delete operation currently needs to be performed one by one. We will need to either update the document accordingly or plan to change this behavior in an upcoming release. PLM is taking this up.
+For now, we can proceed with the PO deletion exercise during a maintenance window (MW) to achieve the required node movements. GTAC and Sustaining will support this MW. Kindly confirm the preferred timing.
+
+2. Config – Refresh State Issue
+We observed spine-to-BL delete operations, so the config-refresh state is expected. As you confirmed, these links were not physically removed. Engineering is investigating the root cause as this behavior is newly observed.
+Multiple workarounds have been tested so far, but we haven’t found a positive fix yet. We will test a few more options tomorrow and update whether we can resolve it or will need to wait for the fix in the next release.
+Currently, this is considered a cosmetic issue and does not impact XCO usage, fabric configurations, or operations.
+
+To continue the investigation under a new defect, we request you to kindly raise a separate case for this issue.
+
+(efa:extreme)extreme@tpsvefa2:~$ efa fabric debug config-gen-reason --device 10.247.228.72 --name TPS_FABRIC
++---------------+-------------+----------------+----------------+------------+-------------------+--------------------+-----------------------+-----------------------+
+| IP ADDRESS | DEVICE ROLE | INTERFACE TYPE | INTERFACE NAME | LINK STATE | REMOTE IP ADDRESS | REMOTE DEVICE ROLE | REMOTE INTERFACE TYPE | REMOTE INTERFACE NAME |
++---------------+-------------+----------------+----------------+------------+-------------------+--------------------+-----------------------+-----------------------+
+| 10.247.228.72 | Spine | ethernet | 0/1 | deleted | 10.247.228.69 | BorderLeaf | ethernet | 0/21 |
+| 10.247.228.72 | Spine | ethernet | 0/2 | deleted | 10.247.228.69 | BorderLeaf | ethernet | 0/22 |
+| 10.247.228.72 | Spine | ethernet | 0/3 | deleted | 10.247.228.69 | BorderLeaf | ethernet | 0/23 |
++---------------+-------------+----------------+----------------+------------+-------------------+--------------------+-----------------------+-----------------------+
+config generate reason [Success]
