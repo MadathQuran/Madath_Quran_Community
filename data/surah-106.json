@@ -1,0 +1,269 @@
+{
+  "id": 106,
+  "name": "سورة قريش",
+  "englishName": "Quraysh",
+  "ayahs": [
+    [
+      {
+        "word": "بِسْمِ",
+        "transliteration": "Bismi",
+        "rootWord": "س م و",
+        "correctMeaning": "In (the) name",
+        "options": [
+          "In (the) name",
+          "Merciful",
+          "All praises",
+          "of the Judgment"
+        ]
+      },
+      {
+        "word": "اللهِ",
+        "transliteration": "Allahi",
+        "rootWord": "أ ل ه",
+        "correctMeaning": "(of) Allah",
+        "options": [
+          "Guide us",
+          "Reward",
+          "(of) Allah",
+          "Path"
+        ]
+      },
+      {
+        "word": "الرَّحْمَٰنِ",
+        "transliteration": "alrrahmani",
+        "rootWord": "ر ح م",
+        "correctMeaning": "the Most Gracious",
+        "options": [
+          "Forgiveness",
+          "Merciful",
+          "those who earned Your wrath",
+          "the Most Gracious"
+        ]
+      },
+      {
+        "word": "الرَّحِيمِ",
+        "transliteration": "alrraheemi",
+        "rootWord": "ر ح م",
+        "correctMeaning": "the Most Merciful",
+        "options": [
+          "Gracious",
+          "the Most Merciful",
+          "those who earned Your wrath",
+          "Justice"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "لِإِيلَافِ",
+        "transliteration": "Lieelafi",
+        "rootWord": "أ ل ف",
+        "correctMeaning": "For (the) familiarity",
+        "options": [
+          "Grace",
+          "Path",
+          "Master",
+          "For (the) familiarity"
+        ]
+      },
+      {
+        "word": "قُرَيْشٍ",
+        "transliteration": "qurayshin",
+        "rootWord": null,
+        "correctMeaning": "(of the) Quraish",
+        "options": [
+          "(of the) Quraish",
+          "Master",
+          "Reward",
+          "Grace"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "إِيلَافِهِمْ",
+        "transliteration": "Eelafihim",
+        "rootWord": "أ ل ف",
+        "correctMeaning": "Their familiarity",
+        "options": [
+          "of the universe",
+          "Their familiarity",
+          "Merciful",
+          "Forgiveness"
+        ]
+      },
+      {
+        "word": "رِحْلَةَ",
+        "transliteration": "rihlata",
+        "rootWord": "ر ح ل",
+        "correctMeaning": "(with the) journey",
+        "options": [
+          "those who earned Your wrath",
+          "Path",
+          "Merciful",
+          "(with the) journey"
+        ]
+      },
+      {
+        "word": "الشِّتَآءِ",
+        "transliteration": "alshshitai",
+        "rootWord": "ش ت و",
+        "correctMeaning": "(of) winter",
+        "options": [
+          "Master",
+          "(of) winter",
+          "Merciful",
+          "of the universe"
+        ]
+      },
+      {
+        "word": "وَالصَّيْفِ",
+        "transliteration": "waalssayfi",
+        "rootWord": "ص ي ف",
+        "correctMeaning": "and summer",
+        "options": [
+          "Gracious",
+          "and summer",
+          "Path",
+          "Grace"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "فَلْيَعْبُدُوا",
+        "transliteration": "FalyaAAbudoo",
+        "rootWord": "ع ب د",
+        "correctMeaning": "So let them worship",
+        "options": [
+          "So let them worship",
+          "Grace",
+          "Gracious",
+          "The Lord"
+        ]
+      },
+      {
+        "word": "رَبَّ",
+        "transliteration": "rabba",
+        "rootWord": "ر ب ب",
+        "correctMeaning": "(the) Lord",
+        "options": [
+          "Forgiveness",
+          "those who earned Your wrath",
+          "Guide us",
+          "(the) Lord"
+        ]
+      },
+      {
+        "word": "هَٰذَا",
+        "transliteration": "hatha",
+        "rootWord": null,
+        "correctMeaning": "(of) this",
+        "options": [
+          "of the Judgment",
+          "Path",
+          "(of) this",
+          "Merciful"
+        ]
+      },
+      {
+        "word": "الْبَيْتِ",
+        "transliteration": "albayti",
+        "rootWord": "ب ي ت",
+        "correctMeaning": "House",
+        "options": [
+          "Merciful",
+          "Reward",
+          "Justice",
+          "House"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "الَّذِىٓ",
+        "transliteration": "Allathee",
+        "rootWord": null,
+        "correctMeaning": "The One Who",
+        "options": [
+          "Grace",
+          "The One Who",
+          "of the universe",
+          "Reward"
+        ]
+      },
+      {
+        "word": "أَطْعَمَهُم",
+        "transliteration": "atAAamahum",
+        "rootWord": "ط ع م",
+        "correctMeaning": "feeds them",
+        "options": [
+          "Merciful",
+          "feeds them",
+          "Favors",
+          "Master"
+        ]
+      },
+      {
+        "word": "مِّن",
+        "transliteration": "min",
+        "rootWord": null,
+        "correctMeaning": "[from]",
+        "options": [
+          "Day",
+          "Master",
+          "[from]",
+          "of the Judgment"
+        ]
+      },
+      {
+        "word": "جُوعٍ",
+        "transliteration": "jooAAin",
+        "rootWord": "ج و ع",
+        "correctMeaning": "(against) hunger",
+        "options": [
+          "(against) hunger",
+          "of the universe",
+          "Master",
+          "The Lord"
+        ]
+      },
+      {
+        "word": "وَآمَنَهُم",
+        "transliteration": "waamanahum",
+        "rootWord": "أ م ن",
+        "correctMeaning": "and gives them security",
+        "options": [
+          "Grace",
+          "Day",
+          "and gives them security",
+          "those who earned Your wrath"
+        ]
+      },
+      {
+        "word": "مِّنْ",
+        "transliteration": "min",
+        "rootWord": null,
+        "correctMeaning": "from",
+        "options": [
+          "from",
+          "of the Judgment",
+          "Reward",
+          "Justice"
+        ]
+      },
+      {
+        "word": "خَوْفٍ",
+        "transliteration": "khawfin",
+        "rootWord": "خ و ف",
+        "correctMeaning": "fear",
+        "options": [
+          "Master",
+          "fear",
+          "those who earned Your wrath",
+          "Gracious"
+        ]
+      }
+    ]
+  ]
+}

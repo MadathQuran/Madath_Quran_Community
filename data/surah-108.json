@@ -1,0 +1,183 @@
+{
+  "id": 108,
+  "name": "سورة الكوثر",
+  "englishName": "Al-Kawthar",
+  "ayahs": [
+    [
+      {
+        "word": "بِسْمِ",
+        "transliteration": "Bismi",
+        "rootWord": "س م و",
+        "correctMeaning": "In (the) name",
+        "options": [
+          "Forgiveness",
+          "The Lord",
+          "Reward",
+          "In (the) name"
+        ]
+      },
+      {
+        "word": "اللهِ",
+        "transliteration": "Allahi",
+        "rootWord": "أ ل ه",
+        "correctMeaning": "(of) Allah",
+        "options": [
+          "Straight Path",
+          "(of) Allah",
+          "Reward",
+          "Master"
+        ]
+      },
+      {
+        "word": "الرَّحْمَٰنِ",
+        "transliteration": "alrrahmani",
+        "rootWord": "ر ح م",
+        "correctMeaning": "the Most Gracious",
+        "options": [
+          "Guide us",
+          "the Most Gracious",
+          "Path",
+          "Merciful"
+        ]
+      },
+      {
+        "word": "الرَّحِيمِ",
+        "transliteration": "alrraheemi",
+        "rootWord": "ر ح م",
+        "correctMeaning": "the Most Merciful",
+        "options": [
+          "the Most Merciful",
+          "Justice",
+          "Reward",
+          "Gracious"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "إِنَّآ",
+        "transliteration": "Inna",
+        "rootWord": null,
+        "correctMeaning": "Indeed We",
+        "options": [
+          "Indeed We",
+          "Path",
+          "Gracious",
+          "Forgiveness"
+        ]
+      },
+      {
+        "word": "أَعْطَيْنَاكَ",
+        "transliteration": "aAAtaynaka",
+        "rootWord": "ع ط و",
+        "correctMeaning": "We have given you",
+        "options": [
+          "We have given you",
+          "of the Judgment",
+          "Grace",
+          "Day"
+        ]
+      },
+      {
+        "word": "الْكَوْثَرَ",
+        "transliteration": "alkawthara",
+        "rootWord": "ك ث ر",
+        "correctMeaning": "Al-Kauthar",
+        "options": [
+          "Day",
+          "Al-Kauthar",
+          "Gracious",
+          "those who earned Your wrath"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "فَصَلِّ",
+        "transliteration": "Fasalli",
+        "rootWord": "ص ل و",
+        "correctMeaning": "So pray",
+        "options": [
+          "of the universe",
+          "Path",
+          "So pray",
+          "Guide us"
+        ]
+      },
+      {
+        "word": "لِرَبِّكَ",
+        "transliteration": "lirabbika",
+        "rootWord": "ر ب ب",
+        "correctMeaning": "to your Lord",
+        "options": [
+          "Day",
+          "Justice",
+          "to your Lord",
+          "Favors"
+        ]
+      },
+      {
+        "word": "وَانْحَرْ",
+        "transliteration": "wainhar",
+        "rootWord": "ن ح ر",
+        "correctMeaning": "and sacrifice",
+        "options": [
+          "Path",
+          "and sacrifice",
+          "Merciful",
+          "Forgiveness"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "إِنَّ",
+        "transliteration": "Inna",
+        "rootWord": null,
+        "correctMeaning": "Indeed",
+        "options": [
+          "Gracious",
+          "Indeed",
+          "Merciful",
+          "Favors"
+        ]
+      },
+      {
+        "word": "شَانِئَكَ",
+        "transliteration": "shaniaka",
+        "rootWord": "ش ن أ",
+        "correctMeaning": "your enemy",
+        "options": [
+          "of the Judgment",
+          "Justice",
+          "Path",
+          "your enemy"
+        ]
+      },
+      {
+        "word": "هُوَ",
+        "transliteration": "huwa",
+        "rootWord": null,
+        "correctMeaning": "he (is)",
+        "options": [
+          "he (is)",
+          "Path",
+          "Gracious",
+          "Reward"
+        ]
+      },
+      {
+        "word": "الْأَبْتَرُ",
+        "transliteration": "alabtaru",
+        "rootWord": "ب ت ر",
+        "correctMeaning": "the one cut off",
+        "options": [
+          "All praises",
+          "the one cut off",
+          "Gracious",
+          "Master"
+        ]
+      }
+    ]
+  ]
+}

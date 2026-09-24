@@ -1,0 +1,3533 @@
+{
+  "id": 72,
+  "name": "سورة الجن",
+  "englishName": "Al-Jinn",
+  "ayahs": [
+    [
+      {
+        "word": "بِسْمِ",
+        "transliteration": "Bismi",
+        "rootWord": "س م و",
+        "correctMeaning": "In (the) name",
+        "options": [
+          "of the Judgment",
+          "Straight Path",
+          "Favors",
+          "In (the) name"
+        ]
+      },
+      {
+        "word": "اللهِ",
+        "transliteration": "Allahi",
+        "rootWord": "أ ل ه",
+        "correctMeaning": "(of) Allah",
+        "options": [
+          "Merciful",
+          "Forgiveness",
+          "Reward",
+          "(of) Allah"
+        ]
+      },
+      {
+        "word": "الرَّحْمَٰنِ",
+        "transliteration": "alrrahmani",
+        "rootWord": "ر ح م",
+        "correctMeaning": "the Most Gracious",
+        "options": [
+          "Gracious",
+          "Forgiveness",
+          "the Most Gracious",
+          "Justice"
+        ]
+      },
+      {
+        "word": "الرَّحِيمِ",
+        "transliteration": "alrraheemi",
+        "rootWord": "ر ح م",
+        "correctMeaning": "the Most Merciful",
+        "options": [
+          "the Most Merciful",
+          "Justice",
+          "Grace",
+          "Forgiveness"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "قُلْ",
+        "transliteration": "Qul",
+        "rootWord": "ق و ل",
+        "correctMeaning": "Say",
+        "options": [
+          "Forgiveness",
+          "Master",
+          "those who earned Your wrath",
+          "Say"
+        ]
+      },
+      {
+        "word": "أُوحِىَ",
+        "transliteration": "oohiya",
+        "rootWord": "و ح ي",
+        "correctMeaning": "It has been revealed",
+        "options": [
+          "of the Judgment",
+          "Reward",
+          "It has been revealed",
+          "Guide us"
+        ]
+      },
+      {
+        "word": "إِلَىَّ",
+        "transliteration": "ilayya",
+        "rootWord": null,
+        "correctMeaning": "to me",
+        "options": [
+          "to me",
+          "Master",
+          "of the universe",
+          "Gracious"
+        ]
+      },
+      {
+        "word": "أَنَّهُ",
+        "transliteration": "annahu",
+        "rootWord": null,
+        "correctMeaning": "that",
+        "options": [
+          "Straight Path",
+          "that",
+          "Forgiveness",
+          "of the universe"
+        ]
+      },
+      {
+        "word": "اسْتَمَعَ",
+        "transliteration": "istamaAAa",
+        "rootWord": "س م ع",
+        "correctMeaning": "listened",
+        "options": [
+          "listened",
+          "Grace",
+          "The Lord",
+          "Favors"
+        ]
+      },
+      {
+        "word": "نَفَرٌ",
+        "transliteration": "nafarun",
+        "rootWord": "ن ف ر",
+        "correctMeaning": "a group",
+        "options": [
+          "Guide us",
+          "those who earned Your wrath",
+          "a group",
+          "Justice"
+        ]
+      },
+      {
+        "word": "مِّنَ",
+        "transliteration": "mina",
+        "rootWord": null,
+        "correctMeaning": "of",
+        "options": [
+          "of",
+          "Grace",
+          "Merciful",
+          "Forgiveness"
+        ]
+      },
+      {
+        "word": "الْجِنِّ",
+        "transliteration": "aljinni",
+        "rootWord": "ج ن ن",
+        "correctMeaning": "the jinn",
+        "options": [
+          "of the universe",
+          "Master",
+          "the jinn",
+          "Path"
+        ]
+      },
+      {
+        "word": "فَقَالُوٓا",
+        "transliteration": "faqaloo",
+        "rootWord": "ق و ل",
+        "correctMeaning": "and they said",
+        "options": [
+          "All praises",
+          "Favors",
+          "and they said",
+          "Justice"
+        ]
+      },
+      {
+        "word": "إِنَّا",
+        "transliteration": "inna",
+        "rootWord": null,
+        "correctMeaning": "Indeed we",
+        "options": [
+          "Forgiveness",
+          "Guide us",
+          "Indeed we",
+          "Path"
+        ]
+      },
+      {
+        "word": "سَمِعْنَا",
+        "transliteration": "samiAAna",
+        "rootWord": "س م ع",
+        "correctMeaning": "heard",
+        "options": [
+          "Reward",
+          "heard",
+          "Straight Path",
+          "Gracious"
+        ]
+      },
+      {
+        "word": "قُرْآنًا",
+        "transliteration": "quranan",
+        "rootWord": "ق ر أ",
+        "correctMeaning": "a Quran",
+        "options": [
+          "Path",
+          "a Quran",
+          "of the universe",
+          "Merciful"
+        ]
+      },
+      {
+        "word": "عَجَبًا",
+        "transliteration": "AAajaban",
+        "rootWord": "ع ج ب",
+        "correctMeaning": "amazing",
+        "options": [
+          "amazing",
+          "Guide us",
+          "Forgiveness",
+          "Favors"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "يَهْدِىٓ",
+        "transliteration": "Yahdee",
+        "rootWord": "ه د ي",
+        "correctMeaning": "It guides",
+        "options": [
+          "of the universe",
+          "All praises",
+          "of the Judgment",
+          "It guides"
+        ]
+      },
+      {
+        "word": "إِلَى",
+        "transliteration": "ila",
+        "rootWord": null,
+        "correctMeaning": "to",
+        "options": [
+          "Gracious",
+          "Merciful",
+          "Justice",
+          "to"
+        ]
+      },
+      {
+        "word": "الرُّشْدِ",
+        "transliteration": "alrrushdi",
+        "rootWord": "ر ش د",
+        "correctMeaning": "the right way",
+        "options": [
+          "Guide us",
+          "Path",
+          "All praises",
+          "the right way"
+        ]
+      },
+      {
+        "word": "فَـَٔامَنَّا",
+        "transliteration": "faamanna",
+        "rootWord": "أ م ن",
+        "correctMeaning": "so we believe",
+        "options": [
+          "so we believe",
+          "Reward",
+          "of the universe",
+          "Path"
+        ]
+      },
+      {
+        "word": "بِهِۦ",
+        "transliteration": "bihi",
+        "rootWord": null,
+        "correctMeaning": "in it",
+        "options": [
+          "Guide us",
+          "in it",
+          "Reward",
+          "Justice"
+        ]
+      },
+      {
+        "word": "وَلَن",
+        "transliteration": "walan",
+        "rootWord": null,
+        "correctMeaning": "and never",
+        "options": [
+          "those who earned Your wrath",
+          "and never",
+          "Grace",
+          "Forgiveness"
+        ]
+      },
+      {
+        "word": "نُّشْرِكَ",
+        "transliteration": "nushrika",
+        "rootWord": "ش ر ك",
+        "correctMeaning": "we will associate",
+        "options": [
+          "All praises",
+          "Master",
+          "Gracious",
+          "we will associate"
+        ]
+      },
+      {
+        "word": "بِرَبِّنَآ",
+        "transliteration": "birabbina",
+        "rootWord": "ر ب ب",
+        "correctMeaning": "with our Lord",
+        "options": [
+          "Gracious",
+          "The Lord",
+          "of the universe",
+          "with our Lord"
+        ]
+      },
+      {
+        "word": "أَحَدًا",
+        "transliteration": "ahadan",
+        "rootWord": "أ ح د",
+        "correctMeaning": "anyone",
+        "options": [
+          "Day",
+          "Justice",
+          "anyone",
+          "those who earned Your wrath"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "وَأَنَّهُۥ",
+        "transliteration": "Waannahu",
+        "rootWord": null,
+        "correctMeaning": "And that He",
+        "options": [
+          "And that He",
+          "of the Judgment",
+          "All praises",
+          "Favors"
+        ]
+      },
+      {
+        "word": "تَعَالَى",
+        "transliteration": "taAAala",
+        "rootWord": "ع ل و",
+        "correctMeaning": "Exalted is",
+        "options": [
+          "Gracious",
+          "Grace",
+          "Exalted is",
+          "Straight Path"
+        ]
+      },
+      {
+        "word": "جَدُّ",
+        "transliteration": "jaddu",
+        "rootWord": "ج د د",
+        "correctMeaning": "(the) Majesty",
+        "options": [
+          "Guide us",
+          "Path",
+          "(the) Majesty",
+          "Forgiveness"
+        ]
+      },
+      {
+        "word": "رَبِّنَا",
+        "transliteration": "rabbina",
+        "rootWord": "ر ب ب",
+        "correctMeaning": "(of) our Lord",
+        "options": [
+          "Straight Path",
+          "The Lord",
+          "Merciful",
+          "(of) our Lord"
+        ]
+      },
+      {
+        "word": "مَا",
+        "transliteration": "ma",
+        "rootWord": null,
+        "correctMeaning": "not",
+        "options": [
+          "Justice",
+          "Merciful",
+          "not",
+          "those who earned Your wrath"
+        ]
+      },
+      {
+        "word": "اتَّخَذَ",
+        "transliteration": "ittakhatha",
+        "rootWord": "أ خ ذ",
+        "correctMeaning": "He has taken",
+        "options": [
+          "those who earned Your wrath",
+          "Gracious",
+          "The Lord",
+          "He has taken"
+        ]
+      },
+      {
+        "word": "صَاحِبَةً",
+        "transliteration": "sahibatan",
+        "rootWord": "ص ح ب",
+        "correctMeaning": "a wife",
+        "options": [
+          "Favors",
+          "Master",
+          "Day",
+          "a wife"
+        ]
+      },
+      {
+        "word": "وَلَا",
+        "transliteration": "wala",
+        "rootWord": null,
+        "correctMeaning": "and not",
+        "options": [
+          "Forgiveness",
+          "Master",
+          "and not",
+          "All praises"
+        ]
+      },
+      {
+        "word": "وَلَدًا",
+        "transliteration": "waladan",
+        "rootWord": "و ل د",
+        "correctMeaning": "a son",
+        "options": [
+          "a son",
+          "Merciful",
+          "Grace",
+          "Day"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "وَأَنَّهُۥ",
+        "transliteration": "Waannahu",
+        "rootWord": null,
+        "correctMeaning": "And that he",
+        "options": [
+          "And that he",
+          "Justice",
+          "Path",
+          "Master"
+        ]
+      },
+      {
+        "word": "كَانَ",
+        "transliteration": "kana",
+        "rootWord": "ك و ن",
+        "correctMeaning": "used to",
+        "options": [
+          "Master",
+          "Reward",
+          "used to",
+          "Favors"
+        ]
+      },
+      {
+        "word": "يَقُولُ",
+        "transliteration": "yaqoolu",
+        "rootWord": "ق و ل",
+        "correctMeaning": "speak",
+        "options": [
+          "Gracious",
+          "Straight Path",
+          "those who earned Your wrath",
+          "speak"
+        ]
+      },
+      {
+        "word": "سَفِيهُنَا",
+        "transliteration": "safeehuna",
+        "rootWord": "س ف ه",
+        "correctMeaning": "the foolish among us",
+        "options": [
+          "All praises",
+          "The Lord",
+          "the foolish among us",
+          "Favors"
+        ]
+      },
+      {
+        "word": "عَلَى",
+        "transliteration": "AAala",
+        "rootWord": null,
+        "correctMeaning": "against",
+        "options": [
+          "against",
+          "Path",
+          "All praises",
+          "Master"
+        ]
+      },
+      {
+        "word": "اللهِ",
+        "transliteration": "Allahi",
+        "rootWord": "أ ل ه",
+        "correctMeaning": "Allah",
+        "options": [
+          "Gracious",
+          "Allah",
+          "of the Judgment",
+          "Grace"
+        ]
+      },
+      {
+        "word": "شَطَطًا",
+        "transliteration": "shatatan",
+        "rootWord": "ش ط ط",
+        "correctMeaning": "an excessive transgression",
+        "options": [
+          "an excessive transgression",
+          "Guide us",
+          "of the Judgment",
+          "Gracious"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "وَأَنَّا",
+        "transliteration": "Waanna",
+        "rootWord": null,
+        "correctMeaning": "And that we",
+        "options": [
+          "And that we",
+          "Day",
+          "those who earned Your wrath",
+          "of the Judgment"
+        ]
+      },
+      {
+        "word": "ظَنَنَّآ",
+        "transliteration": "thananna",
+        "rootWord": "ظ ن ن",
+        "correctMeaning": "thought",
+        "options": [
+          "thought",
+          "All praises",
+          "Merciful",
+          "those who earned Your wrath"
+        ]
+      },
+      {
+        "word": "أَن",
+        "transliteration": "an",
+        "rootWord": null,
+        "correctMeaning": "that",
+        "options": [
+          "that",
+          "Day",
+          "of the universe",
+          "Justice"
+        ]
+      },
+      {
+        "word": "لَّن",
+        "transliteration": "lan",
+        "rootWord": null,
+        "correctMeaning": "never",
+        "options": [
+          "never",
+          "of the universe",
+          "Gracious",
+          "Reward"
+        ]
+      },
+      {
+        "word": "تَقُولَ",
+        "transliteration": "taqoola",
+        "rootWord": "ق و ل",
+        "correctMeaning": "will say",
+        "options": [
+          "of the Judgment",
+          "Gracious",
+          "will say",
+          "Guide us"
+        ]
+      },
+      {
+        "word": "الْإِنسُ",
+        "transliteration": "alinsu",
+        "rootWord": "أ ن س",
+        "correctMeaning": "the men",
+        "options": [
+          "of the universe",
+          "Straight Path",
+          "the men",
+          "The Lord"
+        ]
+      },
+      {
+        "word": "وَالْجِنُّ",
+        "transliteration": "waaljinnu",
+        "rootWord": "ج ن ن",
+        "correctMeaning": "and the jinn",
+        "options": [
+          "Merciful",
+          "and the jinn",
+          "Path",
+          "Reward"
+        ]
+      },
+      {
+        "word": "عَلَى",
+        "transliteration": "AAala",
+        "rootWord": null,
+        "correctMeaning": "against",
+        "options": [
+          "Forgiveness",
+          "against",
+          "The Lord",
+          "Justice"
+        ]
+      },
+      {
+        "word": "اللهِ",
+        "transliteration": "Allahi",
+        "rootWord": "أ ل ه",
+        "correctMeaning": "Allah",
+        "options": [
+          "Allah",
+          "of the Judgment",
+          "those who earned Your wrath",
+          "Straight Path"
+        ]
+      },
+      {
+        "word": "كَذِبًا",
+        "transliteration": "kathiban",
+        "rootWord": "ك ذ ب",
+        "correctMeaning": "any lie",
+        "options": [
+          "those who earned Your wrath",
+          "Guide us",
+          "Justice",
+          "any lie"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "وَأَنَّهُۥ",
+        "transliteration": "Waannahu",
+        "rootWord": null,
+        "correctMeaning": "And that",
+        "options": [
+          "And that",
+          "Reward",
+          "Favors",
+          "Gracious"
+        ]
+      },
+      {
+        "word": "كَانَ",
+        "transliteration": "kana",
+        "rootWord": "ك و ن",
+        "correctMeaning": "(there) were",
+        "options": [
+          "Forgiveness",
+          "Gracious",
+          "(there) were",
+          "Path"
+        ]
+      },
+      {
+        "word": "رِجَالٌ",
+        "transliteration": "rijalun",
+        "rootWord": "ر ج ل",
+        "correctMeaning": "men",
+        "options": [
+          "Grace",
+          "Favors",
+          "men",
+          "The Lord"
+        ]
+      },
+      {
+        "word": "مِّنَ",
+        "transliteration": "mina",
+        "rootWord": null,
+        "correctMeaning": "among",
+        "options": [
+          "of the universe",
+          "Guide us",
+          "among",
+          "Justice"
+        ]
+      },
+      {
+        "word": "الْإِنسِ",
+        "transliteration": "alinsi",
+        "rootWord": "أ ن س",
+        "correctMeaning": "mankind",
+        "options": [
+          "mankind",
+          "of the Judgment",
+          "Guide us",
+          "Day"
+        ]
+      },
+      {
+        "word": "يَعُوذُونَ",
+        "transliteration": "yaAAoothoona",
+        "rootWord": "ع و ذ",
+        "correctMeaning": "who sought refuge",
+        "options": [
+          "who sought refuge",
+          "Grace",
+          "Reward",
+          "Gracious"
+        ]
+      },
+      {
+        "word": "بِرِجَالٍ",
+        "transliteration": "birijalin",
+        "rootWord": "ر ج ل",
+        "correctMeaning": "in (the) men",
+        "options": [
+          "those who earned Your wrath",
+          "Day",
+          "Forgiveness",
+          "in (the) men"
+        ]
+      },
+      {
+        "word": "مِّنَ",
+        "transliteration": "mina",
+        "rootWord": null,
+        "correctMeaning": "from",
+        "options": [
+          "Gracious",
+          "Path",
+          "Guide us",
+          "from"
+        ]
+      },
+      {
+        "word": "الْجِنِّ",
+        "transliteration": "aljinni",
+        "rootWord": "ج ن ن",
+        "correctMeaning": "the jinn",
+        "options": [
+          "of the universe",
+          "The Lord",
+          "of the Judgment",
+          "the jinn"
+        ]
+      },
+      {
+        "word": "فَزَادُوهُمْ",
+        "transliteration": "fazadoohum",
+        "rootWord": "ز ي د",
+        "correctMeaning": "so they increased them",
+        "options": [
+          "The Lord",
+          "Guide us",
+          "so they increased them",
+          "All praises"
+        ]
+      },
+      {
+        "word": "رَهَقًا",
+        "transliteration": "rahaqan",
+        "rootWord": "ر ه ق",
+        "correctMeaning": "(in) burden",
+        "options": [
+          "Straight Path",
+          "Favors",
+          "Justice",
+          "(in) burden"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "وَأَنَّهُمْ",
+        "transliteration": "Waannahum",
+        "rootWord": null,
+        "correctMeaning": "And that they",
+        "options": [
+          "Favors",
+          "And that they",
+          "Merciful",
+          "Forgiveness"
+        ]
+      },
+      {
+        "word": "ظَنُّوا",
+        "transliteration": "thannoo",
+        "rootWord": "ظ ن ن",
+        "correctMeaning": "thought",
+        "options": [
+          "those who earned Your wrath",
+          "thought",
+          "Day",
+          "Grace"
+        ]
+      },
+      {
+        "word": "كَمَا",
+        "transliteration": "kama",
+        "rootWord": null,
+        "correctMeaning": "as",
+        "options": [
+          "Gracious",
+          "as",
+          "Straight Path",
+          "Path"
+        ]
+      },
+      {
+        "word": "ظَنَنتُمْ",
+        "transliteration": "thanantum",
+        "rootWord": "ظ ن ن",
+        "correctMeaning": "you thought",
+        "options": [
+          "you thought",
+          "Reward",
+          "those who earned Your wrath",
+          "Day"
+        ]
+      },
+      {
+        "word": "أَن",
+        "transliteration": "an",
+        "rootWord": null,
+        "correctMeaning": "that",
+        "options": [
+          "Master",
+          "Favors",
+          "that",
+          "Grace"
+        ]
+      },
+      {
+        "word": "لَّن",
+        "transliteration": "lan",
+        "rootWord": null,
+        "correctMeaning": "never",
+        "options": [
+          "never",
+          "Justice",
+          "of the Judgment",
+          "Path"
+        ]
+      },
+      {
+        "word": "يَبْعَثَ",
+        "transliteration": "yabAAatha",
+        "rootWord": "ب ع ث",
+        "correctMeaning": "will raise",
+        "options": [
+          "Path",
+          "Master",
+          "Favors",
+          "will raise"
+        ]
+      },
+      {
+        "word": "اللهُ",
+        "transliteration": "Allahu",
+        "rootWord": "أ ل ه",
+        "correctMeaning": "Allah",
+        "options": [
+          "Day",
+          "Straight Path",
+          "Allah",
+          "Master"
+        ]
+      },
+      {
+        "word": "أَحَدًا",
+        "transliteration": "ahadan",
+        "rootWord": "أ ح د",
+        "correctMeaning": "anyone",
+        "options": [
+          "Reward",
+          "anyone",
+          "Gracious",
+          "of the Judgment"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "وَأَنَّا",
+        "transliteration": "Waanna",
+        "rootWord": null,
+        "correctMeaning": "And that we",
+        "options": [
+          "Path",
+          "All praises",
+          "And that we",
+          "Straight Path"
+        ]
+      },
+      {
+        "word": "لَمَسْنَا",
+        "transliteration": "lamasna",
+        "rootWord": "ل م س",
+        "correctMeaning": "sought to touch",
+        "options": [
+          "Forgiveness",
+          "Master",
+          "The Lord",
+          "sought to touch"
+        ]
+      },
+      {
+        "word": "السَّمَآءَ",
+        "transliteration": "alssamaa",
+        "rootWord": "س م و",
+        "correctMeaning": "the heaven",
+        "options": [
+          "the heaven",
+          "those who earned Your wrath",
+          "Day",
+          "Path"
+        ]
+      },
+      {
+        "word": "فَوَجَدْنَاهَا",
+        "transliteration": "fawajadnaha",
+        "rootWord": "و ج د",
+        "correctMeaning": "but we found it",
+        "options": [
+          "Merciful",
+          "Favors",
+          "but we found it",
+          "Path"
+        ]
+      },
+      {
+        "word": "مُلِئَتْ",
+        "transliteration": "muliat",
+        "rootWord": "م ل أ",
+        "correctMeaning": "filled (with)",
+        "options": [
+          "Grace",
+          "of the universe",
+          "Justice",
+          "filled (with)"
+        ]
+      },
+      {
+        "word": "حَرَسًا",
+        "transliteration": "harasan",
+        "rootWord": "ح ر س",
+        "correctMeaning": "guards",
+        "options": [
+          "Guide us",
+          "Path",
+          "of the Judgment",
+          "guards"
+        ]
+      },
+      {
+        "word": "شَدِيدًا",
+        "transliteration": "shadeedan",
+        "rootWord": "ش د د",
+        "correctMeaning": "severe",
+        "options": [
+          "severe",
+          "Path",
+          "those who earned Your wrath",
+          "The Lord"
+        ]
+      },
+      {
+        "word": "وَشُهُبًا",
+        "transliteration": "washuhuban",
+        "rootWord": "ش ه ب",
+        "correctMeaning": "and flaming fires",
+        "options": [
+          "Reward",
+          "Justice",
+          "and flaming fires",
+          "of the Judgment"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "وَأَنَّا",
+        "transliteration": "Waanna",
+        "rootWord": null,
+        "correctMeaning": "And that we",
+        "options": [
+          "Forgiveness",
+          "And that we",
+          "All praises",
+          "Grace"
+        ]
+      },
+      {
+        "word": "كُنَّا",
+        "transliteration": "kunna",
+        "rootWord": "ك و ن",
+        "correctMeaning": "used to",
+        "options": [
+          "All praises",
+          "Master",
+          "used to",
+          "Grace"
+        ]
+      },
+      {
+        "word": "نَقْعُدُ",
+        "transliteration": "naqAAudu",
+        "rootWord": "ق ع د",
+        "correctMeaning": "sit",
+        "options": [
+          "Reward",
+          "sit",
+          "All praises",
+          "Merciful"
+        ]
+      },
+      {
+        "word": "مِنْهَا",
+        "transliteration": "minha",
+        "rootWord": null,
+        "correctMeaning": "there in",
+        "options": [
+          "Straight Path",
+          "of the universe",
+          "Grace",
+          "there in"
+        ]
+      },
+      {
+        "word": "مَقَاعِدَ",
+        "transliteration": "maqaAAida",
+        "rootWord": "ق ع د",
+        "correctMeaning": "positions",
+        "options": [
+          "All praises",
+          "those who earned Your wrath",
+          "Master",
+          "positions"
+        ]
+      },
+      {
+        "word": "لِلسَّمْعِ",
+        "transliteration": "lilssamAAi",
+        "rootWord": "س م ع",
+        "correctMeaning": "for hearing",
+        "options": [
+          "Day",
+          "Reward",
+          "Path",
+          "for hearing"
+        ]
+      },
+      {
+        "word": "فَمَن",
+        "transliteration": "faman",
+        "rootWord": null,
+        "correctMeaning": "but (he) who",
+        "options": [
+          "Reward",
+          "Justice",
+          "but (he) who",
+          "of the universe"
+        ]
+      },
+      {
+        "word": "يَسْتَمِعِ",
+        "transliteration": "yastamiAAi",
+        "rootWord": "س م ع",
+        "correctMeaning": "listens",
+        "options": [
+          "of the universe",
+          "listens",
+          "Justice",
+          "Guide us"
+        ]
+      },
+      {
+        "word": "الْاٰنَ",
+        "transliteration": "alana",
+        "rootWord": null,
+        "correctMeaning": "now",
+        "options": [
+          "Forgiveness",
+          "now",
+          "Straight Path",
+          "Reward"
+        ]
+      },
+      {
+        "word": "يَجِدْ",
+        "transliteration": "yajid",
+        "rootWord": "و ج د",
+        "correctMeaning": "will find",
+        "options": [
+          "Master",
+          "Guide us",
+          "Merciful",
+          "will find"
+        ]
+      },
+      {
+        "word": "لَهُۥ",
+        "transliteration": "lahu",
+        "rootWord": null,
+        "correctMeaning": "for him",
+        "options": [
+          "Favors",
+          "for him",
+          "Justice",
+          "All praises"
+        ]
+      },
+      {
+        "word": "شِهَابًا",
+        "transliteration": "shihaban",
+        "rootWord": "ش ه ب",
+        "correctMeaning": "a flaming fire",
+        "options": [
+          "Guide us",
+          "a flaming fire",
+          "Gracious",
+          "Master"
+        ]
+      },
+      {
+        "word": "رَّصَدًا",
+        "transliteration": "rasadan",
+        "rootWord": "ر ص د",
+        "correctMeaning": "waiting",
+        "options": [
+          "of the Judgment",
+          "Master",
+          "of the universe",
+          "waiting"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "وَأَنَّا",
+        "transliteration": "Waanna",
+        "rootWord": null,
+        "correctMeaning": "And that we",
+        "options": [
+          "those who earned Your wrath",
+          "Forgiveness",
+          "And that we",
+          "Gracious"
+        ]
+      },
+      {
+        "word": "لَا",
+        "transliteration": "la",
+        "rootWord": null,
+        "correctMeaning": "not",
+        "options": [
+          "Forgiveness",
+          "Straight Path",
+          "not",
+          "Justice"
+        ]
+      },
+      {
+        "word": "نَدْرِىٓ",
+        "transliteration": "nadree",
+        "rootWord": "د ر ي",
+        "correctMeaning": "we know",
+        "options": [
+          "Merciful",
+          "Path",
+          "we know",
+          "Day"
+        ]
+      },
+      {
+        "word": "أَشَرٌّ",
+        "transliteration": "asharrun",
+        "rootWord": "ش ر ر",
+        "correctMeaning": "whether evil?",
+        "options": [
+          "Favors",
+          "Gracious",
+          "whether evil?",
+          "Justice"
+        ]
+      },
+      {
+        "word": "أُرِيدَ",
+        "transliteration": "oreeda",
+        "rootWord": "ر و د",
+        "correctMeaning": "is intended",
+        "options": [
+          "Gracious",
+          "is intended",
+          "Reward",
+          "Merciful"
+        ]
+      },
+      {
+        "word": "بِمَن",
+        "transliteration": "biman",
+        "rootWord": null,
+        "correctMeaning": "for (those) who",
+        "options": [
+          "of the Judgment",
+          "Merciful",
+          "for (those) who",
+          "of the universe"
+        ]
+      },
+      {
+        "word": "فِى",
+        "transliteration": "fee",
+        "rootWord": null,
+        "correctMeaning": "(are) in",
+        "options": [
+          "(are) in",
+          "Straight Path",
+          "those who earned Your wrath",
+          "Grace"
+        ]
+      },
+      {
+        "word": "الْأَرْضِ",
+        "transliteration": "alardi",
+        "rootWord": "أ ر ض",
+        "correctMeaning": "the earth",
+        "options": [
+          "Master",
+          "the earth",
+          "Path",
+          "Forgiveness"
+        ]
+      },
+      {
+        "word": "أَمْ",
+        "transliteration": "am",
+        "rootWord": null,
+        "correctMeaning": "or",
+        "options": [
+          "Guide us",
+          "or",
+          "Reward",
+          "The Lord"
+        ]
+      },
+      {
+        "word": "أَرَادَ",
+        "transliteration": "arada",
+        "rootWord": "ر و د",
+        "correctMeaning": "intends",
+        "options": [
+          "Favors",
+          "Gracious",
+          "intends",
+          "All praises"
+        ]
+      },
+      {
+        "word": "بِهِمْ",
+        "transliteration": "bihim",
+        "rootWord": null,
+        "correctMeaning": "for them",
+        "options": [
+          "Straight Path",
+          "Path",
+          "for them",
+          "Justice"
+        ]
+      },
+      {
+        "word": "رَبُّهُمْ",
+        "transliteration": "rabbuhum",
+        "rootWord": "ر ب ب",
+        "correctMeaning": "their Lord",
+        "options": [
+          "their Lord",
+          "All praises",
+          "The Lord",
+          "Path"
+        ]
+      },
+      {
+        "word": "رَشَدًا",
+        "transliteration": "rashadan",
+        "rootWord": "ر ش د",
+        "correctMeaning": "a right path",
+        "options": [
+          "All praises",
+          "a right path",
+          "Merciful",
+          "those who earned Your wrath"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "وَأَنَّا",
+        "transliteration": "Waanna",
+        "rootWord": null,
+        "correctMeaning": "And that [we]",
+        "options": [
+          "Day",
+          "Reward",
+          "Merciful",
+          "And that [we]"
+        ]
+      },
+      {
+        "word": "مِنَّا",
+        "transliteration": "minna",
+        "rootWord": null,
+        "correctMeaning": "among us",
+        "options": [
+          "of the universe",
+          "Reward",
+          "among us",
+          "Favors"
+        ]
+      },
+      {
+        "word": "الصَّالِحُونَ",
+        "transliteration": "alssalihoona",
+        "rootWord": "ص ل ح",
+        "correctMeaning": "(are) the righteous",
+        "options": [
+          "Reward",
+          "(are) the righteous",
+          "Path",
+          "All praises"
+        ]
+      },
+      {
+        "word": "وَمِنَّا",
+        "transliteration": "waminna",
+        "rootWord": null,
+        "correctMeaning": "and among us",
+        "options": [
+          "All praises",
+          "Favors",
+          "and among us",
+          "those who earned Your wrath"
+        ]
+      },
+      {
+        "word": "دُونَ",
+        "transliteration": "doona",
+        "rootWord": "د و ن",
+        "correctMeaning": "(are) other than",
+        "options": [
+          "Day",
+          "(are) other than",
+          "All praises",
+          "Path"
+        ]
+      },
+      {
+        "word": "ذَٰلِكَ",
+        "transliteration": "thalika",
+        "rootWord": null,
+        "correctMeaning": "that",
+        "options": [
+          "Favors",
+          "that",
+          "The Lord",
+          "of the universe"
+        ]
+      },
+      {
+        "word": "كُنَّا",
+        "transliteration": "kunna",
+        "rootWord": "ك و ن",
+        "correctMeaning": "We",
+        "options": [
+          "Master",
+          "Favors",
+          "Reward",
+          "We"
+        ]
+      },
+      {
+        "word": "طَرَآئِقَ",
+        "transliteration": "taraiqa",
+        "rootWord": "ط ر ق",
+        "correctMeaning": "(are on) ways",
+        "options": [
+          "Justice",
+          "(are on) ways",
+          "The Lord",
+          "Forgiveness"
+        ]
+      },
+      {
+        "word": "قِدَدًا",
+        "transliteration": "qidadan",
+        "rootWord": "ق د د",
+        "correctMeaning": "different",
+        "options": [
+          "Justice",
+          "All praises",
+          "Gracious",
+          "different"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "وَأَنَّا",
+        "transliteration": "Wanna",
+        "rootWord": null,
+        "correctMeaning": "And that we",
+        "options": [
+          "Reward",
+          "And that we",
+          "The Lord",
+          "of the universe"
+        ]
+      },
+      {
+        "word": "ظَنَنَّآ",
+        "transliteration": "thananna",
+        "rootWord": "ظ ن ن",
+        "correctMeaning": "[we] have become certain",
+        "options": [
+          "Forgiveness",
+          "Path",
+          "Straight Path",
+          "[we] have become certain"
+        ]
+      },
+      {
+        "word": "أَن",
+        "transliteration": "an",
+        "rootWord": null,
+        "correctMeaning": "that",
+        "options": [
+          "Merciful",
+          "Justice",
+          "Gracious",
+          "that"
+        ]
+      },
+      {
+        "word": "لَّن",
+        "transliteration": "lan",
+        "rootWord": null,
+        "correctMeaning": "never",
+        "options": [
+          "never",
+          "of the universe",
+          "those who earned Your wrath",
+          "Grace"
+        ]
+      },
+      {
+        "word": "نُّعجِزَ",
+        "transliteration": "nuAAjiza",
+        "rootWord": "ع ج ز",
+        "correctMeaning": "we will cause failure",
+        "options": [
+          "of the universe",
+          "of the Judgment",
+          "we will cause failure",
+          "Guide us"
+        ]
+      },
+      {
+        "word": "اللهَ",
+        "transliteration": "Allaha",
+        "rootWord": "أ ل ه",
+        "correctMeaning": "(to) Allah",
+        "options": [
+          "Reward",
+          "(to) Allah",
+          "Favors",
+          "Forgiveness"
+        ]
+      },
+      {
+        "word": "فِى",
+        "transliteration": "fee",
+        "rootWord": null,
+        "correctMeaning": "in",
+        "options": [
+          "Path",
+          "of the Judgment",
+          "Merciful",
+          "in"
+        ]
+      },
+      {
+        "word": "الْأَرْضِ",
+        "transliteration": "alardi",
+        "rootWord": "أ ر ض",
+        "correctMeaning": "the earth",
+        "options": [
+          "Guide us",
+          "Day",
+          "Favors",
+          "the earth"
+        ]
+      },
+      {
+        "word": "وَلَن",
+        "transliteration": "walan",
+        "rootWord": null,
+        "correctMeaning": "and never",
+        "options": [
+          "and never",
+          "Straight Path",
+          "Gracious",
+          "Justice"
+        ]
+      },
+      {
+        "word": "نُّعْجِزَهُۥ",
+        "transliteration": "nuAAjizahu",
+        "rootWord": "ع ج ز",
+        "correctMeaning": "we can escape Him",
+        "options": [
+          "Straight Path",
+          "we can escape Him",
+          "those who earned Your wrath",
+          "Reward"
+        ]
+      },
+      {
+        "word": "هَرَبًا",
+        "transliteration": "haraban",
+        "rootWord": "ه ر ب",
+        "correctMeaning": "(by) flight",
+        "options": [
+          "Path",
+          "Grace",
+          "The Lord",
+          "(by) flight"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "وَأَنَّا",
+        "transliteration": "Waanna",
+        "rootWord": null,
+        "correctMeaning": "And that [we]",
+        "options": [
+          "Master",
+          "of the universe",
+          "And that [we]",
+          "The Lord"
+        ]
+      },
+      {
+        "word": "لَمَّا",
+        "transliteration": "lamma",
+        "rootWord": null,
+        "correctMeaning": "when",
+        "options": [
+          "those who earned Your wrath",
+          "when",
+          "The Lord",
+          "Gracious"
+        ]
+      },
+      {
+        "word": "سَمِعْنَا",
+        "transliteration": "samiAAna",
+        "rootWord": "س م ع",
+        "correctMeaning": "we heard",
+        "options": [
+          "Reward",
+          "we heard",
+          "Straight Path",
+          "All praises"
+        ]
+      },
+      {
+        "word": "الْهُدَىٰٓ",
+        "transliteration": "alhuda",
+        "rootWord": "ه د ي",
+        "correctMeaning": "the Guidance",
+        "options": [
+          "Path",
+          "Reward",
+          "the Guidance",
+          "those who earned Your wrath"
+        ]
+      },
+      {
+        "word": "اٰمَنَّا",
+        "transliteration": "amanna",
+        "rootWord": "أ م ن",
+        "correctMeaning": "we believed",
+        "options": [
+          "of the universe",
+          "Gracious",
+          "Day",
+          "we believed"
+        ]
+      },
+      {
+        "word": "بِهِۦ",
+        "transliteration": "bihi",
+        "rootWord": null,
+        "correctMeaning": "in it",
+        "options": [
+          "Gracious",
+          "Guide us",
+          "in it",
+          "Forgiveness"
+        ]
+      },
+      {
+        "word": "فَمَن",
+        "transliteration": "faman",
+        "rootWord": null,
+        "correctMeaning": "And whoever",
+        "options": [
+          "Justice",
+          "those who earned Your wrath",
+          "Straight Path",
+          "And whoever"
+        ]
+      },
+      {
+        "word": "يُؤْمِن",
+        "transliteration": "yumin",
+        "rootWord": "أ م ن",
+        "correctMeaning": "believes",
+        "options": [
+          "those who earned Your wrath",
+          "Straight Path",
+          "believes",
+          "Merciful"
+        ]
+      },
+      {
+        "word": "بِرَبِّهِۦ",
+        "transliteration": "birabbihi",
+        "rootWord": "ر ب ب",
+        "correctMeaning": "in his Lord",
+        "options": [
+          "in his Lord",
+          "Grace",
+          "those who earned Your wrath",
+          "Justice"
+        ]
+      },
+      {
+        "word": "فَلَا",
+        "transliteration": "fala",
+        "rootWord": null,
+        "correctMeaning": "then not",
+        "options": [
+          "Justice",
+          "Guide us",
+          "then not",
+          "Master"
+        ]
+      },
+      {
+        "word": "يَخَافُ",
+        "transliteration": "yakhafu",
+        "rootWord": "خ و ف",
+        "correctMeaning": "he will fear",
+        "options": [
+          "Day",
+          "he will fear",
+          "Grace",
+          "Gracious"
+        ]
+      },
+      {
+        "word": "بَخْسًا",
+        "transliteration": "bakhsan",
+        "rootWord": "ب خ س",
+        "correctMeaning": "any loss",
+        "options": [
+          "The Lord",
+          "Path",
+          "Merciful",
+          "any loss"
+        ]
+      },
+      {
+        "word": "وَلَا",
+        "transliteration": "wala",
+        "rootWord": null,
+        "correctMeaning": "and not",
+        "options": [
+          "Day",
+          "Straight Path",
+          "and not",
+          "All praises"
+        ]
+      },
+      {
+        "word": "رَهَقًا",
+        "transliteration": "rahaqan",
+        "rootWord": "ر ه ق",
+        "correctMeaning": "any burden",
+        "options": [
+          "any burden",
+          "Master",
+          "All praises",
+          "Path"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "وَأَنَّا",
+        "transliteration": "Waanna",
+        "rootWord": null,
+        "correctMeaning": "And that we",
+        "options": [
+          "of the Judgment",
+          "those who earned Your wrath",
+          "Merciful",
+          "And that we"
+        ]
+      },
+      {
+        "word": "مِنَّا",
+        "transliteration": "minna",
+        "rootWord": null,
+        "correctMeaning": "among us",
+        "options": [
+          "among us",
+          "Gracious",
+          "Reward",
+          "Guide us"
+        ]
+      },
+      {
+        "word": "الْمُسْلِمُونَ",
+        "transliteration": "almuslimoona",
+        "rootWord": "س ل م",
+        "correctMeaning": "(are) Muslims",
+        "options": [
+          "Master",
+          "(are) Muslims",
+          "of the universe",
+          "Gracious"
+        ]
+      },
+      {
+        "word": "وَمِنَّا",
+        "transliteration": "waminna",
+        "rootWord": null,
+        "correctMeaning": "and among us",
+        "options": [
+          "of the universe",
+          "Guide us",
+          "and among us",
+          "All praises"
+        ]
+      },
+      {
+        "word": "الْقَٰسِطُونَ",
+        "transliteration": "alqasitoona",
+        "rootWord": "ق س ط",
+        "correctMeaning": "(are) unjust",
+        "options": [
+          "of the universe",
+          "All praises",
+          "Justice",
+          "(are) unjust"
+        ]
+      },
+      {
+        "word": "فَمَنْ",
+        "transliteration": "faman",
+        "rootWord": null,
+        "correctMeaning": "And whoever",
+        "options": [
+          "Forgiveness",
+          "And whoever",
+          "those who earned Your wrath",
+          "Day"
+        ]
+      },
+      {
+        "word": "أَسْلَمَ",
+        "transliteration": "aslama",
+        "rootWord": "س ل م",
+        "correctMeaning": "submits",
+        "options": [
+          "Favors",
+          "Day",
+          "Forgiveness",
+          "submits"
+        ]
+      },
+      {
+        "word": "فَأُوْلَٰٓئِكَ",
+        "transliteration": "faolaika",
+        "rootWord": null,
+        "correctMeaning": "then those",
+        "options": [
+          "then those",
+          "Gracious",
+          "Straight Path",
+          "Grace"
+        ]
+      },
+      {
+        "word": "تَحَرَّوْا",
+        "transliteration": "taharraw",
+        "rootWord": "ح ر ي",
+        "correctMeaning": "have sought",
+        "options": [
+          "have sought",
+          "Straight Path",
+          "All praises",
+          "Reward"
+        ]
+      },
+      {
+        "word": "رَشَدًا",
+        "transliteration": "rashadan",
+        "rootWord": "ر ش د",
+        "correctMeaning": "(the) right path",
+        "options": [
+          "Favors",
+          "Merciful",
+          "(the) right path",
+          "Forgiveness"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "وَأَمَّا",
+        "transliteration": "Waama",
+        "rootWord": null,
+        "correctMeaning": "And as for",
+        "options": [
+          "Reward",
+          "Favors",
+          "Guide us",
+          "And as for"
+        ]
+      },
+      {
+        "word": "الْقَٰسِطُونَ",
+        "transliteration": "alqasitoona",
+        "rootWord": "ق س ط",
+        "correctMeaning": "the unjust",
+        "options": [
+          "Gracious",
+          "the unjust",
+          "Grace",
+          "of the Judgment"
+        ]
+      },
+      {
+        "word": "فَكَانُوا",
+        "transliteration": "fakanoo",
+        "rootWord": "ك و ن",
+        "correctMeaning": "they will be",
+        "options": [
+          "they will be",
+          "Straight Path",
+          "Grace",
+          "Path"
+        ]
+      },
+      {
+        "word": "لِجَهَنَّمَ",
+        "transliteration": "lijahannama",
+        "rootWord": null,
+        "correctMeaning": "for Hell",
+        "options": [
+          "of the universe",
+          "Master",
+          "for Hell",
+          "of the Judgment"
+        ]
+      },
+      {
+        "word": "حَطَبًا",
+        "transliteration": "hataban",
+        "rootWord": "ح ط ب",
+        "correctMeaning": "firewood",
+        "options": [
+          "of the Judgment",
+          "Reward",
+          "Justice",
+          "firewood"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "وَأَلَّوِ",
+        "transliteration": "Waallawi",
+        "rootWord": null,
+        "correctMeaning": "And that if",
+        "options": [
+          "And that if",
+          "Favors",
+          "Reward",
+          "Master"
+        ]
+      },
+      {
+        "word": "اسْتَقَامُواْ",
+        "transliteration": "istaqamoo",
+        "rootWord": "ق و م",
+        "correctMeaning": "they had remained",
+        "options": [
+          "Merciful",
+          "they had remained",
+          "of the Judgment",
+          "Gracious"
+        ]
+      },
+      {
+        "word": "عَلَى",
+        "transliteration": "AAala",
+        "rootWord": null,
+        "correctMeaning": "on",
+        "options": [
+          "on",
+          "Straight Path",
+          "The Lord",
+          "Justice"
+        ]
+      },
+      {
+        "word": "الطَّرِيقَةِ",
+        "transliteration": "alttareeqati",
+        "rootWord": "ط ر ق",
+        "correctMeaning": "the Way",
+        "options": [
+          "Reward",
+          "Master",
+          "the Way",
+          "Favors"
+        ]
+      },
+      {
+        "word": "لَأَسْقَيْنَاهُم",
+        "transliteration": "laasqaynahum",
+        "rootWord": "س ق ي",
+        "correctMeaning": "surely We (would) have given them to drink",
+        "options": [
+          "surely We (would) have given them to drink",
+          "those who earned Your wrath",
+          "All praises",
+          "Master"
+        ]
+      },
+      {
+        "word": "مَّآءً",
+        "transliteration": "maan",
+        "rootWord": "م و ه",
+        "correctMeaning": "water",
+        "options": [
+          "Grace",
+          "those who earned Your wrath",
+          "water",
+          "Gracious"
+        ]
+      },
+      {
+        "word": "غَدَقًا",
+        "transliteration": "ghadaqan",
+        "rootWord": "غ د ق",
+        "correctMeaning": "(in) abundance",
+        "options": [
+          "Reward",
+          "Guide us",
+          "(in) abundance",
+          "Master"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "لِّنَفْتِنَهُمْ",
+        "transliteration": "Linaftinahum",
+        "rootWord": "ف ت ن",
+        "correctMeaning": "That We might test them",
+        "options": [
+          "of the universe",
+          "Path",
+          "That We might test them",
+          "Straight Path"
+        ]
+      },
+      {
+        "word": "فِيهِ",
+        "transliteration": "feehi",
+        "rootWord": null,
+        "correctMeaning": "therein",
+        "options": [
+          "Justice",
+          "Forgiveness",
+          "therein",
+          "Reward"
+        ]
+      },
+      {
+        "word": "وَمَن",
+        "transliteration": "waman",
+        "rootWord": null,
+        "correctMeaning": "And whoever",
+        "options": [
+          "Forgiveness",
+          "And whoever",
+          "Reward",
+          "Guide us"
+        ]
+      },
+      {
+        "word": "يُعْرِضْ",
+        "transliteration": "yuAArid",
+        "rootWord": "ع ر ض",
+        "correctMeaning": "turns away",
+        "options": [
+          "of the Judgment",
+          "Guide us",
+          "Merciful",
+          "turns away"
+        ]
+      },
+      {
+        "word": "عَن",
+        "transliteration": "AAan",
+        "rootWord": null,
+        "correctMeaning": "from",
+        "options": [
+          "Straight Path",
+          "from",
+          "Justice",
+          "All praises"
+        ]
+      },
+      {
+        "word": "ذِكْرِ",
+        "transliteration": "thikri",
+        "rootWord": "ذ ك ر",
+        "correctMeaning": "the Remembrance",
+        "options": [
+          "the Remembrance",
+          "Justice",
+          "Straight Path",
+          "of the Judgment"
+        ]
+      },
+      {
+        "word": "رَبِّهِۦ",
+        "transliteration": "rabbihi",
+        "rootWord": "ر ب ب",
+        "correctMeaning": "(of) his Lord",
+        "options": [
+          "of the Judgment",
+          "Forgiveness",
+          "Day",
+          "(of) his Lord"
+        ]
+      },
+      {
+        "word": "يَسْلُكْهُ",
+        "transliteration": "yaslukhu",
+        "rootWord": "س ل ك",
+        "correctMeaning": "He will make him enter",
+        "options": [
+          "He will make him enter",
+          "of the Judgment",
+          "All praises",
+          "Justice"
+        ]
+      },
+      {
+        "word": "عَذَابًا",
+        "transliteration": "AAathaban",
+        "rootWord": "ع ذ ب",
+        "correctMeaning": "a punishment",
+        "options": [
+          "Favors",
+          "a punishment",
+          "Merciful",
+          "those who earned Your wrath"
+        ]
+      },
+      {
+        "word": "صَعَدًا",
+        "transliteration": "saAAadan",
+        "rootWord": "ص ع د",
+        "correctMeaning": "severe",
+        "options": [
+          "Merciful",
+          "Gracious",
+          "Favors",
+          "severe"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "وَأَنَّ",
+        "transliteration": "Waanna",
+        "rootWord": null,
+        "correctMeaning": "And that",
+        "options": [
+          "of the universe",
+          "Grace",
+          "Merciful",
+          "And that"
+        ]
+      },
+      {
+        "word": "الْمَسَاجِدَ",
+        "transliteration": "almasajida",
+        "rootWord": "س ج د",
+        "correctMeaning": "the masjids",
+        "options": [
+          "All praises",
+          "Forgiveness",
+          "The Lord",
+          "the masjids"
+        ]
+      },
+      {
+        "word": "لِلّٰهِ",
+        "transliteration": "lillahi",
+        "rootWord": "أ ل ه",
+        "correctMeaning": "(are) for Allah",
+        "options": [
+          "(are) for Allah",
+          "Merciful",
+          "Favors",
+          "Gracious"
+        ]
+      },
+      {
+        "word": "فَلَا",
+        "transliteration": "fala",
+        "rootWord": null,
+        "correctMeaning": "so (do) not",
+        "options": [
+          "All praises",
+          "Justice",
+          "so (do) not",
+          "those who earned Your wrath"
+        ]
+      },
+      {
+        "word": "تَدْعُوا",
+        "transliteration": "tadAAoo",
+        "rootWord": "د ع و",
+        "correctMeaning": "call",
+        "options": [
+          "call",
+          "Straight Path",
+          "Grace",
+          "Favors"
+        ]
+      },
+      {
+        "word": "مَعَ",
+        "transliteration": "maAAa",
+        "rootWord": null,
+        "correctMeaning": "with",
+        "options": [
+          "of the Judgment",
+          "Merciful",
+          "with",
+          "Master"
+        ]
+      },
+      {
+        "word": "اللهِ",
+        "transliteration": "Allahi",
+        "rootWord": "أ ل ه",
+        "correctMeaning": "Allah",
+        "options": [
+          "of the universe",
+          "The Lord",
+          "Allah",
+          "Path"
+        ]
+      },
+      {
+        "word": "أَحَدًا",
+        "transliteration": "ahadan",
+        "rootWord": "أ ح د",
+        "correctMeaning": "anyone",
+        "options": [
+          "Guide us",
+          "The Lord",
+          "anyone",
+          "Merciful"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "وَأَنَّهُۥ",
+        "transliteration": "Waannahu",
+        "rootWord": null,
+        "correctMeaning": "And that",
+        "options": [
+          "of the Judgment",
+          "And that",
+          "Straight Path",
+          "Path"
+        ]
+      },
+      {
+        "word": "لَمَّا",
+        "transliteration": "lamma",
+        "rootWord": null,
+        "correctMeaning": "when",
+        "options": [
+          "of the Judgment",
+          "Reward",
+          "when",
+          "Path"
+        ]
+      },
+      {
+        "word": "قَامَ",
+        "transliteration": "qama",
+        "rootWord": "ق و م",
+        "correctMeaning": "stood up",
+        "options": [
+          "Merciful",
+          "Gracious",
+          "stood up",
+          "Guide us"
+        ]
+      },
+      {
+        "word": "عَبْدُ",
+        "transliteration": "AAabdu",
+        "rootWord": "ع ب د",
+        "correctMeaning": "(the) slave",
+        "options": [
+          "Master",
+          "of the universe",
+          "those who earned Your wrath",
+          "(the) slave"
+        ]
+      },
+      {
+        "word": "اللهِ",
+        "transliteration": "Allahi",
+        "rootWord": "أ ل ه",
+        "correctMeaning": "(of) Allah",
+        "options": [
+          "(of) Allah",
+          "Straight Path",
+          "Path",
+          "Day"
+        ]
+      },
+      {
+        "word": "يَدْعُوهُ",
+        "transliteration": "yadAAoohu",
+        "rootWord": "د ع و",
+        "correctMeaning": "calling (upon) Him",
+        "options": [
+          "Forgiveness",
+          "calling (upon) Him",
+          "those who earned Your wrath",
+          "All praises"
+        ]
+      },
+      {
+        "word": "كَادُوا",
+        "transliteration": "kadoo",
+        "rootWord": "ك و د",
+        "correctMeaning": "they almost",
+        "options": [
+          "Path",
+          "Master",
+          "they almost",
+          "those who earned Your wrath"
+        ]
+      },
+      {
+        "word": "يَكُونُونَ",
+        "transliteration": "yakoonoona",
+        "rootWord": "ك و ن",
+        "correctMeaning": "became",
+        "options": [
+          "Day",
+          "became",
+          "Favors",
+          "Merciful"
+        ]
+      },
+      {
+        "word": "عَلَيْهِ",
+        "transliteration": "AAalayhi",
+        "rootWord": null,
+        "correctMeaning": "around him",
+        "options": [
+          "around him",
+          "Master",
+          "Forgiveness",
+          "Path"
+        ]
+      },
+      {
+        "word": "لِبَدًا",
+        "transliteration": "libadan",
+        "rootWord": "ل ب د",
+        "correctMeaning": "a compacted mass",
+        "options": [
+          "a compacted mass",
+          "Gracious",
+          "The Lord",
+          "those who earned Your wrath"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "قُلْ",
+        "transliteration": "Qul",
+        "rootWord": "ق و ل",
+        "correctMeaning": "Say",
+        "options": [
+          "Gracious",
+          "Say",
+          "The Lord",
+          "Day"
+        ]
+      },
+      {
+        "word": "إِنَّمَآ",
+        "transliteration": "innama",
+        "rootWord": null,
+        "correctMeaning": "Only",
+        "options": [
+          "Forgiveness",
+          "Path",
+          "Straight Path",
+          "Only"
+        ]
+      },
+      {
+        "word": "أَدْعُوٓا",
+        "transliteration": "adAAoo",
+        "rootWord": "د ع و",
+        "correctMeaning": "I call upon",
+        "options": [
+          "those who earned Your wrath",
+          "Forgiveness",
+          "Guide us",
+          "I call upon"
+        ]
+      },
+      {
+        "word": "رَبِّى",
+        "transliteration": "rabbee",
+        "rootWord": "ر ب ب",
+        "correctMeaning": "my Lord",
+        "options": [
+          "Forgiveness",
+          "Merciful",
+          "All praises",
+          "my Lord"
+        ]
+      },
+      {
+        "word": "وَلَآ",
+        "transliteration": "wala",
+        "rootWord": null,
+        "correctMeaning": "and not",
+        "options": [
+          "Path",
+          "Straight Path",
+          "and not",
+          "of the universe"
+        ]
+      },
+      {
+        "word": "أُشْرِكُ",
+        "transliteration": "oshriku",
+        "rootWord": "ش ر ك",
+        "correctMeaning": "I associate",
+        "options": [
+          "I associate",
+          "Master",
+          "those who earned Your wrath",
+          "of the Judgment"
+        ]
+      },
+      {
+        "word": "بِهِۦٓ",
+        "transliteration": "bihi",
+        "rootWord": null,
+        "correctMeaning": "with Him",
+        "options": [
+          "Day",
+          "The Lord",
+          "with Him",
+          "of the Judgment"
+        ]
+      },
+      {
+        "word": "أَحَدًا",
+        "transliteration": "ahadan",
+        "rootWord": "أ ح د",
+        "correctMeaning": "anyone",
+        "options": [
+          "anyone",
+          "Guide us",
+          "Day",
+          "Master"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "قُلْ",
+        "transliteration": "Qul",
+        "rootWord": "ق و ل",
+        "correctMeaning": "Say",
+        "options": [
+          "Path",
+          "Straight Path",
+          "of the Judgment",
+          "Say"
+        ]
+      },
+      {
+        "word": "إِنِّى",
+        "transliteration": "innee",
+        "rootWord": null,
+        "correctMeaning": "Indeed I",
+        "options": [
+          "Master",
+          "of the Judgment",
+          "All praises",
+          "Indeed I"
+        ]
+      },
+      {
+        "word": "لَآ",
+        "transliteration": "la",
+        "rootWord": null,
+        "correctMeaning": "(do) not",
+        "options": [
+          "Reward",
+          "The Lord",
+          "(do) not",
+          "of the universe"
+        ]
+      },
+      {
+        "word": "أَمْلِكُ",
+        "transliteration": "amliku",
+        "rootWord": "م ل ك",
+        "correctMeaning": "I possess",
+        "options": [
+          "All praises",
+          "Grace",
+          "I possess",
+          "Justice"
+        ]
+      },
+      {
+        "word": "لَكُمْ",
+        "transliteration": "lakum",
+        "rootWord": null,
+        "correctMeaning": "for you",
+        "options": [
+          "Master",
+          "Guide us",
+          "for you",
+          "of the Judgment"
+        ]
+      },
+      {
+        "word": "ضَرًّا",
+        "transliteration": "darran",
+        "rootWord": "ض ر ر",
+        "correctMeaning": "any harm",
+        "options": [
+          "those who earned Your wrath",
+          "any harm",
+          "of the universe",
+          "Day"
+        ]
+      },
+      {
+        "word": "وَلَا",
+        "transliteration": "wala",
+        "rootWord": null,
+        "correctMeaning": "and not",
+        "options": [
+          "Justice",
+          "and not",
+          "Favors",
+          "All praises"
+        ]
+      },
+      {
+        "word": "رَشَدًا",
+        "transliteration": "rashadan",
+        "rootWord": "ر ش د",
+        "correctMeaning": "right path",
+        "options": [
+          "Day",
+          "right path",
+          "Straight Path",
+          "of the Judgment"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "قُلْ",
+        "transliteration": "Qul",
+        "rootWord": "ق و ل",
+        "correctMeaning": "Say",
+        "options": [
+          "Say",
+          "Grace",
+          "Path",
+          "Favors"
+        ]
+      },
+      {
+        "word": "إِنِّى",
+        "transliteration": "innee",
+        "rootWord": null,
+        "correctMeaning": "Indeed I",
+        "options": [
+          "of the universe",
+          "Favors",
+          "Justice",
+          "Indeed I"
+        ]
+      },
+      {
+        "word": "لَن",
+        "transliteration": "lan",
+        "rootWord": null,
+        "correctMeaning": "never",
+        "options": [
+          "Favors",
+          "Guide us",
+          "Justice",
+          "never"
+        ]
+      },
+      {
+        "word": "يُجِيرَنِى",
+        "transliteration": "yujeeranee",
+        "rootWord": "ج و ر",
+        "correctMeaning": "can protect me",
+        "options": [
+          "can protect me",
+          "Day",
+          "Reward",
+          "Favors"
+        ]
+      },
+      {
+        "word": "مِنَ",
+        "transliteration": "mina",
+        "rootWord": null,
+        "correctMeaning": "from",
+        "options": [
+          "from",
+          "The Lord",
+          "Master",
+          "Path"
+        ]
+      },
+      {
+        "word": "اللهِ",
+        "transliteration": "Allahi",
+        "rootWord": "أ ل ه",
+        "correctMeaning": "Allah",
+        "options": [
+          "The Lord",
+          "Merciful",
+          "Guide us",
+          "Allah"
+        ]
+      },
+      {
+        "word": "أَحَدٌ",
+        "transliteration": "ahadun",
+        "rootWord": "أ ح د",
+        "correctMeaning": "anyone",
+        "options": [
+          "Guide us",
+          "of the Judgment",
+          "Grace",
+          "anyone"
+        ]
+      },
+      {
+        "word": "وَلَنْ",
+        "transliteration": "walan",
+        "rootWord": null,
+        "correctMeaning": "and never",
+        "options": [
+          "and never",
+          "those who earned Your wrath",
+          "Straight Path",
+          "Justice"
+        ]
+      },
+      {
+        "word": "أَجِدَ",
+        "transliteration": "ajida",
+        "rootWord": "و ج د",
+        "correctMeaning": "can I find",
+        "options": [
+          "Day",
+          "can I find",
+          "Path",
+          "Straight Path"
+        ]
+      },
+      {
+        "word": "مِن",
+        "transliteration": "min",
+        "rootWord": null,
+        "correctMeaning": "from",
+        "options": [
+          "Gracious",
+          "from",
+          "Reward",
+          "All praises"
+        ]
+      },
+      {
+        "word": "دُونِهِۦ",
+        "transliteration": "doonihi",
+        "rootWord": "د و ن",
+        "correctMeaning": "besides Him",
+        "options": [
+          "Gracious",
+          "Merciful",
+          "Day",
+          "besides Him"
+        ]
+      },
+      {
+        "word": "مُلْتَحَدًا",
+        "transliteration": "multahadan",
+        "rootWord": "ل ح د",
+        "correctMeaning": "any refuge",
+        "options": [
+          "Merciful",
+          "any refuge",
+          "Grace",
+          "The Lord"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "إِلَّا",
+        "transliteration": "Illa",
+        "rootWord": null,
+        "correctMeaning": "But",
+        "options": [
+          "Grace",
+          "those who earned Your wrath",
+          "But",
+          "Guide us"
+        ]
+      },
+      {
+        "word": "بَلَاغًا",
+        "transliteration": "balaghan",
+        "rootWord": "ب ل غ",
+        "correctMeaning": "(the) notification",
+        "options": [
+          "Gracious",
+          "Day",
+          "(the) notification",
+          "of the universe"
+        ]
+      },
+      {
+        "word": "مِّنَ",
+        "transliteration": "mina",
+        "rootWord": null,
+        "correctMeaning": "from",
+        "options": [
+          "Day",
+          "Justice",
+          "from",
+          "Grace"
+        ]
+      },
+      {
+        "word": "اللهِ",
+        "transliteration": "Allahi",
+        "rootWord": "أ ل ه",
+        "correctMeaning": "Allah",
+        "options": [
+          "Straight Path",
+          "The Lord",
+          "Allah",
+          "Merciful"
+        ]
+      },
+      {
+        "word": "وَرِسَالَاتِهِۦ",
+        "transliteration": "warisalatihi",
+        "rootWord": "ر س ل",
+        "correctMeaning": "and His Messages",
+        "options": [
+          "Favors",
+          "Straight Path",
+          "Forgiveness",
+          "and His Messages"
+        ]
+      },
+      {
+        "word": "وَمَن",
+        "transliteration": "waman",
+        "rootWord": null,
+        "correctMeaning": "And whoever",
+        "options": [
+          "And whoever",
+          "Gracious",
+          "Grace",
+          "Merciful"
+        ]
+      },
+      {
+        "word": "يَعْصِ",
+        "transliteration": "yaAAsi",
+        "rootWord": "ع ص ي",
+        "correctMeaning": "disobeys",
+        "options": [
+          "disobeys",
+          "those who earned Your wrath",
+          "Master",
+          "Merciful"
+        ]
+      },
+      {
+        "word": "اللهَ",
+        "transliteration": "Allaha",
+        "rootWord": "أ ل ه",
+        "correctMeaning": "Allah",
+        "options": [
+          "Allah",
+          "Straight Path",
+          "Guide us",
+          "of the Judgment"
+        ]
+      },
+      {
+        "word": "وَرَسُولَهُۥ",
+        "transliteration": "warasoolahu",
+        "rootWord": "ر س ل",
+        "correctMeaning": "and His Messenger",
+        "options": [
+          "and His Messenger",
+          "of the Judgment",
+          "Guide us",
+          "All praises"
+        ]
+      },
+      {
+        "word": "فَإِنَّ",
+        "transliteration": "fainna",
+        "rootWord": null,
+        "correctMeaning": "then indeed",
+        "options": [
+          "Favors",
+          "Gracious",
+          "then indeed",
+          "Path"
+        ]
+      },
+      {
+        "word": "لَهُۥ",
+        "transliteration": "lahu",
+        "rootWord": null,
+        "correctMeaning": "for him",
+        "options": [
+          "of the universe",
+          "Favors",
+          "for him",
+          "of the Judgment"
+        ]
+      },
+      {
+        "word": "نَارَ",
+        "transliteration": "nara",
+        "rootWord": "ن و ر",
+        "correctMeaning": "(is the) Fire",
+        "options": [
+          "Favors",
+          "Path",
+          "(is the) Fire",
+          "Merciful"
+        ]
+      },
+      {
+        "word": "جَهَنَّمَ",
+        "transliteration": "jahannama",
+        "rootWord": null,
+        "correctMeaning": "(of) Hell",
+        "options": [
+          "Forgiveness",
+          "Favors",
+          "(of) Hell",
+          "Reward"
+        ]
+      },
+      {
+        "word": "خَالِدِينَ",
+        "transliteration": "khalideena",
+        "rootWord": "خ ل د",
+        "correctMeaning": "(they will) abide",
+        "options": [
+          "Master",
+          "(they will) abide",
+          "Grace",
+          "The Lord"
+        ]
+      },
+      {
+        "word": "فِيهَآ",
+        "transliteration": "feeha",
+        "rootWord": null,
+        "correctMeaning": "therein",
+        "options": [
+          "Day",
+          "therein",
+          "All praises",
+          "Straight Path"
+        ]
+      },
+      {
+        "word": "أَبَدًا",
+        "transliteration": "abadan",
+        "rootWord": "أ ب د",
+        "correctMeaning": "forever",
+        "options": [
+          "Forgiveness",
+          "Gracious",
+          "forever",
+          "of the Judgment"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "حَتَّىٰٓ",
+        "transliteration": "Hatta",
+        "rootWord": null,
+        "correctMeaning": "Until",
+        "options": [
+          "Grace",
+          "The Lord",
+          "those who earned Your wrath",
+          "Until"
+        ]
+      },
+      {
+        "word": "إِذَا",
+        "transliteration": "itha",
+        "rootWord": null,
+        "correctMeaning": "when",
+        "options": [
+          "when",
+          "Path",
+          "Justice",
+          "Guide us"
+        ]
+      },
+      {
+        "word": "رَأَوْا",
+        "transliteration": "raaw",
+        "rootWord": "ر أ ي",
+        "correctMeaning": "they see",
+        "options": [
+          "they see",
+          "Favors",
+          "Forgiveness",
+          "Justice"
+        ]
+      },
+      {
+        "word": "مَا",
+        "transliteration": "ma",
+        "rootWord": null,
+        "correctMeaning": "what",
+        "options": [
+          "Master",
+          "Path",
+          "those who earned Your wrath",
+          "what"
+        ]
+      },
+      {
+        "word": "يُوعَدُونَ",
+        "transliteration": "yooAAadoona",
+        "rootWord": "و ع د",
+        "correctMeaning": "they are promised",
+        "options": [
+          "they are promised",
+          "of the Judgment",
+          "Path",
+          "Gracious"
+        ]
+      },
+      {
+        "word": "فَسَيَعْلَمُونَ",
+        "transliteration": "fasayaAAlamoona",
+        "rootWord": "ع ل م",
+        "correctMeaning": "then they will know",
+        "options": [
+          "then they will know",
+          "Guide us",
+          "of the Judgment",
+          "those who earned Your wrath"
+        ]
+      },
+      {
+        "word": "مَنْ",
+        "transliteration": "man",
+        "rootWord": null,
+        "correctMeaning": "who?",
+        "options": [
+          "Forgiveness",
+          "those who earned Your wrath",
+          "of the universe",
+          "who?"
+        ]
+      },
+      {
+        "word": "أَضْعَفُ",
+        "transliteration": "adAAafu",
+        "rootWord": "ض ع ف",
+        "correctMeaning": "(is) weaker",
+        "options": [
+          "Day",
+          "Guide us",
+          "All praises",
+          "(is) weaker"
+        ]
+      },
+      {
+        "word": "نَاصِرًا",
+        "transliteration": "nasiran",
+        "rootWord": "ن ص ر",
+        "correctMeaning": "(in) helpers",
+        "options": [
+          "Forgiveness",
+          "(in) helpers",
+          "Master",
+          "Day"
+        ]
+      },
+      {
+        "word": "وَأَقَلُّ",
+        "transliteration": "waaqallu",
+        "rootWord": "ق ل ل",
+        "correctMeaning": "and fewer",
+        "options": [
+          "of the Judgment",
+          "and fewer",
+          "Master",
+          "Day"
+        ]
+      },
+      {
+        "word": "عَدَدًا",
+        "transliteration": "AAadadan",
+        "rootWord": "ع د د",
+        "correctMeaning": "(in) number",
+        "options": [
+          "(in) number",
+          "Forgiveness",
+          "Day",
+          "those who earned Your wrath"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "قُلْ",
+        "transliteration": "Qul",
+        "rootWord": "ق و ل",
+        "correctMeaning": "Say",
+        "options": [
+          "Gracious",
+          "Say",
+          "Grace",
+          "Straight Path"
+        ]
+      },
+      {
+        "word": "إِنْ",
+        "transliteration": "in",
+        "rootWord": null,
+        "correctMeaning": "Not",
+        "options": [
+          "Justice",
+          "Forgiveness",
+          "Straight Path",
+          "Not"
+        ]
+      },
+      {
+        "word": "أَدْرِىٓ",
+        "transliteration": "adree",
+        "rootWord": "د ر ي",
+        "correctMeaning": "I know",
+        "options": [
+          "I know",
+          "those who earned Your wrath",
+          "Gracious",
+          "Grace"
+        ]
+      },
+      {
+        "word": "أَقَرِيبٌ",
+        "transliteration": "aqareebun",
+        "rootWord": "ق ر ب",
+        "correctMeaning": "whether is near?",
+        "options": [
+          "those who earned Your wrath",
+          "of the universe",
+          "Straight Path",
+          "whether is near?"
+        ]
+      },
+      {
+        "word": "مَّا",
+        "transliteration": "ma",
+        "rootWord": null,
+        "correctMeaning": "what",
+        "options": [
+          "Reward",
+          "what",
+          "Straight Path",
+          "those who earned Your wrath"
+        ]
+      },
+      {
+        "word": "تُوعَدُونَ",
+        "transliteration": "tooAAadoona",
+        "rootWord": "و ع د",
+        "correctMeaning": "you are promised",
+        "options": [
+          "those who earned Your wrath",
+          "you are promised",
+          "Forgiveness",
+          "All praises"
+        ]
+      },
+      {
+        "word": "أَمْ",
+        "transliteration": "am",
+        "rootWord": null,
+        "correctMeaning": "or (whether)",
+        "options": [
+          "Straight Path",
+          "or (whether)",
+          "of the Judgment",
+          "Path"
+        ]
+      },
+      {
+        "word": "يَجْعَلُ",
+        "transliteration": "yajAAalu",
+        "rootWord": "ج ع ل",
+        "correctMeaning": "will appoint",
+        "options": [
+          "All praises",
+          "will appoint",
+          "Master",
+          "The Lord"
+        ]
+      },
+      {
+        "word": "لَهُۥ",
+        "transliteration": "lahu",
+        "rootWord": null,
+        "correctMeaning": "for it",
+        "options": [
+          "All praises",
+          "The Lord",
+          "of the universe",
+          "for it"
+        ]
+      },
+      {
+        "word": "رَبِّىٓ",
+        "transliteration": "rabbee",
+        "rootWord": "ر ب ب",
+        "correctMeaning": "my Lord",
+        "options": [
+          "Justice",
+          "Guide us",
+          "my Lord",
+          "Forgiveness"
+        ]
+      },
+      {
+        "word": "أَمَدًا",
+        "transliteration": "amadan",
+        "rootWord": "أ م د",
+        "correctMeaning": "a (distant) term",
+        "options": [
+          "of the universe",
+          "Reward",
+          "Straight Path",
+          "a (distant) term"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "عَالِمُ",
+        "transliteration": "AAalimu",
+        "rootWord": "ع ل م",
+        "correctMeaning": "(The) All-Knower",
+        "options": [
+          "(The) All-Knower",
+          "Favors",
+          "Reward",
+          "Merciful"
+        ]
+      },
+      {
+        "word": "الْغَيْبِ",
+        "transliteration": "alghaybi",
+        "rootWord": "غ ي ب",
+        "correctMeaning": "(of) the unseen",
+        "options": [
+          "Justice",
+          "(of) the unseen",
+          "Merciful",
+          "Forgiveness"
+        ]
+      },
+      {
+        "word": "فَلَا",
+        "transliteration": "fala",
+        "rootWord": null,
+        "correctMeaning": "so not",
+        "options": [
+          "Straight Path",
+          "so not",
+          "Gracious",
+          "of the Judgment"
+        ]
+      },
+      {
+        "word": "يُظْهِرُ",
+        "transliteration": "yuthhiru",
+        "rootWord": "ظ ه ر",
+        "correctMeaning": "He reveals",
+        "options": [
+          "He reveals",
+          "Master",
+          "Guide us",
+          "those who earned Your wrath"
+        ]
+      },
+      {
+        "word": "عَلَىٰ",
+        "transliteration": "AAala",
+        "rootWord": null,
+        "correctMeaning": "from",
+        "options": [
+          "those who earned Your wrath",
+          "Master",
+          "Path",
+          "from"
+        ]
+      },
+      {
+        "word": "غَيْبِهِۦٓ",
+        "transliteration": "ghaybihi",
+        "rootWord": "غ ي ب",
+        "correctMeaning": "His unseen",
+        "options": [
+          "Path",
+          "Day",
+          "Justice",
+          "His unseen"
+        ]
+      },
+      {
+        "word": "أَحَدًا",
+        "transliteration": "ahadan",
+        "rootWord": "أ ح د",
+        "correctMeaning": "(to) anyone",
+        "options": [
+          "Straight Path",
+          "those who earned Your wrath",
+          "Day",
+          "(to) anyone"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "إِلَّا",
+        "transliteration": "Illa",
+        "rootWord": null,
+        "correctMeaning": "Except",
+        "options": [
+          "Grace",
+          "Merciful",
+          "The Lord",
+          "Except"
+        ]
+      },
+      {
+        "word": "مَنِ",
+        "transliteration": "mani",
+        "rootWord": null,
+        "correctMeaning": "whom",
+        "options": [
+          "Path",
+          "whom",
+          "Grace",
+          "Day"
+        ]
+      },
+      {
+        "word": "ارْتَضَىٰ",
+        "transliteration": "irtada",
+        "rootWord": "ر ض و",
+        "correctMeaning": "He has approved",
+        "options": [
+          "He has approved",
+          "Master",
+          "Gracious",
+          "of the universe"
+        ]
+      },
+      {
+        "word": "مِن",
+        "transliteration": "min",
+        "rootWord": null,
+        "correctMeaning": "of",
+        "options": [
+          "of the Judgment",
+          "of",
+          "Forgiveness",
+          "Gracious"
+        ]
+      },
+      {
+        "word": "رَّسُولٍ",
+        "transliteration": "rasoolin",
+        "rootWord": "ر س ل",
+        "correctMeaning": "a Messenger",
+        "options": [
+          "Reward",
+          "a Messenger",
+          "Guide us",
+          "Day"
+        ]
+      },
+      {
+        "word": "فَإِنَّهُۥ",
+        "transliteration": "fainnahu",
+        "rootWord": null,
+        "correctMeaning": "and indeed He",
+        "options": [
+          "Justice",
+          "Grace",
+          "Favors",
+          "and indeed He"
+        ]
+      },
+      {
+        "word": "يَسْلُكُ",
+        "transliteration": "yasluku",
+        "rootWord": "س ل ك",
+        "correctMeaning": "makes to march",
+        "options": [
+          "makes to march",
+          "those who earned Your wrath",
+          "All praises",
+          "Path"
+        ]
+      },
+      {
+        "word": "مِن",
+        "transliteration": "min",
+        "rootWord": null,
+        "correctMeaning": "from",
+        "options": [
+          "of the Judgment",
+          "from",
+          "The Lord",
+          "Straight Path"
+        ]
+      },
+      {
+        "word": "بَيْنِ",
+        "transliteration": "bayni",
+        "rootWord": "ب ي ن",
+        "correctMeaning": "between (before him)",
+        "options": [
+          "Justice",
+          "between (before him)",
+          "Gracious",
+          "Path"
+        ]
+      },
+      {
+        "word": "يَدَيْهِ",
+        "transliteration": "yadayhi",
+        "rootWord": "ي د ي",
+        "correctMeaning": "his hands (before him)",
+        "options": [
+          "his hands (before him)",
+          "Merciful",
+          "Favors",
+          "those who earned Your wrath"
+        ]
+      },
+      {
+        "word": "وَمِنْ",
+        "transliteration": "wamin",
+        "rootWord": null,
+        "correctMeaning": "and from",
+        "options": [
+          "Grace",
+          "Straight Path",
+          "and from",
+          "Favors"
+        ]
+      },
+      {
+        "word": "خَلْفِهِۦ",
+        "transliteration": "khalfihi",
+        "rootWord": "خ ل ف",
+        "correctMeaning": "behind him",
+        "options": [
+          "behind him",
+          "Master",
+          "Reward",
+          "Path"
+        ]
+      },
+      {
+        "word": "رَصَدًا",
+        "transliteration": "rasadan",
+        "rootWord": "ر ص د",
+        "correctMeaning": "a guard",
+        "options": [
+          "Path",
+          "Reward",
+          "those who earned Your wrath",
+          "a guard"
+        ]
+      }
+    ],
+    [
+      {
+        "word": "لِّيَعْلَمَ",
+        "transliteration": "LiyaAAlama",
+        "rootWord": "ع ل م",
+        "correctMeaning": "That He may make evident",
+        "options": [
+          "Day",
+          "That He may make evident",
+          "Forgiveness",
+          "All praises"
+        ]
+      },
+      {
+        "word": "أَن",
+        "transliteration": "an",
+        "rootWord": null,
+        "correctMeaning": "that",
+        "options": [
+          "Favors",
+          "that",
+          "Day",
+          "Path"
+        ]
+      },
+      {
+        "word": "قَدْ",
+        "transliteration": "qad",
+        "rootWord": null,
+        "correctMeaning": "indeed",
+        "options": [
+          "indeed",
+          "Straight Path",
+          "Master",
+          "those who earned Your wrath"
+        ]
+      },
+      {
+        "word": "أَبْلَغُوا",
+        "transliteration": "ablaghoo",
+        "rootWord": "ب ل غ",
+        "correctMeaning": "they have conveyed",
+        "options": [
+          "Guide us",
+          "Justice",
+          "they have conveyed",
+          "Straight Path"
+        ]
+      },
+      {
+        "word": "رِسَالَاتِ",
+        "transliteration": "risalati",
+        "rootWord": "ر س ل",
+        "correctMeaning": "(the) Messages",
+        "options": [
+          "Master",
+          "(the) Messages",
+          "those who earned Your wrath",
+          "Reward"
+        ]
+      },
+      {
+        "word": "رَبِّهِمْ",
+        "transliteration": "rabbihim",
+        "rootWord": "ر ب ب",
+        "correctMeaning": "(of) their Lord",
+        "options": [
+          "(of) their Lord",
+          "Day",
+          "Favors",
+          "of the Judgment"
+        ]
+      },
+      {
+        "word": "وَأَحَاطَ",
+        "transliteration": "waahata",
+        "rootWord": "ح و ط",
+        "correctMeaning": "and He has encompassed",
+        "options": [
+          "and He has encompassed",
+          "Guide us",
+          "Reward",
+          "Forgiveness"
+        ]
+      },
+      {
+        "word": "بِمَا",
+        "transliteration": "bima",
+        "rootWord": null,
+        "correctMeaning": "what",
+        "options": [
+          "what",
+          "Grace",
+          "Straight Path",
+          "of the Judgment"
+        ]
+      },
+      {
+        "word": "لَدَيْهِمْ",
+        "transliteration": "ladayhim",
+        "rootWord": "ل د ى",
+        "correctMeaning": "(is) with them",
+        "options": [
+          "(is) with them",
+          "All praises",
+          "those who earned Your wrath",
+          "Day"
+        ]
+      },
+      {
+        "word": "وَأَحْصَىٰ",
+        "transliteration": "waahsa",
+        "rootWord": "ح ص ي",
+        "correctMeaning": "and He takes account",
+        "options": [
+          "and He takes account",
+          "Straight Path",
+          "All praises",
+          "Grace"
+        ]
+      },
+      {
+        "word": "كُلَّ",
+        "transliteration": "kulla",
+        "rootWord": "ك ل ل",
+        "correctMeaning": "(of) all",
+        "options": [
+          "those who earned Your wrath",
+          "Reward",
+          "(of) all",
+          "All praises"
+        ]
+      },
+      {
+        "word": "شَىْءٍ",
+        "transliteration": "shayin",
+        "rootWord": "ش ي أ",
+        "correctMeaning": "things",
+        "options": [
+          "The Lord",
+          "things",
+          "those who earned Your wrath",
+          "Gracious"
+        ]
+      },
+      {
+        "word": "عَدَدًا",
+        "transliteration": "AAadadan",
+        "rootWord": "ع د د",
+        "correctMeaning": "(in) number",
+        "options": [
+          "Justice",
+          "(in) number",
+          "Reward",
+          "The Lord"
+        ]
+      }
+    ]
+  ]
+}
