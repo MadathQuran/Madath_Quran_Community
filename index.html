@@ -1,237 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><!DOCTYPE html>
-<html lang="en">
-<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Modern Quranic Word Quiz</title>
+  <title>Quran Word Quiz - Surah List</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Noto+Naskh+Arabic&display=swap" rel="stylesheet">
   <style>
-    :root { --green: #347a49; --light: #f1f5f2; --border: #d4e2d7; --ayah-size: 32px; --answer-size: 16px; --trans-size: 18px; }
     * { box-sizing: border-box; }
-    body { margin: 0; padding: 32px 0 24px; min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; font-family: Poppins, sans-serif; text-align: center; color: #333; }
-    .container { width: min(700px, 90%); padding: 20px; }
-    .page-navigation { margin-bottom: 12px; }
-    .navigation-button, button { font: 600 13px Poppins, sans-serif; cursor: pointer; }
-    .navigation-button { display: inline-block; padding: 8px 14px; border: 1px solid var(--border); border-radius: 999px; background: var(--light); color: var(--green); text-decoration: none; }
-    .navigation-button:hover, .navigation-button:focus, button:hover, button:focus { background: #4caf50; color: #fff; outline: none; }
-    #surahName { margin: 0 0 4px; color: #333; font: 600 24px/1.35 'Noto Naskh Arabic', serif; }
-    #surahInfo { margin: 0 0 15px; color: #555; font-size: 15px; }
-    #ayahContainer { display: flex; justify-content: center; align-items: center; margin-top: 5px; }
-    #ayahText { margin: 0 10px; color: #333; font: var(--ayah-size) 'Noto Naskh Arabic', serif; }
-    .highlight { color: #4caf50; font-weight: bold; font-size: 1.18em; text-shadow: 1px 1px 12px rgba(40,167,69,.5); }
-    .play-highlight { color: inherit; font-weight: bold; font-size: 1.18em; text-shadow: none; }
-    #optionsContainer { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; gap: 10px; min-height: 100px; width: 100%; margin-top: 10px; }
-    #optionsContainer button { width: 100%; min-height: 48px; margin: 0; padding: 8px 10px; border: 2px solid #ddd; border-radius: 20px; background: #f8f9fa; color: #333; font-size: var(--answer-size); }
-    .correct { background: #4caf50 !important; color: #fff !important; }
-    .incorrect { background: #dc3545 !important; color: #fff !important; }
-    #transliterationContainer { margin-top: 15px; }
-    #transliterationText { margin: 0 15px; color: #666; font-size: var(--trans-size); }
-    .speed-controls { display: none; justify-content: center; align-items: center; gap: 6px; margin: 10px 0 4px; color: #666; font-size: 13px; }
-    .speed-controls.visible { display: flex; }
-    .speedButton { min-width: 70px; padding: 7px 12px; border: 1px solid var(--border); border-radius: 999px; background: var(--light); color: var(--green); cursor: pointer; }
-    .speedButton:hover, .speedButton:focus { background: #4caf50; color: #fff; outline: none; }
-    .speedButton.active-speed { background: #4caf50; color: #fff; }
-    .settings-panel { position: relative; display: flex; justify-content: center; align-items: center; margin: 16px 0 15px; width: 100%; }
-    .settings-trigger { display: flex; align-items: center; justify-content: center; width: 50px; height: 46px; margin: 0 auto; padding: 0; border: 1px solid #d8e6dc; border-radius: 999px; background: linear-gradient(135deg,#4caf50,#319b59); color: #fff; font-size: 24px; line-height: 1; box-shadow: 0 4px 10px rgba(76,175,80,.22); }
-    .below-loop-content { display: none; position: fixed; top: 16px; left: 50%; z-index: 10; width: min(560px, calc(100% - 24px)); max-height: calc(100vh - 32px); overflow-y: auto; transform: translateX(-50%); padding: 42px 12px 12px; border-radius: 10px; background: #fff; box-shadow: 0 5px 16px rgba(0,0,0,.2); }
-    .settings-panel.open .below-loop-content { display: block; }
-    .settings-close { position: absolute; top: 8px; right: 10px; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%; background: var(--light); color: var(--green); font-size: 22px; line-height: 1; }
-    .settings-close:hover, .settings-close:focus { background: #4caf50; color: #fff; }
-    .answer-visibility { display: flex; justify-content: center; margin-top: 10px; }
-    #answerVisibilityButton { padding: 7px 14px; border: 1px solid var(--border); border-radius: 999px; background: var(--light); color: var(--green); font: 600 13px Poppins, sans-serif; cursor: pointer; }
-    #answerVisibilityButton:hover, #answerVisibilityButton:focus { background: #4caf50; color: #fff; outline: none; }
-    #optionsContainer.play-answer { grid-template-columns: 1fr; }
-    #optionsContainer.play-answer button { max-width: 320px; margin: 0 auto; }
-    .ayah-selectors, .text-size-controls-row, .control-buttons, .zoom-controls, #scoreWrapper { display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; }
-    .ayah-selectors { direction: ltr; }
-    .ayah-selectors label, .size-label, .quiz-options-control label { color: #555; font-size: 13px; }
-    select { padding: 6px 10px; border: 1px solid #ccc; border-radius: 8px; background: #fff; }
-    .quiz-options-control { display: flex; justify-content: center; align-items: center; gap: 8px; margin: 10px 0; }
-    .loop-range { display: flex; align-items: center; gap: 5px; }
-    .control-buttons { margin: 10px 0; }
-    .control-buttons button, .speedButton { min-width: 92px; padding: 10px 14px; border: 0; border-radius: 999px; background: linear-gradient(135deg,#4caf50,#319b59); color: #fff; }
-    .control-buttons button.playing { background: linear-gradient(135deg,#1478d4,#0759a7); }
-    .loop-toggle { min-width: 44px; width: 44px; height: 38px; padding: 0; border: 1px solid var(--border); border-radius: 999px; background: var(--light); color: var(--green); font-size: 22px; line-height: 1; }
-    .loop-toggle:hover, .loop-toggle:focus { background: #eaf5ec; color: var(--green); }
-    .loop-toggle.looping { background: linear-gradient(135deg,#1478d4,#0759a7); color: #fff; box-shadow: 0 0 0 3px rgba(20,120,212,.16); }
-    .speed-controls { display: none; justify-content: center; gap: 6px; margin: 8px 0; }
-    .speed-controls.visible { display: flex; }
-    .speedButton { min-width: auto; padding: 7px 12px; background: var(--light); color: var(--green); }
-    .speedButton.active-speed { background: #4caf50; color: #fff; }
-    .text-size-controls-row { margin: 12px auto; }
-    .text-size-controls { display: flex; align-items: center; gap: 6px; }
-    .text-size-controls button, .zoom-button { width: 36px; height: 32px; padding: 0; border: 1px solid var(--border); border-radius: 9px; background: var(--light); color: var(--green); }
-    .size-label { min-width: 48px; }
-    .zoom-controls { margin-top: 14px; }
-    .zoom-button { width: 42px; height: 38px; font-size: 18px; }
-    #scoreWrapper { margin: 12px 0 0; color: #555; font-size: 14px; }
-    .score-value { margin: 0 5px; font-weight: bold; } .correct-value { color: #4caf50; } .wrong-value { color: #dc3545; }
-    #completionModal { display: none; position: fixed; inset: 0; z-index: 20; justify-content: center; align-items: center; background: rgba(0,50,0,.6); }
-    #completionMessage { width: min(400px,90%); padding: 20px; border-radius: 15px; background: #fff; }
-    #completionMessage .navigation-button { margin: 10px 4px 0; }
-    @media (max-width: 480px) { #surahName { font-size: 20px; } #ayahText { font-size: 24px; } #transliterationText { font-size: 14px; } #optionsContainer button { font-size: 14px; padding: 8px; } }
-  </style>
-</head>
-<body>
-  <main class="container">
-    <div class="page-navigation"><a class="navigation-button" href="index.html">Surah List</a></div>
-    <h1 id="surahName">Loading…</h1>
-    <div id="surahInfo"></div>
-    <div id="ayahContainer"><p id="ayahText"></p></div>
-    <div id="optionsContainer"></div>
-    <div class="answer-visibility"><button id="answerVisibilityButton" type="button" aria-label="Hide answers">Hide answers</button></div>
-    <div id="transliterationContainer"><p id="transliterationText"></p></div>
-    <div id="speedControls" class="speed-controls" aria-label="Play speed">
-      <span>Speed</span>
-      <button class="speedButton active-speed" data-speed="normal" type="button">Normal</button>
-      <button class="speedButton" data-speed="slow" type="button">Slow</button>
-      <button class="speedButton" data-speed="fast" type="button">Fast</button>
-    </div>
-
-    <section id="settingsPanel" class="settings-panel">
-      <button id="settingsButton" class="settings-trigger" type="button" aria-label="Open Quran settings" aria-expanded="false">📖</button>
-      <div class="below-loop-content">
-        <button id="settingsCloseButton" class="settings-close" type="button" aria-label="Close settings">×</button>
-        <div class="ayah-selectors">
-          <label for="ayahSelect">Ayah:</label><select id="ayahSelect"></select>
-          <span class="loop-range"><label for="loopStartSelect">Loop from:</label><select id="loopStartSelect"></select><label for="loopEndSelect">to:</label><select id="loopEndSelect"></select><button id="loopButton" class="loop-toggle" type="button" aria-label="Enable loop" aria-pressed="false" title="Enable loop">↻</button></span>
-        </div>
-        <div class="control-buttons"><button id="playPauseButton" type="button">Play</button></div>
-        <div class="quiz-options-control">
-          <label for="optionCountSelect">Quiz options:</label>
-          <select id="optionCountSelect">
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4" selected>4</option>
-          </select>
-        </div>
-        <div class="text-size-controls-row">
-          <div class="text-size-controls"><span class="size-label">Ayah</span><button data-size="ayah" data-change="-2" type="button">A−</button><button data-size="ayah" data-change="2" type="button">A+</button></div>
-          <div class="text-size-controls"><span class="size-label">Answer</span><button data-size="answer" data-change="-1" type="button">A−</button><button data-size="answer" data-change="1" type="button">A+</button></div>
-          <div class="text-size-controls"><span class="size-label">Trans</span><button data-size="trans" data-change="-1" type="button">A−</button><button data-size="trans" data-change="1" type="button">A+</button></div>
-        </div>
-        <div class="zoom-controls"><button id="zoomIn" class="zoom-button" type="button">＋</button><button id="zoomOut" class="zoom-button" type="button">−</button></div>
-        <div id="scoreWrapper"><span class="score-value correct-value">Correct: <span id="rightCount">0</span></span> | <span class="score-value wrong-value">Wrong: <span id="wrongCount">0</span></span></div>
-      </div>
-    </section>
-  </main>
-
-  <div id="completionModal"><div id="completionMessage"><h2>Keep Going</h2><p>May your efforts be accepted by Allah.</p><p>Correct: <span id="totalRight">0</span> | Wrong: <span id="totalWrong">0</span></p><p>Time Taken: <span id="timeTaken"></span></p><button id="startOver" type="button">Start Over</button> <a class="navigation-button" href="index.html">Surah List</a></div></div>
-
-  <script>
-    const surahId = new URLSearchParams(location.search).get('surah') || '1';
-    let surah, currentAyah = 0, currentWord = 0, isPlayMode = false, isLoopMode = false;
-    let loopStartAyah = 0, loopEndAyah = 0, rightAttempts = 0, wrongAttempts = 0, timer, startTime;
-    let speed = 1500, zoomLevel = 1, answersHidden = false;
-    const $ = id => document.getElementById(id);
-
-    async function loadSurah() {
-      try {
-        const response = await fetch(`data/surah-${encodeURIComponent(surahId)}.json`);
-        if (!response.ok) throw new Error('Unavailable');
-        surah = await response.json();
-        loopEndAyah = surah.ayahs.length - 1;
-        $('surahName').textContent = `${surah.name} ${surah.id}`;
-        ['ayahSelect','loopStartSelect','loopEndSelect'].forEach(id => {
-          $(id).innerHTML = surah.ayahs.map((_, i) => `<option value="${i}">${i + 1}</option>`).join('');
-        });
-        $('loopEndSelect').value = loopEndAyah;
-        displayWord();
-      } catch (error) {
-        $('surahName').textContent = 'Unable to load this Surah';
-        $('surahInfo').textContent = 'Return to the Surah List and choose an available Surah.';
-      }
-    }
-
-    function displayWord() {
-      const ayah = surah.ayahs[currentAyah], word = ayah[currentWord];
-      const highlightClass = isPlayMode ? 'play-highlight' : 'highlight';
-      $('ayahText').innerHTML = ayah.map((item, i) => i === currentWord ? `<span class="${highlightClass}">${item.word}</span>` : item.word).join(' ');
-      $('transliterationText').textContent = word.transliteration;
-      $('surahInfo').textContent = `Ayah: ${currentAyah + 1} | Word: ${currentWord + 1} | Root: ${word.rootWord || 'N/A'}`;
-      $('ayahSelect').value = currentAyah;
-      isPlayMode ? showCorrectAnswer(word) : showOptions(word);
-    }
-
-    function showCorrectAnswer(word) { $('optionsContainer').classList.add('play-answer'); $('optionsContainer').innerHTML = `<button class="correct" type="button">${word.correctMeaning}</button>`; applyAnswerVisibility(); startAutoProgress(); }
-    function showOptions(word) { $('optionsContainer').classList.remove('play-answer'); const optionCount = Number($('optionCountSelect').value); const answers = [...new Set([word.correctMeaning, ...(word.options || [])])].slice(0, optionCount).sort(() => Math.random() - .5); $('optionsContainer').innerHTML = ''; answers.forEach(answer => { const button = document.createElement('button'); button.type = 'button'; button.textContent = answer; button.onclick = () => checkAnswer(button, answer, word.correctMeaning); $('optionsContainer').appendChild(button); }); applyAnswerVisibility(); }
-    function applyAnswerVisibility() { $('optionsContainer').style.visibility = answersHidden ? 'hidden' : 'visible'; $('answerVisibilityButton').textContent = answersHidden ? '👁 Show answers' : 'Hide answers'; $('answerVisibilityButton').setAttribute('aria-label', answersHidden ? 'Show answers' : 'Hide answers'); }
-    function checkAnswer(button, answer, correct) { if (answer === correct) { button.classList.add('correct'); rightAttempts++; $('rightCount').textContent = rightAttempts; setTimeout(navigateNext, 700); } else { button.classList.add('incorrect'); wrongAttempts++; $('wrongCount').textContent = wrongAttempts; } }
-    function navigateNext() { clearTimeout(timer); const ayah = surah.ayahs[currentAyah]; if (currentWord < ayah.length - 1) currentWord++; else if (isLoopMode) { currentAyah = currentAyah < loopEndAyah ? currentAyah + 1 : loopStartAyah; currentWord = 0; } else if (currentAyah < surah.ayahs.length - 1) { currentAyah++; currentWord = 0; } else { isPlayMode = false; $('speedControls').classList.remove('visible'); showCompletion(); return; } displayWord(); }
-    function startAutoProgress() { clearTimeout(timer); timer = setTimeout(navigateNext, speed); }
-    function togglePlay() { clearTimeout(timer); isPlayMode = !isPlayMode; $('playPauseButton').textContent = isPlayMode ? 'Quiz' : 'Play'; $('playPauseButton').classList.toggle('playing', isPlayMode); $('speedControls').classList.toggle('visible', isPlayMode); if (isPlayMode) startTime = Date.now(); displayWord(); }
-    function toggleLoop() { isLoopMode = !isLoopMode; const loopButton = $('loopButton'); loopButton.classList.toggle('looping', isLoopMode); loopButton.setAttribute('aria-pressed', String(isLoopMode)); loopButton.setAttribute('aria-label', isLoopMode ? 'Disable loop' : 'Enable loop'); loopButton.title = isLoopMode ? 'Disable loop' : 'Enable loop'; if (isPlayMode) startAutoProgress(); }
-    function changeAyah(value) { currentAyah = Number(value); currentWord = 0; clearTimeout(timer); displayWord(); if (isPlayMode) startAutoProgress(); }
-    function updateLoop() { loopStartAyah = Number($('loopStartSelect').value); loopEndAyah = Number($('loopEndSelect').value); if (loopStartAyah > loopEndAyah) [loopStartAyah, loopEndAyah] = [loopEndAyah, loopStartAyah]; $('loopStartSelect').value = loopStartAyah; $('loopEndSelect').value = loopEndAyah; if (isPlayMode) startAutoProgress(); }
-    function setFont(type, amount) { const root = document.documentElement, styles = { ayah: ['--ayah-size', 18, 72], answer: ['--answer-size', 12, 36], trans: ['--trans-size', 12, 36] }; const [property, min, max] = styles[type]; const current = parseFloat(getComputedStyle(root).getPropertyValue(property)); root.style.setProperty(property, `${Math.max(min, Math.min(max, current + amount))}px`); }
-    function showCompletion() { $('totalRight').textContent = rightAttempts; $('totalWrong').textContent = wrongAttempts; $('timeTaken').textContent = formatTime(Math.floor((Date.now() - (startTime || Date.now())) / 1000)); $('completionModal').style.display = 'flex'; }
-    function formatTime(seconds) { return [Math.floor(seconds / 3600), Math.floor(seconds / 60) % 60, seconds % 60].map(n => String(n).padStart(2, '0')).join(':'); }
-    function startOver() { $('completionModal').style.display = 'none'; currentAyah = currentWord = rightAttempts = wrongAttempts = 0; $('rightCount').textContent = $('wrongCount').textContent = '0'; displayWord(); }
-
-    function closeSettings() { $('settingsPanel').classList.remove('open'); $('settingsButton').setAttribute('aria-expanded', 'false'); }
-    $('settingsButton').onclick = () => { const open = $('settingsPanel').classList.toggle('open'); $('settingsButton').setAttribute('aria-expanded', open); };
-    $('settingsCloseButton').onclick = closeSettings;
-    $('answerVisibilityButton').onclick = () => { answersHidden = !answersHidden; applyAnswerVisibility(); };
-    $('playPauseButton').onclick = () => { closeSettings(); togglePlay(); };
-    $('loopButton').onclick = toggleLoop; $('ayahSelect').onchange = e => changeAyah(e.target.value); $('loopStartSelect').onchange = updateLoop; $('loopEndSelect').onchange = updateLoop;
-    $('optionCountSelect').onchange = () => { if (!isPlayMode && surah) displayWord(); };
-    document.querySelectorAll('[data-size]').forEach(button => button.onclick = () => setFont(button.dataset.size, Number(button.dataset.change)));
-    document.querySelectorAll('.speedButton').forEach(button => button.onclick = () => { speed = button.dataset.speed === 'slow' ? 2500 : button.dataset.speed === 'fast' ? 800 : 1500; document.querySelectorAll('.speedButton').forEach(b => b.classList.toggle('active-speed', b === button)); if (isPlayMode) startAutoProgress(); });
-    $('zoomIn').onclick = () => { zoomLevel = Math.min(1.5, zoomLevel + .1); document.querySelector('.container').style.transform = `scale(${zoomLevel})`; };
-    $('zoomOut').onclick = () => { zoomLevel = Math.max(.8, zoomLevel - .1); document.querySelector('.container').style.transform = `scale(${zoomLevel})`; };
-    $('startOver').onclick = startOver;
-    loadSurah();
-  </script>
-</body>
-</html>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Quran Word Quiz</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Noto+Naskh+Arabic&display=swap" rel="stylesheet">
-  <style>
-    :root { color: #333; font-family: Poppins, sans-serif; }
-    body { margin: 0; padding: 32px 16px; text-align: center; background: #fff; }
-    h1 { color: #347a49; margin: 0 0 8px; }
-    .intro { color: #666; margin: 0 auto 12px; }
-    .start-quiz { display: inline-block; margin: 0 0 24px; padding: 10px 18px; border-radius: 999px; background: #347a49; color: #fff; text-decoration: none; font-weight: 600; }
-    .start-quiz:hover, .start-quiz:focus { background: #286039; outline: none; }
-    .surah-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; width: min(900px, 100%); margin: auto; }
-    .surah-tile { display: block; padding: 18px 14px; border: 1px solid #d4e2d7; border-radius: 14px; background: #f8fbf8; color: #347a49; text-decoration: none; transition: .2s; }
-    .surah-tile:hover, .surah-tile:focus { background: #eaf5ec; transform: translateY(-2px); outline: none; }
+    body { margin: 0; padding: 32px 16px; min-height: 100vh; background: #fff; color: #333; font-family: Poppins, sans-serif; text-align: center; }
+    h1 { margin: 0 0 8px; color: #347a49; font-size: 28px; }
+    .intro { margin: 0 auto 20px; color: #666; }
+    .search-form { display: flex; justify-content: center; gap: 8px; width: min(560px, 100%); margin: 0 auto 24px; }
+    #searchInput { flex: 1; min-width: 0; padding: 10px 14px; border: 1px solid #d4e2d7; border-radius: 999px; font: 14px Poppins, sans-serif; }
+    button { padding: 10px 18px; border: 0; border-radius: 999px; background: linear-gradient(135deg, #4caf50, #319b59); color: #fff; font: 600 14px Poppins, sans-serif; cursor: pointer; }
+    button:hover, button:focus { background: #347a49; outline: none; }
+    .surah-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; width: min(900px, 100%); margin: 0 auto; }
+    .surah-tile { display: block; padding: 18px 14px; border: 1px solid #d4e2d7; border-radius: 14px; background: #f8fbf8; color: #347a49; text-decoration: none; box-shadow: 0 3px 9px rgba(52,122,73,.08); transition: .2s ease; }
+    .surah-tile:hover, .surah-tile:focus { background: #eaf5ec; box-shadow: 0 6px 14px rgba(52,122,73,.16); transform: translateY(-2px); outline: none; }
     .surah-number, .surah-arabic, .surah-name { display: block; }
-    .surah-number { font-size: 14px; font-weight: 600; }
-    .surah-arabic { margin: 5px 0; font: 25px 'Noto Naskh Arabic', serif; color: #333; }
-    .surah-name { font-size: 14px; color: #666; }
-    .status { color: #777; }
+    .surah-number { margin-bottom: 5px; font-size: 14px; font-weight: 600; }
+    .surah-arabic { margin-bottom: 5px; color: #333; font: 25px 'Noto Naskh Arabic', serif; }
+    .surah-name { color: #666; font-size: 14px; }
+    #status { margin: 20px 0 0; color: #666; font-size: 14px; }
+    @media (max-width: 420px) { .search-form { flex-direction: column; } }
   </style>
 </head>
 <body>
   <h1>Quran Word Quiz</h1>
-  <p class="intro">Choose a Surah to begin.</p>
-  <a class="start-quiz" href="quiz.html?surah=1">Open Quiz</a>
-  <main id="surahGrid" class="surah-grid" aria-label="Surah list"><p class="status">Loading Surahs…</p></main>
+  <p class="intro">Choose a surah to begin.</p>
+
+  <form id="searchForm" class="search-form">
+    <input id="searchInput" type="search" placeholder="Search by surah number or name" aria-label="Search Surahs">
+    <button type="submit">Search</button>
+  </form>
+
+  <main id="surahGrid" class="surah-grid" aria-label="Surah list"></main>
+  <p id="status" role="status"></p>
+
   <script>
-    async function loadSurahList() {
-      const grid = document.getElementById('surahGrid');
-      try {
-        const response = await fetch('data/surahs.json');
-        if (!response.ok) throw new Error('Surah list unavailable');
-        const surahs = await response.json();
-        grid.innerHTML = surahs.map(surah => `
-          <a class="surah-tile" href="quiz.html?surah=${encodeURIComponent(surah.id)}">
-            <span class="surah-number">Surah ${surah.id}</span>
-            <span class="surah-arabic" lang="ar" dir="rtl">${surah.name}</span>
-            <span class="surah-name">${surah.englishName || ''}</span>
-          </a>`).join('');
-      } catch (error) {
-        grid.innerHTML = '<p class="status">The Surah list could not be loaded. Please try again.</p>';
-      }
+    const grid = document.getElementById('surahGrid');
+    const input = document.getElementById('searchInput');
+    const status = document.getElementById('status');
+    let surahs = [];
+
+    function renderSurahs(query = '') {
+      const search = query.trim().toLowerCase();
+      const matches = surahs.filter(surah => [surah.id, surah.name, surah.englishName].some(value => String(value).toLowerCase().includes(search)));
+      grid.innerHTML = matches.map(surah => `
+        <a class="surah-tile" href="quiz.html?surah=${encodeURIComponent(surah.id)}">
+          <span class="surah-number">Surah ${surah.id}</span>
+          <span class="surah-arabic" lang="ar" dir="rtl">${surah.name}</span>
+          <span class="surah-name">${surah.englishName}</span>
+        </a>`).join('');
+      status.textContent = matches.length ? '' : 'No Surahs found.';
     }
-    loadSurahList();
+
+    document.getElementById('searchForm').addEventListener('submit', event => {
+      event.preventDefault();
+      renderSurahs(input.value);
+    });
+    input.addEventListener('input', () => renderSurahs(input.value));
+
+    fetch('data/surahs.json')
+      .then(response => {
+        if (!response.ok) throw new Error('Unavailable');
+        return response.json();
+      })
+      .then(data => { surahs = data; renderSurahs(); })
+      .catch(() => { status.textContent = 'Unable to load the Surah list.'; });
   </script>
 </body>
 </html>
