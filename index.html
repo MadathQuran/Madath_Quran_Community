@@ -31,7 +31,6 @@
 
   <form id="searchForm" class="search-form">
     <input id="searchInput" type="search" placeholder="Search by surah number or name" aria-label="Search Surahs">
-    <button type="submit">Search</button>
   </form>
 
   <main id="surahGrid" class="surah-grid" aria-label="Surah list"></main>
@@ -55,10 +54,6 @@
       status.textContent = matches.length ? '' : 'No Surahs found.';
     }
 
-    document.getElementById('searchForm').addEventListener('submit', event => {
-      event.preventDefault();
-      renderSurahs(input.value);
-    });
     input.addEventListener('input', () => renderSurahs(input.value));
 
     fetch('data/surahs.json')

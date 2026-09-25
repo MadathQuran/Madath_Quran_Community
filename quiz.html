@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Noto+Naskh+Arabic&display=swap" rel="stylesheet">
   <style>
     :root { --green: #347a49; --light: #f1f5f2; --border: #d4e2d7; --ayah-size: 32px; --answer-size: 16px; --trans-size: 18px; }
+    .root-word { font-size: 1.35em; font-weight: 600; color: #347a49; }
     * { box-sizing: border-box; }
     body { margin: 0; padding: 32px 0 24px; min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; font-family: Poppins, sans-serif; text-align: center; color: #333; }
     .container { width: min(700px, 90%); padding: 20px; }
@@ -18,6 +19,8 @@
     #surahInfo { margin: 0 0 15px; color: #555; font-size: 15px; }
     #ayahContainer { display: flex; justify-content: center; align-items: center; margin-top: 5px; }
     #ayahText { margin: 0 10px; color: #333; font: var(--ayah-size) 'Noto Naskh Arabic', serif; }
+    .ayah-word { cursor: pointer; border-radius: 6px; transition: background-color .15s ease, color .15s ease; }
+    .ayah-word:hover, .ayah-word:focus { background: #eaf5ec; outline: none; }
     .highlight { color: #4caf50; font-weight: bold; font-size: 1.18em; text-shadow: 1px 1px 12px rgba(40,167,69,.5); }
     .play-highlight { color: inherit; font-weight: bold; font-size: 1.18em; text-shadow: none; }
     #optionsContainer { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; gap: 10px; min-height: 100px; width: 100%; margin-top: 10px; }
@@ -25,14 +28,22 @@
     .correct { background: #4caf50 !important; color: #fff !important; }
     .incorrect { background: #dc3545 !important; color: #fff !important; }
     #transliterationContainer { margin-top: 15px; }
+    .ayah-control { display: flex; justify-content: center; align-items: center; gap: 8px; margin: 12px 0; }
+    .ayah-control label { color: #555; font-size: 13px; }
+    .mode-controls { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 14px; }
+    .mode-button { min-width: 100px; padding: 10px 14px; border: 0; border-radius: 999px; background: linear-gradient(135deg,#4caf50,#319b59); color: #fff; }
+    .mode-button.reading { background: linear-gradient(135deg,#1478d4,#0759a7); }
     #transliterationText { margin: 0 15px; color: #666; font-size: var(--trans-size); }
     .speed-controls { display: none; justify-content: center; align-items: center; gap: 6px; margin: 10px 0 4px; color: #666; font-size: 13px; }
+    .speed-controls .pause-play { min-width: 46px; width: 46px; height: 38px; padding: 0; border: 0; border-radius: 50%; background: #333; color: #fff; font-size: 18px; line-height: 1; box-shadow: 0 3px 8px rgba(0,0,0,.2); transition: transform .15s ease, background-color .15s ease; }
+    .speed-controls .pause-play:hover, .speed-controls .pause-play:focus { background: #111; transform: scale(1.06); outline: none; }
     .speed-controls.visible { display: flex; }
     .speedButton { min-width: 70px; padding: 7px 12px; border: 1px solid var(--border); border-radius: 999px; background: var(--light); color: var(--green); cursor: pointer; }
     .speedButton:hover, .speedButton:focus { background: #4caf50; color: #fff; outline: none; }
-    .speedButton.active-speed { background: #4caf50; color: #fff; }
+    .speedButton.active-speed { color: #fff; }
     .settings-panel { position: relative; display: flex; justify-content: center; align-items: center; margin: 16px 0 15px; width: 100%; }
-    .settings-trigger { display: flex; align-items: center; justify-content: center; width: 50px; height: 46px; margin: 0 auto; padding: 0; border: 1px solid #d8e6dc; border-radius: 999px; background: linear-gradient(135deg,#4caf50,#319b59); color: #fff; font-size: 24px; line-height: 1; box-shadow: 0 4px 10px rgba(76,175,80,.22); }
+    .settings-trigger { display: flex; align-items: center; justify-content: center; width: 50px; height: 46px; margin: 0 auto; padding: 0; border: 1px solid #d8e6dc; border-radius: 999px; background: linear-gradient(135deg,#4caf50,#319b59); color: #111 !important; font-size: 24px; line-height: 1; box-shadow: 0 4px 10px rgba(76,175,80,.22); }
+    .settings-trigger:hover, .settings-trigger:focus { color: #111 !important; }
     .below-loop-content { display: none; position: fixed; top: 16px; left: 50%; z-index: 10; width: min(560px, calc(100% - 24px)); max-height: calc(100vh - 32px); overflow-y: auto; transform: translateX(-50%); padding: 42px 12px 12px; border-radius: 10px; background: #fff; box-shadow: 0 5px 16px rgba(0,0,0,.2); }
     .settings-panel.open .below-loop-content { display: block; }
     .settings-close { position: absolute; top: 8px; right: 10px; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%; background: var(--light); color: var(--green); font-size: 22px; line-height: 1; }
@@ -56,8 +67,11 @@
     .loop-toggle.looping { background: linear-gradient(135deg,#1478d4,#0759a7); color: #fff; box-shadow: 0 0 0 3px rgba(20,120,212,.16); }
     .speed-controls { display: none; justify-content: center; gap: 6px; margin: 8px 0; }
     .speed-controls.visible { display: flex; }
-    .speedButton { min-width: auto; padding: 7px 12px; background: var(--light); color: var(--green); }
-    .speedButton.active-speed { background: #4caf50; color: #fff; }
+    .speedButton { min-width: 78px; padding: 8px 14px; border: 0; border-radius: 999px; color: #fff; font-weight: 600; transition: transform .15s ease, filter .15s ease; }
+    .speedButton:hover, .speedButton:focus { filter: brightness(.95); transform: translateY(-1px); outline: none; }
+    .speedButton[data-speed="slow"] { background: #1976b9; }
+    .speedButton[data-speed="fast"] { background: #d99719; }
+    .speedButton.active-speed { color: #fff; box-shadow: 0 0 0 3px rgba(52,122,73,.18); }
     .text-size-controls-row { margin: 12px auto; }
     .text-size-controls { display: flex; align-items: center; gap: 6px; }
     .text-size-controls button, .zoom-button { width: 36px; height: 32px; padding: 0; border: 1px solid var(--border); border-radius: 9px; background: var(--light); color: var(--green); }
@@ -76,27 +90,28 @@
   <main class="container">
     <div class="page-navigation"><a class="navigation-button" href="index.html">Surah List</a></div>
     <h1 id="surahName">Loading…</h1>
-    <div id="surahInfo"></div>
+    <div id="surahInfo" class="ayah-control"><label for="ayahSelect">Ayah:</label><select id="ayahSelect"></select><span aria-hidden="true">|</span><span>Root: <span class="root-word" id="rootWord">N/A</span></span></div>
     <div id="ayahContainer"><p id="ayahText"></p></div>
     <div id="optionsContainer"></div>
     <div class="answer-visibility"><button id="answerVisibilityButton" type="button" aria-label="Hide answers">Hide answers</button></div>
     <div id="transliterationContainer"><p id="transliterationText"></p></div>
-    <div id="speedControls" class="speed-controls" aria-label="Play speed">
+    <div id="speedControls" class="speed-controls" aria-label="Read speed">
       <span>Speed</span>
-      <button class="speedButton active-speed" data-speed="normal" type="button">Normal</button>
       <button class="speedButton" data-speed="slow" type="button">Slow</button>
-      <button class="speedButton" data-speed="fast" type="button">Fast</button>
+      <button class="speedButton active-speed" data-speed="fast" type="button">Fast</button>
+      <button id="pausePlayButton" class="pause-play" type="button" aria-label="Pause reading">Ⅱ</button>
     </div>
 
+    <div class="mode-controls">
+      <button id="modeButton" class="mode-button" type="button">Read</button>
+    </div>
     <section id="settingsPanel" class="settings-panel">
-      <button id="settingsButton" class="settings-trigger" type="button" aria-label="Open Quran settings" aria-expanded="false">📖</button>
+      <button id="settingsButton" class="settings-trigger" type="button" aria-label="Open Quran settings" aria-expanded="false">⚙</button>
       <div class="below-loop-content">
         <button id="settingsCloseButton" class="settings-close" type="button" aria-label="Close settings">×</button>
         <div class="ayah-selectors">
-          <label for="ayahSelect">Ayah:</label><select id="ayahSelect"></select>
           <span class="loop-range"><label for="loopStartSelect">Loop from:</label><select id="loopStartSelect"></select><label for="loopEndSelect">to:</label><select id="loopEndSelect"></select><button id="loopButton" class="loop-toggle" type="button" aria-label="Enable loop" aria-pressed="false" title="Enable loop">↻</button></span>
         </div>
-        <div class="control-buttons"><button id="playPauseButton" type="button">Play</button></div>
         <div class="quiz-options-control">
           <label for="optionCountSelect">Quiz options:</label>
           <select id="optionCountSelect">
@@ -122,7 +137,7 @@
     const surahId = new URLSearchParams(location.search).get('surah') || '1';
     let surah, currentAyah = 0, currentWord = 0, isPlayMode = false, isLoopMode = false;
     let loopStartAyah = 0, loopEndAyah = 0, rightAttempts = 0, wrongAttempts = 0, timer, startTime;
-    let speed = 1500, zoomLevel = 1, answersHidden = false;
+    let speed = 1500, zoomLevel = 1, answersHidden = false, isPaused = false;
     const $ = id => document.getElementById(id);
 
     async function loadSurah() {
@@ -146,20 +161,32 @@
     function displayWord() {
       const ayah = surah.ayahs[currentAyah], word = ayah[currentWord];
       const highlightClass = isPlayMode ? 'play-highlight' : 'highlight';
-      $('ayahText').innerHTML = ayah.map((item, i) => i === currentWord ? `<span class="${highlightClass}">${item.word}</span>` : item.word).join(' ');
+      $('ayahText').innerHTML = ayah.map((item, i) => `<span class="ayah-word ${i === currentWord ? highlightClass : ''}" data-word-index="${i}" tabindex="${isPlayMode ? '-1' : '0'}">${item.word}</span>`).join(' ');
+      if (!isPlayMode) {
+        $('ayahText').querySelectorAll('.ayah-word').forEach(element => {
+          element.onclick = () => changeWord(Number(element.dataset.wordIndex));
+          element.onkeydown = event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); changeWord(Number(element.dataset.wordIndex)); } };
+        });
+      }
       $('transliterationText').textContent = word.transliteration;
-      $('surahInfo').textContent = `Ayah: ${currentAyah + 1} | Word: ${currentWord + 1} | Root: ${word.rootWord || 'N/A'}`;
+      $('rootWord').textContent = word.rootWord || 'N/A';
       $('ayahSelect').value = currentAyah;
       isPlayMode ? showCorrectAnswer(word) : showOptions(word);
     }
 
-    function showCorrectAnswer(word) { $('optionsContainer').classList.add('play-answer'); $('optionsContainer').innerHTML = `<button class="correct" type="button">${word.correctMeaning}</button>`; applyAnswerVisibility(); startAutoProgress(); }
+    function showCorrectAnswer(word) { $('optionsContainer').classList.add('play-answer'); $('optionsContainer').innerHTML = `<button class="correct" type="button">${word.correctMeaning}</button>`; applyAnswerVisibility(); if (!isPaused) startAutoProgress(); }
+    function changeWord(wordIndex) { if (isPlayMode || !surah) return; currentWord = wordIndex; clearTimeout(timer); displayWord(); }
     function showOptions(word) { $('optionsContainer').classList.remove('play-answer'); const optionCount = Number($('optionCountSelect').value); const answers = [...new Set([word.correctMeaning, ...(word.options || [])])].slice(0, optionCount).sort(() => Math.random() - .5); $('optionsContainer').innerHTML = ''; answers.forEach(answer => { const button = document.createElement('button'); button.type = 'button'; button.textContent = answer; button.onclick = () => checkAnswer(button, answer, word.correctMeaning); $('optionsContainer').appendChild(button); }); applyAnswerVisibility(); }
     function applyAnswerVisibility() { $('optionsContainer').style.visibility = answersHidden ? 'hidden' : 'visible'; $('answerVisibilityButton').textContent = answersHidden ? '👁 Show answers' : 'Hide answers'; $('answerVisibilityButton').setAttribute('aria-label', answersHidden ? 'Show answers' : 'Hide answers'); }
     function checkAnswer(button, answer, correct) { if (answer === correct) { button.classList.add('correct'); rightAttempts++; $('rightCount').textContent = rightAttempts; setTimeout(navigateNext, 700); } else { button.classList.add('incorrect'); wrongAttempts++; $('wrongCount').textContent = wrongAttempts; } }
     function navigateNext() { clearTimeout(timer); const ayah = surah.ayahs[currentAyah]; if (currentWord < ayah.length - 1) currentWord++; else if (isLoopMode) { currentAyah = currentAyah < loopEndAyah ? currentAyah + 1 : loopStartAyah; currentWord = 0; } else if (currentAyah < surah.ayahs.length - 1) { currentAyah++; currentWord = 0; } else { isPlayMode = false; $('speedControls').classList.remove('visible'); showCompletion(); return; } displayWord(); }
-    function startAutoProgress() { clearTimeout(timer); timer = setTimeout(navigateNext, speed); }
-    function togglePlay() { clearTimeout(timer); isPlayMode = !isPlayMode; $('playPauseButton').textContent = isPlayMode ? 'Quiz' : 'Play'; $('playPauseButton').classList.toggle('playing', isPlayMode); $('speedControls').classList.toggle('visible', isPlayMode); if (isPlayMode) startTime = Date.now(); displayWord(); }
+    function getWordDuration(word) {
+      const wordLength = [...word.word].length;
+      return Math.max(650, Math.min(3200, speed + (wordLength - 5) * 140));
+    }
+    function startAutoProgress() { clearTimeout(timer); timer = setTimeout(navigateNext, getWordDuration(surah.ayahs[currentAyah][currentWord])); }
+    function togglePlay() { clearTimeout(timer); isPlayMode = !isPlayMode; isPaused = false; $('modeButton').textContent = isPlayMode ? 'Quiz' : 'Read'; $('modeButton').classList.toggle('reading', isPlayMode); $('speedControls').classList.toggle('visible', isPlayMode); $('pausePlayButton').textContent = 'Ⅱ'; $('pausePlayButton').setAttribute('aria-label', 'Pause reading'); if (isPlayMode) startTime = Date.now(); displayWord(); }
+    function togglePause() { if (!isPlayMode) return; isPaused = !isPaused; if (isPaused) clearTimeout(timer); else startAutoProgress(); $('pausePlayButton').textContent = isPaused ? '▶' : 'Ⅱ'; $('pausePlayButton').setAttribute('aria-label', isPaused ? 'Resume reading' : 'Pause reading'); }
     function toggleLoop() { isLoopMode = !isLoopMode; const loopButton = $('loopButton'); loopButton.classList.toggle('looping', isLoopMode); loopButton.setAttribute('aria-pressed', String(isLoopMode)); loopButton.setAttribute('aria-label', isLoopMode ? 'Disable loop' : 'Enable loop'); loopButton.title = isLoopMode ? 'Disable loop' : 'Enable loop'; if (isPlayMode) startAutoProgress(); }
     function changeAyah(value) { currentAyah = Number(value); currentWord = 0; clearTimeout(timer); displayWord(); if (isPlayMode) startAutoProgress(); }
     function updateLoop() { loopStartAyah = Number($('loopStartSelect').value); loopEndAyah = Number($('loopEndSelect').value); if (loopStartAyah > loopEndAyah) [loopStartAyah, loopEndAyah] = [loopEndAyah, loopStartAyah]; $('loopStartSelect').value = loopStartAyah; $('loopEndSelect').value = loopEndAyah; if (isPlayMode) startAutoProgress(); }
@@ -172,11 +199,17 @@
     $('settingsButton').onclick = () => { const open = $('settingsPanel').classList.toggle('open'); $('settingsButton').setAttribute('aria-expanded', open); };
     $('settingsCloseButton').onclick = closeSettings;
     $('answerVisibilityButton').onclick = () => { answersHidden = !answersHidden; applyAnswerVisibility(); };
-    $('playPauseButton').onclick = () => { closeSettings(); togglePlay(); };
+    $('modeButton').onclick = () => { closeSettings(); togglePlay(); };
+    $('pausePlayButton').onclick = togglePause;
     $('loopButton').onclick = toggleLoop; $('ayahSelect').onchange = e => changeAyah(e.target.value); $('loopStartSelect').onchange = updateLoop; $('loopEndSelect').onchange = updateLoop;
     $('optionCountSelect').onchange = () => { if (!isPlayMode && surah) displayWord(); };
     document.querySelectorAll('[data-size]').forEach(button => button.onclick = () => setFont(button.dataset.size, Number(button.dataset.change)));
-    document.querySelectorAll('.speedButton').forEach(button => button.onclick = () => { speed = button.dataset.speed === 'slow' ? 2500 : button.dataset.speed === 'fast' ? 800 : 1500; document.querySelectorAll('.speedButton').forEach(b => b.classList.toggle('active-speed', b === button)); if (isPlayMode) startAutoProgress(); });
+    document.querySelectorAll('.speedButton').forEach(button => button.onclick = () => {
+      const change = button.dataset.speed === 'slow' ? 250 : -250;
+      speed = Math.max(400, Math.min(4000, speed + change));
+      document.querySelectorAll('.speedButton').forEach(b => b.classList.toggle('active-speed', b === button));
+      if (isPlayMode && !isPaused) startAutoProgress();
+    });
     $('zoomIn').onclick = () => { zoomLevel = Math.min(1.5, zoomLevel + .1); document.querySelector('.container').style.transform = `scale(${zoomLevel})`; };
     $('zoomOut').onclick = () => { zoomLevel = Math.max(.8, zoomLevel - .1); document.querySelector('.container').style.transform = `scale(${zoomLevel})`; };
     $('startOver').onclick = startOver;
