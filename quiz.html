@@ -16,18 +16,23 @@
     .navigation-button { display: inline-block; padding: 8px 14px; border: 1px solid var(--border); border-radius: 999px; background: var(--light); color: var(--green); text-decoration: none; }
     .navigation-button:hover, .navigation-button:focus, button:hover, button:focus { background: #4caf50; color: #fff; outline: none; }
     #surahName { margin: 0 0 4px; color: #333; font: 600 24px/1.35 'Noto Naskh Arabic', serif; }
-    #surahInfo { margin: 0 0 15px; color: #555; font-size: 15px; }
-    #ayahContainer { display: flex; justify-content: center; align-items: center; margin-top: 5px; }
-    #ayahText { margin: 0 10px; color: #333; font: var(--ayah-size) 'Noto Naskh Arabic', serif; }
+    #surahInfo { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 8px; min-height: 42px; margin: 0 0 2px; color: #555; font-size: 15px; }
+    #surahInfo .root-word { display: inline-block; min-width: 90px; }
+    #surahInfo > span:last-child { text-align: left; white-space: nowrap; }
+    #surahInfo .loop-range { display: inline-flex; align-items: center; gap: 5px; }
+    #surahInfo .loop-range label { color: #555; font-size: 13px; }
+    #ayahContainer { display: flex; justify-content: center; align-items: center; height: 112px; margin-top: 0; }
+    #ayahText { width: 100%; margin: 0 10px; color: #333; font: var(--ayah-size)/1.45 'Noto Naskh Arabic', serif; }
     .ayah-word { cursor: pointer; border-radius: 6px; transition: background-color .15s ease, color .15s ease; }
     .ayah-word:hover, .ayah-word:focus { background: #eaf5ec; outline: none; }
     .highlight { color: #4caf50; font-weight: bold; font-size: 1.18em; text-shadow: 1px 1px 12px rgba(40,167,69,.5); }
-    .play-highlight { color: inherit; font-weight: bold; font-size: 1.18em; text-shadow: none; }
+    .play-highlight { color: inherit; font-weight: bold; font-size: inherit; text-shadow: none; }
     #optionsContainer { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; gap: 10px; min-height: 100px; width: 100%; margin-top: 10px; }
+    #optionsContainer.play-answer { min-height: 100px; }
     #optionsContainer button { width: 100%; min-height: 48px; margin: 0; padding: 8px 10px; border: 2px solid #ddd; border-radius: 20px; background: #f8f9fa; color: #333; font-size: var(--answer-size); }
     .correct { background: #4caf50 !important; color: #fff !important; }
     .incorrect { background: #dc3545 !important; color: #fff !important; }
-    #transliterationContainer { margin-top: 15px; }
+    #transliterationContainer { min-height: 42px; margin-top: 15px; }
     .ayah-control { display: flex; justify-content: center; align-items: center; gap: 8px; margin: 12px 0; }
     .ayah-control label { color: #555; font-size: 13px; }
     .mode-controls { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 14px; }
@@ -83,18 +88,18 @@
     #completionModal { display: none; position: fixed; inset: 0; z-index: 20; justify-content: center; align-items: center; background: rgba(0,50,0,.6); }
     #completionMessage { width: min(400px,90%); padding: 20px; border-radius: 15px; background: #fff; }
     #completionMessage .navigation-button { margin: 10px 4px 0; }
-    @media (max-width: 480px) { #surahName { font-size: 20px; } #ayahText { font-size: 24px; } #transliterationText { font-size: 14px; } #optionsContainer button { font-size: 14px; padding: 8px; } }
+    @media (max-width: 480px) { #surahName { font-size: 20px; } #ayahContainer { height: 130px; } #ayahText { font-size: var(--ayah-size); } #transliterationText { font-size: var(--trans-size); } #optionsContainer button { font-size: var(--answer-size); padding: 8px; } }
   </style>
 </head>
 <body>
   <main class="container">
     <div class="page-navigation"><a class="navigation-button" href="index.html">Surah List</a></div>
     <h1 id="surahName">Loading…</h1>
-    <div id="surahInfo" class="ayah-control"><label for="ayahSelect">Ayah:</label><select id="ayahSelect"></select><span aria-hidden="true">|</span><span>Root: <span class="root-word" id="rootWord">N/A</span></span></div>
+    <div id="surahInfo" class="ayah-control"><label for="ayahSelect">Ayah:</label><select id="ayahSelect"></select><span aria-hidden="true">|</span><span>Root: <span class="root-word" id="rootWord">N/A</span></span><span aria-hidden="true">|</span><span class="loop-range"><label for="loopStartSelect">Loop:</label><select id="loopStartSelect"></select><label for="loopEndSelect">to</label><select id="loopEndSelect"></select><button id="loopButton" class="loop-toggle" type="button" aria-label="Enable loop" aria-pressed="false" title="Enable loop">↻</button></span></div>
     <div id="ayahContainer"><p id="ayahText"></p></div>
     <div id="optionsContainer"></div>
-    <div class="answer-visibility"><button id="answerVisibilityButton" type="button" aria-label="Hide answers">Hide answers</button></div>
     <div id="transliterationContainer"><p id="transliterationText"></p></div>
+    <div class="answer-visibility"><button id="answerVisibilityButton" type="button" aria-label="Hide answers">Hide answers</button></div>
     <div id="speedControls" class="speed-controls" aria-label="Read speed">
       <span>Speed</span>
       <button class="speedButton" data-speed="slow" type="button">Slow</button>
@@ -109,9 +114,6 @@
       <button id="settingsButton" class="settings-trigger" type="button" aria-label="Open Quran settings" aria-expanded="false">⚙</button>
       <div class="below-loop-content">
         <button id="settingsCloseButton" class="settings-close" type="button" aria-label="Close settings">×</button>
-        <div class="ayah-selectors">
-          <span class="loop-range"><label for="loopStartSelect">Loop from:</label><select id="loopStartSelect"></select><label for="loopEndSelect">to:</label><select id="loopEndSelect"></select><button id="loopButton" class="loop-toggle" type="button" aria-label="Enable loop" aria-pressed="false" title="Enable loop">↻</button></span>
-        </div>
         <div class="quiz-options-control">
           <label for="optionCountSelect">Quiz options:</label>
           <select id="optionCountSelect">
