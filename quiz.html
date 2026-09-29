@@ -30,12 +30,16 @@
     .ayah-navigation:disabled { opacity: .35; cursor: not-allowed; }
     .ayah-navigation:disabled:hover { background: var(--light); color: var(--green); }
     #ayahText { width: 100%; margin: 0 10px; color: #333; font: var(--ayah-size)/1.45 'Noto Naskh Arabic', serif; direction: rtl; }
-    .ayah-word { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; direction: rtl; cursor: pointer; border-radius: 6px; transition: background-color .15s ease, color .15s ease; }
+    .ayah-word { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; direction: rtl; cursor: pointer; border-radius: 6px; transition: background-color .2s ease, color .2s ease, transform .2s ease; }
     .word-answer { display: block; max-width: 14ch; margin-top: 2px; color: var(--green); font: var(--answer-size)/1.2 Poppins, sans-serif; direction: ltr; white-space: normal; }
     #ayahText.answers-hidden .word-answer { visibility: hidden; }
     .ayah-word:hover, .ayah-word:focus { background: #eaf5ec; outline: none; }
-    .highlight { color: #4caf50; font-weight: bold; font-size: 2em; text-shadow: 1px 1px 12px rgba(40,167,69,.5); }
-    .play-highlight { color: inherit; font-weight: bold; font-size: 2em; text-shadow: none; }
+    .highlight { color: #4caf50; font-weight: bold; font-size: 2em; text-shadow: 1px 1px 12px rgba(40,167,69,.5); animation: wordFocus .3s ease-out; }
+    .play-highlight { color: inherit; font-weight: bold; font-size: 2em; text-shadow: none; animation: wordFocus .3s ease-out; }
+    @keyframes wordFocus {
+      from { opacity: .35; transform: scale(.92); }
+      to { opacity: 1; transform: scale(1); }
+    }
     .controls-row { display: flex; justify-content: center; align-items: center; flex-wrap: nowrap; gap: 8px; width: 100%; margin: 10px auto 0; padding: 2px 0 6px; overflow-x: auto; scrollbar-width: thin; }
     .controls-row > * { flex: 0 0 auto; margin: 0; }
     .settings-panel { margin: 0; width: auto; }
@@ -74,8 +78,11 @@
       #ayahContainer { height: clamp(160px, 30vh, 260px); }
       #ayahText { margin: 0 34px; }
       .ayah-navigation { width: 36px; height: 36px; font-size: 20px; }
-      .controls-row { justify-content: flex-start; gap: 6px; padding-bottom: 8px; }
-      .controls-row > * { flex: 0 0 auto; }
+      .controls-row { justify-content: center; flex-wrap: wrap; gap: 8px; width: 100%; padding: 2px 0 8px; overflow-x: visible; }
+      .controls-row > * { flex: 0 1 auto; max-width: 100%; }
+      .speed-controls { flex: 1 1 100%; justify-content: center; min-width: 0; }
+      .speed-range { max-width: 100%; }
+      #speedSlider { width: clamp(80px, 32vw, 120px); }
     }
     .settings-panel.open .below-loop-content { display: block; }
     .settings-close { position: absolute; top: 8px; right: 10px; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%; background: var(--light); color: var(--green); font-size: 22px; line-height: 1; }
