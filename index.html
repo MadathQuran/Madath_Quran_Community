@@ -8,10 +8,11 @@
   <style>
     * { box-sizing: border-box; }
     body { margin: 0; padding: 32px 16px; min-height: 100vh; background: #fff; color: #333; font-family: Poppins, sans-serif; text-align: center; }
-    h1 { margin: 0 0 8px; color: #347a49; font-size: 28px; }
+    .arabic-title { margin: 0 auto 4px; color: #347a49; font: 32px/1.5 'Noto Naskh Arabic', serif; }
+    h1 { margin: 0 0 4px; color: #347a49; font-size: 28px; }
     .intro { margin: 0 auto 20px; color: #666; }
     .search-form { display: flex; justify-content: center; gap: 8px; width: min(560px, 100%); margin: 0 auto 24px; }
-    #searchInput { flex: 1; min-width: 0; padding: 10px 14px; border: 1px solid #d4e2d7; border-radius: 999px; font: 14px Poppins, sans-serif; }
+    #searchInput { flex: 1; min-width: 0; padding: 10px 14px; border: 1px solid #d4e2d7; border-radius: 999px; font: 14px Poppins, sans-serif; text-align: center; }
     button { padding: 10px 18px; border: 0; border-radius: 999px; background: linear-gradient(135deg, #4caf50, #319b59); color: #fff; font: 600 14px Poppins, sans-serif; cursor: pointer; }
     button:hover, button:focus { background: #347a49; outline: none; }
     .surah-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; width: min(900px, 100%); margin: 0 auto; }
@@ -26,8 +27,9 @@
   </style>
 </head>
 <body>
-  <h1>Quran Word Quiz</h1>
-  <p class="intro">Choose a surah to begin.</p>
+  <div class="arabic-title" lang="ar" dir="rtl">وَعَلَّمَ ءَادَمَ ٱلْأَسْمَآءَ كُلَّهَا</div>
+  <h1>Know Quran by Words</h1>
+  <p class="intro">(an initiative by Madath Good Startups)</p>
 
   <form id="searchForm" class="search-form">
     <input id="searchInput" type="search" placeholder="Search by surah number or name" aria-label="Search Surahs">
