@@ -126,6 +126,26 @@
     #completionMessage { width: min(400px,90%); padding: 20px; border-radius: 15px; background: #fff; }
     #completionMessage .navigation-button { margin: 10px 4px 0; }
     @media (max-width: 480px) { #surahName { font-size: 20px; } #ayahContainer { height: 130px; } #ayahText { font-size: var(--ayah-size); } #transliterationText { font-size: var(--trans-size); } #optionsContainer button { font-size: var(--answer-size); padding: 8px; } }
+
+    /* Keep the header stable and let the content stack naturally above the fixed controls. */
+    .container { display: flex; flex-direction: column; padding-bottom: 190px; }
+    .top-line, #surahInfo { flex: 0 0 auto; }
+    #surahInfo { margin-bottom: 24px; }
+    #ayahContainer { order: 1; height: auto; min-height: clamp(150px, 25vh, 240px); margin: 0 0 24px; padding: 12px 0; }
+    #transliterationContainer { order: 2; min-height: 0; margin: 0 0 18px; padding: 0 8px; }
+    #optionsContainer { order: 3; min-height: 0; margin: 0 0 24px; padding: 0 4px; gap: 10px; }
+    #optionsContainer button { min-height: 0; padding: 10px 12px; }
+    #optionsContainer.play-answer { min-height: 0; margin: 0; }
+    .controls-row { order: 4; }
+
+    @media (max-width: 600px) {
+      .container { padding-bottom: 180px; }
+      #surahInfo { margin-bottom: 22px; }
+      #ayahContainer { min-height: clamp(150px, 30vh, 260px); margin-bottom: 22px; }
+      #transliterationContainer { margin-bottom: 16px; }
+      #optionsContainer { grid-template-columns: 1fr; margin-bottom: 22px; }
+      #optionsContainer button { width: min(100%, 320px); justify-self: center; }
+    }
   </style>
 </head>
 <body>
