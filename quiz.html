@@ -36,8 +36,8 @@
     .word-answer { display: block; max-width: 14ch; margin-top: 2px; color: var(--green); font: var(--answer-size)/1.2 Poppins, sans-serif; direction: ltr; white-space: normal; }
     #ayahText.answers-hidden .word-answer { visibility: hidden; }
     .ayah-word:hover, .ayah-word:focus { background: #eaf5ec; outline: none; }
-    .highlight { color: #4caf50; font-weight: bold; font-size: 2em; text-shadow: 1px 1px 12px rgba(40,167,69,.5); animation: wordFocus .3s ease-out; }
-    .play-highlight { color: inherit; font-weight: bold; font-size: 2em; text-shadow: none; animation: wordFocus .3s ease-out; }
+    .highlight { color: #4caf50; font-weight: bold; font-size: 1.5em; text-shadow: 1px 1px 12px rgba(40,167,69,.5); animation: wordFocus .3s ease-out; }
+    .play-highlight { color: inherit; font-weight: bold; font-size: 1.5em; text-shadow: none; animation: wordFocus .3s ease-out; }
     @keyframes wordFocus {
       from { opacity: .35; transform: scale(.92); }
       to { opacity: 1; transform: scale(1); }
@@ -50,9 +50,9 @@
     .mode-controls { margin: 0; }
     .speed-controls { margin: 0; }
     .answer-visibility { margin: 12px 0 0; }
-    #optionsContainer { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; gap: 10px; min-height: 100px; width: 100%; margin-top: 18px; padding-top: 4px; }
+    #optionsContainer { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; gap: 8px; min-height: 0; width: 100%; margin-top: 18px; padding: 4px 0 0; }
     #optionsContainer.play-answer { display: none; min-height: 0; }
-    #optionsContainer button { width: 100%; min-height: 48px; margin: 0; padding: 8px 10px; border: 2px solid #ddd; border-radius: 20px; background: #f8f9fa; color: #333; font-size: var(--answer-size); }
+    #optionsContainer button { width: 100%; min-height: 0; margin: 0; padding: 7px 10px; border: 2px solid #ddd; border-radius: 16px; background: #f8f9fa; color: #333; font-size: var(--answer-size); line-height: 1.2; }
     .correct { background: #4caf50 !important; color: #fff !important; }
     .incorrect { background: #dc3545 !important; color: #fff !important; }
     #transliterationContainer { min-height: 42px; margin-top: 15px; }
@@ -79,11 +79,18 @@
       #ayahContainer { height: clamp(160px, 30vh, 260px); }
       #ayahText { margin: 0 34px; }
       .ayah-navigation { width: 36px; height: 36px; font-size: 20px; }
-      .controls-row { left: 12px; right: 12px; justify-content: center; flex-wrap: nowrap; gap: 6px; width: auto; padding: 6px 8px; overflow-x: auto; }
+      .controls-row { left: 6px; right: 6px; bottom: 6px; gap: 4px; padding: 4px 6px; border-radius: 18px; overflow: hidden; }
       .controls-row > * { flex: 0 1 auto; max-width: 100%; }
-      .speed-controls { flex: 1 1 100%; justify-content: center; min-width: 0; }
-      .speed-range { max-width: 100%; }
-      #speedSlider { width: clamp(80px, 32vw, 120px); }
+      .controls-row button, .controls-row .navigation-button { padding: 6px 8px; font-size: 11px; }
+      .settings-trigger { width: 38px; height: 36px; font-size: 19px; }
+      .speed-controls { flex: 1 1 100%; justify-content: center; min-width: 0; gap: 4px; }
+      .speed-range { max-width: 100%; gap: 3px; font-size: 11px; }
+      #speedSlider { width: clamp(65px, 25vw, 100px); }
+      .speed-controls .pause-play { width: 32px; min-width: 32px; height: 30px; font-size: 14px; }
+      .mode-button { min-width: 68px; padding: 7px 8px; }
+      #answerVisibilityButton { padding: 6px 8px; }
+      #optionsContainer { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin-top: 12px; margin-bottom: 12px; }
+      #optionsContainer button { padding: 6px 7px; font-size: 13px; border-radius: 12px; }
     }
     .settings-panel.open .below-loop-content { display: block; }
     .settings-close { position: absolute; top: 8px; right: 10px; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%; background: var(--light); color: var(--green); font-size: 22px; line-height: 1; }
@@ -143,8 +150,8 @@
       #surahInfo { margin-bottom: 22px; }
       #ayahContainer { min-height: clamp(150px, 30vh, 260px); margin-bottom: 22px; }
       #transliterationContainer { margin-bottom: 16px; }
-      #optionsContainer { grid-template-columns: 1fr; margin-bottom: 22px; }
-      #optionsContainer button { width: min(100%, 320px); justify-self: center; }
+      #optionsContainer { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 22px; }
+      #optionsContainer button { width: 100%; justify-self: stretch; }
     }
   </style>
 </head>
