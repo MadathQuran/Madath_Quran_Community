@@ -311,6 +311,13 @@
             <option value="next">Next Surah</option>
           </select>
         </div>
+        <div class="quiz-options-control">
+          <label for="transliterationToggle">Transliteration:</label>
+          <select id="transliterationToggle" aria-label="Show or hide transliteration">
+            <option value="show">Show</option>
+            <option value="hide" selected>Hide</option>
+          </select>
+        </div>
         <div class="text-size-controls-row">
           <div class="text-size-controls"><span class="size-label">Ayah</span><button data-size="ayah" data-change="-2" type="button">A−</button><button data-size="ayah" data-change="2" type="button">A+</button></div>
           <div class="text-size-controls"><span class="size-label">Answer</span><button data-size="answer" data-change="-1" type="button">A−</button><button data-size="answer" data-change="1" type="button">A+</button></div>
@@ -331,6 +338,7 @@
     let surah, currentAyah = 0, currentWord = 0, isPlayMode = false, isLoopMode = false;
     let loopStartAyah = 0, loopEndAyah = 0, rightAttempts = 0, wrongAttempts = 0, timer, startTime;
     let speed = 1500, zoomLevel = 1, answersHidden = false, isPaused = false, isAyahLoopMode = false;
+    let transliterationVisible = false;
     let endAction = 'repeat';
     const $ = id => document.getElementById(id);
 
@@ -377,6 +385,9 @@
       $('ayahText').classList.toggle('answers-hidden', answersHidden && isPlayMode);
       $('answerVisibilityButton').textContent = answersHidden ? 'Show' : 'Hide';
       $('answerVisibilityButton').setAttribute('aria-label', answersHidden ? 'Show' : 'Hide');
+    }
+    function applyTransliterationVisibility() {
+      $('transliterationContainer').hidden = !transliterationVisible;
     }
     function updateScore() { $('rightCount').textContent = rightAttempts; $('wrongCount').textContent = wrongAttempts; $('rightCountBottom').textContent = rightAttempts; $('wrongCountBottom').textContent = wrongAttempts; }
     function checkAnswer(button, answer, correct) { if (answer === correct) { button.classList.add('correct'); rightAttempts++; updateScore(); setTimeout(navigateNext, 700); } else { button.classList.add('incorrect'); wrongAttempts++; updateScore(); } }
@@ -471,6 +482,11 @@
     $('loopButton').onclick = toggleLoop; $('ayahLoopButton').onclick = toggleAyahLoop; $('ayahSelect').onchange = e => changeAyah(e.target.value); $('loopStartSelect').onchange = updateLoop; $('loopEndSelect').onchange = updateLoop;
     $('optionCountSelect').onchange = () => { if (!isPlayMode && surah) displayWord(); };
     $('endActionSelect').onchange = event => { endAction = event.target.value; };
+    $('transliterationToggle').onchange = event => {
+      transliterationVisible = event.target.value === 'show';
+      applyTransliterationVisibility();
+    };
+    applyTransliterationVisibility();
     document.querySelectorAll('[data-size]').forEach(button => button.onclick = () => setFont(button.dataset.size, Number(button.dataset.change)));
     $('speedSelect').onchange = event => {
       speed = Number(event.target.value);
