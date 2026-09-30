@@ -164,23 +164,43 @@
     @media (max-width: 480px) { #surahName { font-size: 20px; } #ayahContainer { height: 130px; } #ayahText { font-size: var(--ayah-size); } #transliterationText { font-size: var(--trans-size); } #optionsContainer button { font-size: var(--answer-size); padding: 8px; } }
 
     /* Keep the header stable and let the content stack naturally above the fixed controls. */
-    .container { display: flex; flex-direction: column; padding-bottom: 190px; }
+    .container { display: flex; flex-direction: column; padding-bottom: 88px; }
     .top-line, #surahInfo { flex: 0 0 auto; }
     #surahInfo { margin-bottom: 24px; }
     #ayahContainer { order: 1; height: auto; min-height: clamp(150px, 25vh, 240px); margin: 0 0 24px; padding: 12px 0; }
     #transliterationContainer { order: 2; min-height: 0; margin: 0 0 18px; padding: 0 8px; }
-    #optionsContainer { order: 3; min-height: 0; margin: 0 0 24px; padding: 0 4px; gap: 10px; }
-    #optionsContainer button { min-height: 0; padding: 10px 12px; }
+    #optionsContainer { order: 3; min-height: 0; margin: 0 0 8px; padding: 0 4px; gap: 8px; }
+    #optionsContainer button { min-height: 0; padding: 8px 10px; }
     #optionsContainer.play-answer { min-height: 0; margin: 0; }
     .controls-row { order: 4; }
 
     @media (max-width: 600px) {
-      .container { padding-bottom: 180px; }
+      .container { padding-bottom: 72px; }
       #surahInfo { margin-bottom: 22px; }
       #ayahContainer { min-height: clamp(150px, 30vh, 260px); margin-bottom: 22px; }
       #transliterationContainer { margin-bottom: 16px; }
-      #optionsContainer { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 22px; }
-      #optionsContainer button { width: 100%; justify-self: stretch; }
+      #optionsContainer { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 4px; }
+      #optionsContainer button { width: 100%; justify-self: stretch; padding: 6px 7px; }
+    }
+
+    /* Keep bottom controls anchored to their own areas. */
+    .controls-row { max-width: none; justify-content: space-between; overflow: visible; }
+    .controls-row .answer-visibility { margin-right: auto; }
+    .quiz-score { position: absolute; left: 50%; transform: translateX(-50%); }
+    .right-controls { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+    /* Keep the reading play/pause button centered in the fixed controls. */
+    .speed-controls .pause-play { position: absolute; left: 50%; transform: translateX(-50%); }
+    .speed-controls .pause-play:hover,
+    .speed-controls .pause-play:focus { transform: translateX(-50%) scale(1.06); }
+    .speed-range span { display: inline-block; }
+    @media (max-width: 600px) {
+      .controls-row { left: 4px; right: 4px; gap: 3px; padding: 4px 5px; }
+      .right-controls { gap: 3px; }
+      .speed-range { gap: 2px; font-size: 10px; }
+      .speed-range select { max-width: 58px; padding: 4px 3px !important; }
+      .mode-button { min-width: 56px; padding: 5px 6px; }
+      .settings-trigger { width: 34px; height: 32px; font-size: 17px; }
+      #answerVisibilityButton { padding: 5px 7px; }
     }
   </style>
 </head>
@@ -200,14 +220,15 @@
     <div class="controls-row">
       <div class="answer-visibility"><button id="answerVisibilityButton" type="button" aria-label="Hide">Hide</button></div>
       <div id="quizScore" class="quiz-score" aria-label="Quiz score"><span id="rightCountBottom" class="correct-value">0</span><span id="wrongCountBottom" class="wrong-value">0</span></div>
-      <div id="speedControls" class="speed-controls" aria-label="Read speed">
-        <label class="speed-range" for="speedSelect"><select id="speedSelect" aria-label="Reading speed"><option value="500">0.5s</option><option value="1000">1s</option><option value="1500" selected>1.5s</option><option value="2000">2s</option><option value="2500">2.5s</option><option value="3000">3s</option></select></label>
-        <button id="pausePlayButton" class="pause-play" type="button" aria-label="Pause reading">Ⅱ</button>
-      </div>
-      <div class="mode-controls">
-        <button id="modeButton" class="mode-button" type="button">Read</button>
-      </div>
-      <section id="settingsPanel" class="settings-panel">
+      <div class="right-controls">
+        <div id="speedControls" class="speed-controls" aria-label="Read speed">
+          <label class="speed-range" for="speedSelect"><span>Speed</span><select id="speedSelect" aria-label="Reading speed"><option value="500">0.5s</option><option value="1000">1s</option><option value="1500" selected>1.5s</option><option value="2000">2s</option><option value="2500">2.5s</option><option value="3000">3s</option></select></label>
+          <button id="pausePlayButton" class="pause-play" type="button" aria-label="Pause reading">Ⅱ</button>
+        </div>
+        <div class="mode-controls">
+          <button id="modeButton" class="mode-button" type="button">Read</button>
+        </div>
+        <section id="settingsPanel" class="settings-panel">
       <button id="settingsButton" class="settings-trigger" type="button" aria-label="Open Quran settings" aria-expanded="false">⚙</button>
       <div class="below-loop-content">
         <button id="settingsCloseButton" class="settings-close" type="button" aria-label="Close settings">×</button>
@@ -234,7 +255,8 @@
         <div class="zoom-controls"><button id="zoomIn" class="zoom-button" type="button">＋</button><button id="zoomOut" class="zoom-button" type="button">−</button></div>
         <div id="scoreWrapper"><span class="score-value correct-value">Correct: <span id="rightCount">0</span></span> | <span class="score-value wrong-value">Wrong: <span id="wrongCount">0</span></span></div>
       </div>
-      </section>
+        </section>
+      </div>
     </div>
   </main>
 
