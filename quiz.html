@@ -32,15 +32,18 @@
     .ayah-navigation:disabled { opacity: .35; cursor: not-allowed; }
     .ayah-navigation:disabled:hover { background: var(--light); color: var(--green); }
     #ayahText { width: 100%; margin: 0 10px; color: #333; font: var(--ayah-size)/1.45 'Noto Naskh Arabic', serif; direction: rtl; }
-    .ayah-word { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; direction: rtl; cursor: pointer; border-radius: 6px; transition: background-color .2s ease, color .2s ease, transform .2s ease; }
-    .word-answer { display: block; max-width: 14ch; margin-top: 2px; color: var(--green); font: var(--answer-size)/1.2 Poppins, sans-serif; direction: ltr; white-space: normal; }
+    .ayah-word { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; direction: rtl; cursor: pointer; border-radius: 6px; transition: color .9s cubic-bezier(.22, 1, .36, 1), background-color .9s cubic-bezier(.22, 1, .36, 1), text-shadow .9s cubic-bezier(.22, 1, .36, 1); }
+    .arabic-word { opacity: .86; transition: opacity .9s cubic-bezier(.22, 1, .36, 1); }
+    .word-answer { display: none; max-width: 14ch; margin-top: 2px; color: var(--green); font: var(--answer-size)/1.2 Poppins, sans-serif; direction: ltr; white-space: normal; }
+    .play-highlight .word-answer { display: block; }
+
     #ayahText.answers-hidden .word-answer { visibility: hidden; }
     .ayah-word:hover, .ayah-word:focus { background: #eaf5ec; outline: none; }
-    .highlight { color: #4caf50; font-weight: bold; font-size: 1.5em; text-shadow: 1px 1px 12px rgba(40,167,69,.5); animation: wordFocus .3s ease-out; }
-    .play-highlight { color: inherit; font-weight: bold; font-size: 1.5em; text-shadow: none; animation: wordFocus .3s ease-out; }
-    @keyframes wordFocus {
-      from { opacity: .35; transform: scale(.92); }
-      to { opacity: 1; transform: scale(1); }
+    .highlight { color: #4caf50; font-weight: bold; background-color: rgba(76,175,80,.08); text-shadow: 1px 1px 8px rgba(40,167,69,.28); }
+    .play-highlight { color: inherit; font-weight: bold; background-color: rgba(20,120,212,.08); text-shadow: none; }
+    .highlight .arabic-word, .play-highlight .arabic-word { opacity: 1; }
+    @media (prefers-reduced-motion: reduce) {
+      .ayah-word, .arabic-word { transition: none; }
     }
     .controls-row { position: fixed; left: 12px; right: 12px; bottom: 10px; z-index: 8; display: flex; justify-content: center; align-items: center; flex-wrap: nowrap; gap: 8px; width: auto; max-width: 728px; margin: 0 auto; padding: 8px 10px; overflow-x: auto; border: 1px solid var(--border); border-radius: 999px; background: rgba(255,255,255,.96); box-shadow: 0 4px 14px rgba(0,0,0,.12); scrollbar-width: thin; }
     .controls-row > * { flex: 0 0 auto; margin: 0; }
@@ -162,6 +165,29 @@
     #completionMessage { width: min(400px,90%); padding: 20px; border-radius: 15px; background: #fff; }
     #completionMessage .navigation-button { margin: 10px 4px 0; }
     @media (max-width: 480px) { #surahName { font-size: 20px; } #ayahContainer { height: 130px; } #ayahText { font-size: var(--ayah-size); } #transliterationText { font-size: var(--trans-size); } #optionsContainer button { font-size: var(--answer-size); padding: 8px; } }
+
+    /* Give long ayahs their own scroll area without moving surrounding controls. */
+    body.quiz-mode #ayahContainer {
+      flex: 1 1 0;
+      min-height: 0;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      align-items: flex-start;
+      scrollbar-gutter: stable;
+    }
+    body.quiz-mode #ayahText {
+      flex: 0 0 auto;
+      width: calc(100% - 20px);
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+    @media (max-width: 600px) {
+      body.quiz-mode #ayahText {
+        width: calc(100% - 68px);
+        margin-right: 34px;
+        margin-left: 34px;
+      }
+    }
 
     /* Keep the header stable and let the content stack naturally above the fixed controls. */
     .container { display: flex; flex-direction: column; padding-bottom: 52px; }
@@ -363,18 +389,48 @@
 
     function displayWord() {
       const ayah = surah.ayahs[currentAyah], word = ayah[currentWord];
-      const highlightClass = isPlayMode ? 'play-highlight' : 'highlight';
-      $('ayahText').innerHTML = ayah.map((item, i) => `<span class="ayah-word ${i === currentWord ? highlightClass : ''}" data-word-index="${i}" tabindex="${isPlayMode ? '-1' : '0'}" lang="ar" dir="rtl">${item.word}${isPlayMode && i === currentWord ? `<span class="word-answer" lang="en" dir="ltr">${item.correctMeaning}</span>` : ''}</span>`).join(' ');
-      if (!isPlayMode) {
-        $('ayahText').querySelectorAll('.ayah-word').forEach(element => {
-          element.onclick = () => changeWord(Number(element.dataset.wordIndex));
-          element.onkeydown = event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); changeWord(Number(element.dataset.wordIndex)); } };
-        });
+      const ayahText = $('ayahText');
+      const ayahChanged = ayahText.dataset.ayahIndex !== String(currentAyah);
+      const modeChanged = ayahText.dataset.playMode !== String(isPlayMode);
+
+      // Keep the word elements in place while progressing so their highlight can ease between words.
+      if (ayahChanged || modeChanged || ayahText.querySelectorAll('.ayah-word').length !== ayah.length) {
+        ayahText.innerHTML = ayah.map((item, i) => `<span class="ayah-word" data-word-index="${i}" tabindex="${isPlayMode ? '-1' : '0'}" lang="ar" dir="rtl"><span class="arabic-word">${item.word}</span>${isPlayMode ? `<span class="word-answer" lang="en" dir="ltr">${item.correctMeaning}</span>` : ''}</span>`).join(' ');
+        ayahText.dataset.ayahIndex = currentAyah;
+        ayahText.dataset.playMode = isPlayMode;
+        if (!isPlayMode) {
+          ayahText.querySelectorAll('.ayah-word').forEach(element => {
+            element.onclick = () => changeWord(Number(element.dataset.wordIndex));
+            element.onkeydown = event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); changeWord(Number(element.dataset.wordIndex)); } };
+          });
+        }
       }
+      ayahText.querySelectorAll('.ayah-word').forEach((element, index) => {
+        element.classList.toggle('highlight', !isPlayMode && index === currentWord);
+        element.classList.toggle('play-highlight', isPlayMode && index === currentWord);
+      });
       $('transliterationText').textContent = word.transliteration;
       $('rootWord').textContent = word.rootWord || 'N/A';
       $('ayahSelect').value = currentAyah;
       isPlayMode ? showCorrectAnswer(word) : showOptions(word);
+      keepActiveWordVisible();
+    }
+
+    function keepActiveWordVisible() {
+      const container = $('ayahContainer');
+      const activeWord = $('ayahText').querySelector('.highlight, .play-highlight');
+      if (!activeWord) return;
+
+      const containerRect = container.getBoundingClientRect();
+      const wordRect = activeWord.getBoundingClientRect();
+      const visibleTop = containerRect.top + container.clientTop;
+      const visibleBottom = visibleTop + container.clientHeight;
+
+      if (wordRect.top < visibleTop) {
+        container.scrollTo({ top: container.scrollTop - (visibleTop - wordRect.top), behavior: 'smooth' });
+      } else if (wordRect.bottom > visibleBottom) {
+        container.scrollTo({ top: container.scrollTop + (wordRect.bottom - visibleBottom), behavior: 'smooth' });
+      }
     }
 
     function showCorrectAnswer(word) { $('optionsContainer').classList.add('play-answer'); $('optionsContainer').innerHTML = ''; applyAnswerVisibility(); if (!isPaused) startAutoProgress(); }
@@ -462,7 +518,7 @@
     function moveAyah(amount) { if (!surah) return; const nextAyah = currentAyah + amount; if (nextAyah < 0 || nextAyah >= surah.ayahs.length) return; changeAyah(nextAyah); }
     function updateAyahNavigation() { $('previousAyah').disabled = !surah || currentAyah === 0; $('nextAyah').disabled = !surah || currentAyah === surah.ayahs.length - 1; }
     function updateLoop() { loopStartAyah = Number($('loopStartSelect').value); loopEndAyah = Number($('loopEndSelect').value); if (loopStartAyah > loopEndAyah) [loopStartAyah, loopEndAyah] = [loopEndAyah, loopStartAyah]; $('loopStartSelect').value = loopStartAyah; $('loopEndSelect').value = loopEndAyah; if (isPlayMode) startAutoProgress(); }
-    function setFont(type, amount) { const root = document.documentElement, styles = { ayah: ['--ayah-size', 18, 72], answer: ['--answer-size', 12, 36], trans: ['--trans-size', 12, 36] }; const [property, min, max] = styles[type]; const current = parseFloat(getComputedStyle(root).getPropertyValue(property)); root.style.setProperty(property, `${Math.max(min, Math.min(max, current + amount))}px`); }
+    function setFont(type, amount) { const root = document.documentElement, styles = { ayah: ['--ayah-size', 18, 72], answer: ['--answer-size', 12, 36], trans: ['--trans-size', 12, 36] }; const [property, min, max] = styles[type]; const current = parseFloat(getComputedStyle(root).getPropertyValue(property)); root.style.setProperty(property, `${Math.max(min, Math.min(max, current + amount))}px`); keepActiveWordVisible(); }
     function showCompletion() { $('totalRight').textContent = rightAttempts; $('totalWrong').textContent = wrongAttempts; $('timeTaken').textContent = formatTime(Math.floor((Date.now() - (startTime || Date.now())) / 1000)); $('completionModal').style.display = 'flex'; }
     function formatTime(seconds) { return [Math.floor(seconds / 3600), Math.floor(seconds / 60) % 60, seconds % 60].map(n => String(n).padStart(2, '0')).join(':'); }
     function startOver() { $('completionModal').style.display = 'none'; currentAyah = currentWord = rightAttempts = wrongAttempts = 0; updateScore(); startTime = Date.now(); displayWord(); }
