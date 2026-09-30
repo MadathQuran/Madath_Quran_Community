@@ -9,8 +9,8 @@
     :root { --green: #347a49; --light: #f1f5f2; --border: #d4e2d7; --ayah-size: 32px; --answer-size: 16px; --trans-size: 18px; }
     .root-word { font-size: 1.35em; font-weight: 600; color: #347a49; }
     * { box-sizing: border-box; }
-    body { margin: 0; padding: 32px 0 24px; min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; font-family: Poppins, sans-serif; text-align: center; color: #333; }
-    .container { width: min(760px, 96%); padding: 12px 16px 110px; }
+    body { margin: 0; padding: 32px 0 0; min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; font-family: Poppins, sans-serif; text-align: center; color: #333; }
+    .container { width: min(760px, 96%); padding: 12px 16px 0; }
     .top-line { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 42px; margin-bottom: 4px; overflow-x: auto; white-space: nowrap; scrollbar-width: thin; }
     .page-navigation { flex: 0 0 auto; margin: 0; }
     .top-line #surahName { flex: 0 0 auto; margin: 0; font-size: 22px; }
@@ -164,29 +164,29 @@
     @media (max-width: 480px) { #surahName { font-size: 20px; } #ayahContainer { height: 130px; } #ayahText { font-size: var(--ayah-size); } #transliterationText { font-size: var(--trans-size); } #optionsContainer button { font-size: var(--answer-size); padding: 8px; } }
 
     /* Keep the header stable and let the content stack naturally above the fixed controls. */
-    .container { display: flex; flex-direction: column; padding-bottom: 88px; }
+    .container { display: flex; flex-direction: column; padding-bottom: 52px; }
     .top-line, #surahInfo { flex: 0 0 auto; }
     #surahInfo { margin-bottom: 24px; }
     #ayahContainer { order: 1; height: auto; min-height: clamp(150px, 25vh, 240px); margin: 0 0 24px; padding: 12px 0; }
     #transliterationContainer { order: 2; min-height: 0; margin: 0 0 18px; padding: 0 8px; }
-    #optionsContainer { order: 3; min-height: 0; margin: 0 0 8px; padding: 0 4px; gap: 8px; }
+    #optionsContainer { order: 3; min-height: 0; margin: 0; padding: 0 4px; gap: 8px; }
     #optionsContainer button { min-height: 0; padding: 8px 10px; }
     #optionsContainer.play-answer { min-height: 0; margin: 0; }
     .controls-row { order: 4; }
 
     @media (max-width: 600px) {
-      .container { padding-bottom: 72px; }
+      .container { padding-bottom: 52px; }
       #surahInfo { margin-bottom: 22px; }
       #ayahContainer { min-height: clamp(150px, 30vh, 260px); margin-bottom: 22px; }
       #transliterationContainer { margin-bottom: 16px; }
-      #optionsContainer { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 4px; }
+      #optionsContainer { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 0; }
       #optionsContainer button { width: 100%; justify-self: stretch; padding: 6px 7px; }
     }
 
     /* Keep bottom controls anchored to their own areas. */
     .controls-row { max-width: none; justify-content: space-between; overflow: visible; }
     .controls-row .answer-visibility { margin-right: auto; }
-    .quiz-score { position: absolute; left: 50%; transform: translateX(-50%); }
+    .quiz-score { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
     .right-controls { display: flex; align-items: center; gap: 8px; margin-left: auto; }
     /* Keep the reading play/pause button centered in the fixed controls. */
     .speed-controls .pause-play { position: absolute; left: 50%; transform: translateX(-50%); }
@@ -202,9 +202,73 @@
       .settings-trigger { width: 34px; height: 32px; font-size: 17px; }
       #answerVisibilityButton { padding: 5px 7px; }
     }
+
+    /* Keep quiz answers directly above the fixed control bar. */
+    .container { min-height: 100vh; padding-bottom: calc(var(--controls-height, 56px) + 1px); }
+    body.quiz-mode .container { display: flex; }
+    body.quiz-mode #optionsContainer { margin-top: auto; margin-bottom: 1px !important; padding-bottom: 0; }
+    .controls-row { bottom: 0; }
+    @media (max-width: 600px) {
+      .controls-row { bottom: 0; }
+    }
+
+    /* Keep quiz answers in the viewport, directly above the fixed controls. */
+    body.quiz-mode {
+      height: 100vh;
+      overflow: hidden;
+    }
+    body.quiz-mode .container {
+      height: calc(100vh - 32px);
+      min-height: 0;
+      overflow: hidden;
+      padding-bottom: calc(var(--controls-height, 56px) + 1px);
+    }
+    body.quiz-mode #optionsContainer {
+      min-height: 0;
+      max-height: 100%;
+      overflow-y: auto;
+      margin-bottom: 0 !important;
+      padding-bottom: 0;
+      flex-shrink: 1;
+    }
+
+    /* Standardize quiz answer boxes and keep them just above the control bar. */
+    body.quiz-mode .container {
+      padding-bottom: calc(var(--controls-height, 56px) + 8px);
+    }
+    body.quiz-mode #optionsContainer {
+      row-gap: 8px;
+      column-gap: 8px;
+      margin-bottom: 7px !important;
+      padding-bottom: 0;
+    }
+    body.quiz-mode #optionsContainer button {
+      width: 100%;
+      height: 48px;
+      min-height: 48px;
+      padding: 8px 12px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    @media (max-width: 600px) {
+      body.quiz-mode .container {
+        height: calc(100vh - 8px);
+        padding-bottom: calc(var(--controls-height, 56px) + 8px);
+      }
+      body.quiz-mode #optionsContainer {
+        margin-bottom: 7px !important;
+      }
+      body.quiz-mode #optionsContainer button {
+        height: 44px;
+        min-height: 44px;
+        padding: 6px 8px;
+        font-size: 13px;
+      }
+    }
   </style>
 </head>
-<body>
+<body class="quiz-mode">
   <button id="nextAyah" class="ayah-navigation left" type="button" aria-label="Next ayah">‹</button>
   <button id="previousAyah" class="ayah-navigation right" type="button" aria-label="Previous ayah">›</button>
   <main class="container">
@@ -417,6 +481,9 @@
     $('startOver').onclick = startOver;
     $('nextSurah').onclick = goToNextSurah;
     if (Number(surahId) >= 114) $('nextSurah').disabled = true;
+    const updateControlsHeight = () => document.documentElement.style.setProperty('--controls-height', `${document.querySelector('.controls-row').offsetHeight}px`);
+    window.addEventListener('resize', updateControlsHeight);
+    updateControlsHeight();
     loadSurah();
   </script>
 </body>
