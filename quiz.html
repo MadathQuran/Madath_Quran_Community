@@ -203,10 +203,22 @@
     /* Keep the header stable and let the content stack naturally above the fixed controls. */
     .container { display: flex; flex-direction: column; padding-bottom: 52px; }
     .top-line, #surahInfo { flex: 0 0 auto; }
-    #surahInfo { margin-bottom: 24px; }
+    #surahInfo { order: 1; margin-bottom: 24px; }
     #ayahContainer { order: 1; height: auto; min-height: clamp(150px, 25vh, 240px); margin: 0 0 24px; padding: 12px 0; }
     #currentWordMeaning { order: 2; }
-    body.read-mode #currentWordMeaning { order: 1; }
+    body.read-mode #currentWordMeaning { order: 2; height: auto; min-height: calc(var(--answer-size) * 1.5); margin: 0; }
+    body.read-mode #ayahContainer {
+      order: 3;
+      flex: 0 0 auto;
+      min-height: 0;
+      margin: 0 0 24px;
+      padding: 0;
+      overflow: visible;
+      align-items: center;
+    }
+    body.read-mode #currentWordMeaning { margin-top: auto; }
+    body.read-mode #ayahContainer { margin-bottom: auto; }
+    body.read-mode #ayahText { margin: 0 10px; }
     #transliterationContainer { order: 3; min-height: 0; margin: 0 0 18px; padding: 0 8px; }
     #optionsContainer { order: 3; min-height: 0; margin: 0; padding: 0 4px; gap: 8px; }
     #optionsContainer button { min-height: 0; padding: 8px 10px; }
