@@ -425,26 +425,37 @@
     @media (max-width: 600px) {
       .controls-row {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        grid-template-columns: minmax(0, 1fr) auto auto auto minmax(0, 1fr);
         grid-template-areas:
-          "navigation navigation navigation"
-          "settings score mode"
-          "answers answers answers"
-          "speed speed speed";
+          "navigation navigation navigation navigation navigation"
+          "settings score answers mode mode"
+          "speed speed speed speed speed";
         align-items: center;
         justify-items: center;
-        gap: 5px 8px;
-        padding: 6px;
+        gap: 3px 6px;
+        padding: 4px 6px;
         overflow: visible;
+        border-radius: 12px;
       }
       .navigation-controls { grid-area: navigation; justify-self: center; width: 100%; justify-content: center; }
-      .navigation-controls .loop-range { justify-content: center; max-width: 100%; }
+      .navigation-controls .loop-range { justify-content: center; max-width: 100%; gap: 2px; }
       .settings-panel { grid-area: settings; justify-self: start; }
       #quizScore { grid-area: score; position: static; justify-self: center; transform: none; }
       .mode-controls { grid-area: mode; justify-self: end; }
       .answer-visibility { grid-area: answers; justify-self: center; }
       .speed-controls { grid-area: speed; justify-self: center; }
-      .navigation-controls input[type="text"] { width: 48px; max-width: 48px; font-size: 16px; }
+      .controls-row > * { min-width: 0; }
+      .settings-trigger, #modeButton, #answerVisibilityButton { width: 28px; min-width: 28px; height: 28px; }
+      .settings-trigger { font-size: 15px; }
+      #answerVisibilityButton { padding: 0; }
+      .navigation-controls input[type="text"] { width: 44px; max-width: 44px; padding: 3px 1px; font-size: 16px; }
+      .navigation-controls .loop-toggle { min-width: 27px; width: 27px; height: 27px; }
+      .quiz-score { gap: 3px; font-size: 10px; }
+      .quiz-score span { min-width: 10px; }
+      .speed-controls.visible { gap: 4px; }
+      .speed-range { gap: 3px; font-size: 10px; }
+      #speedSelect { max-width: 52px; padding: 3px 2px !important; font-size: 10px; }
+      .speed-controls .pause-play { min-width: 27px; width: 27px; height: 27px; font-size: 12px; }
     }
   </style>
 </head>
