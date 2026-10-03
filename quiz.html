@@ -78,7 +78,7 @@
     #optionsContainer.play-answer { display: none; min-height: 0; }
     #optionsContainer button { width: 100%; min-height: 0; margin: 0; padding: 7px 10px; border: 2px solid #ddd; border-radius: 16px; background: #f8f9fa; color: #333; font-size: var(--answer-size); line-height: 1.2; }
     .correct { background: #4caf50 !important; color: #fff !important; }
-    .incorrect { background: #dc3545 !important; color: #fff !important; }
+    .incorrect { background: #888 !important; color: #fff !important; }
     #transliterationContainer { min-height: 42px; margin-top: 15px; }
     .ayah-control { display: flex; justify-content: center; align-items: center; gap: 8px; margin: 12px 0; }
     .ayah-control label { color: #555; font-size: 13px; }
@@ -185,7 +185,7 @@
     .zoom-controls { margin-top: 14px; }
     .zoom-button { width: 42px; height: 38px; font-size: 18px; }
     #scoreWrapper { margin: 12px 0 0; color: #555; font-size: 14px; }
-    .score-value { margin: 0 5px; font-weight: bold; } .correct-value { color: #4caf50; } .wrong-value { color: #dc3545; }
+    .score-value { margin: 0 5px; font-weight: bold; } .correct-value { color: #4caf50; } .wrong-value { color: #777; }
     #completionModal { display: none; position: fixed; inset: 0; z-index: 20; justify-content: center; align-items: center; background: rgba(0,50,0,.6); }
     #completionMessage { width: min(400px,90%); padding: 20px; border-radius: 15px; background: #fff; }
     #completionMessage .navigation-button { margin: 10px 4px 0; }
@@ -321,7 +321,7 @@
 
     /* Standardize quiz answer boxes and keep them just above the control bar. */
     body.quiz-mode .container {
-      padding-bottom: calc(var(--controls-height, 56px) + 8px);
+      padding-bottom: calc(var(--controls-height, 56px) + 12px);
     }
     body.quiz-mode #optionsContainer {
       row-gap: 8px;
@@ -341,7 +341,7 @@
     @media (max-width: 600px) {
       body.quiz-mode .container {
         height: calc(100vh - 8px);
-        padding-bottom: calc(var(--controls-height, 56px) + 8px);
+        padding-bottom: calc(var(--controls-height, 56px) + 12px);
       }
       body.quiz-mode #optionsContainer {
         margin-bottom: 7px !important;
@@ -457,6 +457,64 @@
       #speedSelect { max-width: 52px; padding: 3px 2px !important; font-size: 10px; }
       .speed-controls .pause-play { min-width: 27px; width: 27px; height: 27px; font-size: 12px; }
     }
+
+    /* Place the quiz counters on opposite sides of the ayah selector. */
+    .ayah-picker-row {
+      gap: 6px;
+    }
+    .ayah-picker-row #quizScore,
+    .ayah-picker-row #wrongQuizScore { position: static; flex: 0 0 auto; transform: none; }
+    .ayah-picker-row #ayahLoopButton { order: 2; width: 34px; min-width: 34px; height: 32px; font-size: 18px; }
+    .ayah-picker-row #wrongQuizScore { order: 3; }
+    .ayah-picker-row .quiz-score { margin: 0; }
+    .ayah-picker-row .ayah-picker { gap: 4px; }
+
+    /* Keep the fixed toolbar compact while preserving its controls. */
+    .controls-row { gap: 4px; padding: 3px 6px; }
+    .settings-trigger { width: 34px; height: 32px; }
+    .navigation-controls .loop-toggle,
+    .navigation-controls .ayah-loop { min-width: 28px; width: 28px; height: 28px; font-size: 16px; }
+    .speed-controls .pause-play { min-width: 28px; width: 28px; height: 28px; }
+    @media (max-width: 600px) {
+      .ayah-picker-row { gap: 4px; }
+      .ayah-picker-row #ayahLoopButton { width: 29px; min-width: 29px; height: 29px; }
+      .controls-row { gap: 2px 4px; padding: 2px 5px; }
+      .controls-row .navigation-controls { min-height: 27px; }
+      .settings-trigger, #modeButton, #answerVisibilityButton { height: 26px; }
+      .speed-controls .pause-play { min-width: 26px; width: 26px; height: 26px; }
+    }
+
+    /* Keep the root label readable and number fields comfortable for three digits. */
+    .root-word { font-size: 20px; }
+    .ayah-picker-row input[type="text"],
+    .navigation-controls input[type="text"] {
+      width: 68px;
+      max-width: 68px;
+      min-height: 34px;
+      padding: 6px 8px;
+      border: 1px solid #c8d8cc;
+      border-radius: 8px;
+      background: #fff;
+      color: #333;
+      text-align: center;
+      font: 14px Poppins, sans-serif;
+    }
+    .ayah-picker-row input[type="text"]:focus,
+    .navigation-controls input[type="text"]:focus {
+      border-color: var(--green);
+      outline: 2px solid rgba(52, 122, 73, .16);
+    }
+    @media (max-width: 600px) {
+      .root-word { font-size: 18px; }
+      .ayah-picker-row input[type="text"],
+      .navigation-controls input[type="text"] {
+        width: 62px;
+        max-width: 62px;
+        min-height: 32px;
+        padding: 5px 6px;
+        font-size: 14px;
+      }
+    }
   </style>
 </head>
 <body class="quiz-mode">
@@ -472,7 +530,9 @@
     </div>
     <div id="basmala" lang="ar" dir="rtl" aria-label="Bismillah">﷽</div>
     <div class="ayah-picker-row">
+      <span id="quizScore" class="quiz-score visible correct-value" aria-label="Correct answers"><span id="rightCountBottom">0</span></span>
       <label class="ayah-picker" for="ayahSelect"><span aria-hidden="true">Ayah</span><input id="ayahSelect" type="text" inputmode="numeric" pattern="[0-9]*" value="1" list="ayahNumberOptions" autocomplete="off" aria-label="Ayah number"></label>
+      <span id="wrongQuizScore" class="quiz-score visible wrong-value" aria-label="Wrong answers"><span id="wrongCountBottom">0</span></span>
       <datalist id="ayahNumberOptions"></datalist>
       <button id="ayahLoopButton" class="ayah-loop" type="button" aria-label="Loop current ayah" aria-pressed="false" title="Loop current ayah">↺</button>
     </div>
@@ -532,7 +592,6 @@
         <label class="speed-range" for="speedSelect"><span>S</span><select id="speedSelect" aria-label="Reading speed"><option value="500">0.5s</option><option value="1000">1s</option><option value="1500" selected>1.5s</option><option value="2000">2s</option><option value="2500">2.5s</option><option value="3000">3s</option></select></label>
         <button id="pausePlayButton" class="pause-play" type="button" aria-label="Pause reading">Ⅱ</button>
       </div>
-      <div id="quizScore" class="quiz-score visible" aria-label="Quiz score"><span id="rightCountBottom" class="correct-value">0</span><span id="wrongCountBottom" class="wrong-value">0</span></div>
       <div class="mode-controls">
         <button id="modeButton" class="mode-button" type="button" aria-label="Switch to Read mode"><strong>R</strong></button>
       </div>
@@ -714,7 +773,7 @@
       return Math.max(650, Math.min(3200, speed + (wordLength - 5) * 140));
     }
     function startAutoProgress() { clearTimeout(timer); timer = setTimeout(navigateNext, getWordDuration(ayahs[currentAyah][currentWord])); }
-    function togglePlay() { clearTimeout(timer); isPlayMode = !isPlayMode; document.body.classList.toggle('read-mode', isPlayMode); isPaused = false; $('modeButton').innerHTML = isPlayMode ? '<strong>Q</strong>' : '<strong>R</strong>'; $('modeButton').setAttribute('aria-label', isPlayMode ? 'Switch to Quiz mode' : 'Switch to Read mode'); $('modeButton').title = isPlayMode ? 'Switch to Quiz mode' : 'Switch to Read mode'; $('modeButton').classList.toggle('reading', isPlayMode); $('speedControls').classList.toggle('visible', isPlayMode); $('quizScore').classList.toggle('visible', !isPlayMode); $('pausePlayButton').textContent = 'Ⅱ'; $('pausePlayButton').setAttribute('aria-label', 'Pause reading'); if (isPlayMode) startTime = Date.now(); displayWord(); applyAnswerVisibility(); }
+    function togglePlay() { clearTimeout(timer); isPlayMode = !isPlayMode; document.body.classList.toggle('read-mode', isPlayMode); isPaused = false; $('modeButton').innerHTML = isPlayMode ? '<strong>Q</strong>' : '<strong>R</strong>'; $('modeButton').setAttribute('aria-label', isPlayMode ? 'Switch to Quiz mode' : 'Switch to Read mode'); $('modeButton').title = isPlayMode ? 'Switch to Quiz mode' : 'Switch to Read mode'; $('modeButton').classList.toggle('reading', isPlayMode); $('speedControls').classList.toggle('visible', isPlayMode); $('quizScore').classList.toggle('visible', !isPlayMode); $('wrongQuizScore').classList.toggle('visible', !isPlayMode); $('pausePlayButton').textContent = 'Ⅱ'; $('pausePlayButton').setAttribute('aria-label', 'Pause reading'); if (isPlayMode) startTime = Date.now(); displayWord(); applyAnswerVisibility(); }
     function togglePause() { if (!isPlayMode) return; isPaused = !isPaused; if (isPaused) clearTimeout(timer); else startAutoProgress(); $('pausePlayButton').textContent = isPaused ? '▶' : 'Ⅱ'; $('pausePlayButton').setAttribute('aria-label', isPaused ? 'Resume reading' : 'Pause reading'); }
     function toggleLoop() {
       isLoopMode = !isLoopMode;
