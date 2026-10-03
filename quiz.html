@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Noto+Naskh+Arabic&display=swap" rel="stylesheet">
   <style>
     :root { --green: #347a49; --light: #f1f5f2; --border: #d4e2d7; --ayah-size: 32px; --answer-size: 16px; --trans-size: 18px; }
-    .root-word { font-size: 1.35em; font-weight: 600; color: #347a49; }
+    .root-word { font-size: 20px; font-weight: 600; color: #347a49; }
     * { box-sizing: border-box; }
     body { margin: 0; padding: 32px 0 0; min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; font-family: Poppins, sans-serif; text-align: center; color: #333; }
     .container { width: min(760px, 96%); padding: 12px 16px 0; }
@@ -27,11 +27,26 @@
     .root-word-line { display: flex; justify-content: center; align-items: center; min-height: 24px; margin: 0 0 4px; }
     #rootWordContainer { display: inline-flex; align-items: center; gap: 4px; color: #666; font-size: 12px; white-space: nowrap; }
     #rootWordContainer[hidden] { display: none; }
-    #rootWord { font-size: 1.25em; }
+    #rootWord { font-size: 20px; }
     #basmala { margin: 4px 0 10px; color: var(--green); font: 18px/1.4 'Noto Naskh Arabic', serif; }
     .navigation-controls { display: flex; align-items: center; gap: 5px; white-space: nowrap; }
     .navigation-controls .ayah-picker, .navigation-controls .loop-range { display: inline-flex; align-items: center; gap: 3px; color: #555; font-size: 11px; }
-    .navigation-controls select { max-width: 62px; padding: 4px; font-size: 11px; }
+    .navigation-controls select:not(#speedSelect) {
+      width: 68px;
+      max-width: 68px;
+      min-height: 34px;
+      padding: 6px 8px;
+      border: 1px solid #c8d8cc;
+      border-radius: 8px;
+      background: #fff;
+      color: #333;
+      text-align: center;
+      font: 14px Poppins, sans-serif;
+    }
+    .navigation-controls select:not(#speedSelect):focus {
+      border-color: var(--green);
+      outline: 2px solid rgba(52, 122, 73, .16);
+    }
     .navigation-controls .loop-toggle { min-width: 32px; width: 32px; height: 30px; font-size: 18px; }
     .navigation-controls .ayah-loop { min-width: 32px; width: 32px; height: 30px; font-size: 18px; }
     #surahInfo .loop-range label { color: #555; font-size: 13px; }
@@ -113,6 +128,8 @@
     .quiz-score { display: flex; align-items: center; gap: 7px; font-weight: 600; }
     .quiz-score:not(.visible) { display: none; }
     .quiz-score span { min-width: 18px; }
+    #quizScore { font-size: 17px; }
+    @media (max-width: 600px) { #quizScore { font-size: 15px; } }
     .controls-row { bottom: 10px; }
     #ayahContainer { min-height: 150px; height: auto; margin: 24px 0 22px; padding: 18px 0; }
     #transliterationContainer { margin: 0 0 16px; padding: 0 8px; }
@@ -343,7 +360,8 @@
       .settings-trigger { width: 30px; height: 30px; font-size: 16px; }
       .navigation-controls { gap: 2px; }
       .navigation-controls .ayah-picker { gap: 2px; font-size: 11px; }
-      .navigation-controls select { max-width: 42px; padding: 4px 2px; font-size: 10px; }
+      #rootWord { font-size: 18px; }
+      .navigation-controls select:not(#speedSelect) { width: 62px; max-width: 62px; min-height: 32px; padding: 5px 6px; font-size: 14px; }
       .navigation-controls .loop-toggle,
       .navigation-controls .ayah-loop { min-width: 29px; width: 29px; height: 29px; font-size: 17px; }
       .navigation-controls .loop-range { gap: 1px; font-size: 10px; }
@@ -363,7 +381,7 @@
   <button id="previousAyah" class="ayah-navigation right" type="button" aria-label="Previous ayah">›</button>
   <main class="container">
     <div class="top-line">
-      <div class="page-navigation"><a class="navigation-button" href="index.html">Surah List</a></div>
+      <div class="page-navigation"><a class="navigation-button" href="surah-list.html">Surah List</a></div>
       <div class="surah-heading">
         <h1 id="surahName">Loading…</h1>
       </div>
@@ -435,7 +453,7 @@
     </div>
   </main>
 
-  <div id="completionModal"><div id="completionMessage"><h2>Keep Going</h2><p>May your efforts be accepted by Allah.</p><p>Correct: <span id="totalRight">0</span> | Wrong: <span id="totalWrong">0</span></p><p>Time Taken: <span id="timeTaken"></span></p><button id="startOver" type="button">Start Over</button><button id="nextSurah" type="button">Next Surah</button><a class="navigation-button" href="index.html">Surah List</a></div></div>
+  <div id="completionModal"><div id="completionMessage"><h2>Keep Going</h2><p>May your efforts be accepted by Allah.</p><p>Correct: <span id="totalRight">0</span> | Wrong: <span id="totalWrong">0</span></p><p>Time Taken: <span id="timeTaken"></span></p><button id="startOver" type="button">Start Over</button><button id="nextSurah" type="button">Next Surah</button><a class="navigation-button" href="surah-list.html">Surah List</a></div></div>
 
   <script>
     const surahId = new URLSearchParams(location.search).get('surah') || '1';
