@@ -384,7 +384,7 @@
   <button id="previousAyah" class="ayah-navigation right" type="button" aria-label="Previous ayah">›</button>
   <main class="container">
     <div class="top-line">
-      <div class="page-navigation"><a class="navigation-button" href="surah-list.html">Surah List</a></div>
+      <div class="page-navigation"><a class="navigation-button" href="./surah-list.html">Surah List</a></div>
       <div class="surah-heading">
         <h1 id="surahName">Loading…</h1>
       </div>
@@ -393,6 +393,7 @@
     <div id="basmala" lang="ar" dir="rtl" aria-label="Bismillah">﷽</div>
     <div class="ayah-picker-row">
       <label class="ayah-picker" for="ayahSelect">Ayah <select id="ayahSelect" aria-label="Ayah number"></select></label>
+      <button id="ayahLoopButton" class="ayah-loop" type="button" aria-label="Loop current ayah" aria-pressed="false" title="Loop current ayah">↺</button>
     </div>
     <div id="currentWordMeaning" aria-live="polite"></div>
     <div id="surahInfo" class="ayah-control"></div>
@@ -443,7 +444,6 @@
         </div>
       </section>
       <div class="navigation-controls">
-        <button id="ayahLoopButton" class="ayah-loop" type="button" aria-label="Loop current ayah" aria-pressed="false" title="Loop current ayah">↺</button>
         <span class="loop-range"><label for="loopStartSelect">L</label><select id="loopStartSelect" aria-label="Loop start ayah"></select><label for="loopEndSelect">–</label><select id="loopEndSelect" aria-label="Loop end ayah"></select><button id="loopButton" class="loop-toggle" type="button" aria-label="Enable range loop" aria-pressed="false" title="Enable range loop">↻</button></span>
       </div>
       <div class="answer-visibility"><button id="answerVisibilityButton" type="button" aria-label="Hide answers">H</button></div>
@@ -458,7 +458,7 @@
     </div>
   </main>
 
-  <div id="completionModal"><div id="completionMessage"><h2>Keep Going</h2><p>May your efforts be accepted by Allah.</p><p>Correct: <span id="totalRight">0</span> | Wrong: <span id="totalWrong">0</span></p><p>Time Taken: <span id="timeTaken"></span></p><button id="startOver" type="button">Start Over</button><button id="nextSurah" type="button">Next Surah</button><a class="navigation-button" href="surah-list.html">Surah List</a></div></div>
+  <div id="completionModal"><div id="completionMessage"><h2>Keep Going</h2><p>May your efforts be accepted by Allah.</p><p>Correct: <span id="totalRight">0</span> | Wrong: <span id="totalWrong">0</span></p><p>Time Taken: <span id="timeTaken"></span></p><button id="startOver" type="button">Start Over</button><button id="nextSurah" type="button">Next Surah</button><a class="navigation-button" href="./surah-list.html">Surah List</a></div></div>
 
   <script>
     const surahId = new URLSearchParams(location.search).get('surah') || '1';
