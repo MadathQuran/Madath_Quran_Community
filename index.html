@@ -13,8 +13,6 @@
     .intro { margin: 0 auto 20px; color: #666; }
     .search-form { display: flex; justify-content: center; gap: 8px; width: min(560px, 100%); margin: 0 auto 24px; }
     #searchInput { flex: 1; min-width: 0; padding: 10px 14px; border: 1px solid #d4e2d7; border-radius: 999px; font: 14px Poppins, sans-serif; text-align: center; }
-    button { padding: 10px 18px; border: 0; border-radius: 999px; background: linear-gradient(135deg, #4caf50, #319b59); color: #fff; font: 600 14px Poppins, sans-serif; cursor: pointer; }
-    button:hover, button:focus { background: #347a49; outline: none; }
     .surah-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; width: min(900px, 100%); margin: 0 auto; }
     .surah-tile { display: block; padding: 18px 14px; border: 1px solid #d4e2d7; border-radius: 14px; background: #f8fbf8; color: #347a49; text-decoration: none; box-shadow: 0 3px 9px rgba(52,122,73,.08); transition: .2s ease; }
     .surah-tile:hover, .surah-tile:focus { background: #eaf5ec; box-shadow: 0 6px 14px rgba(52,122,73,.16); transform: translateY(-2px); outline: none; }
@@ -44,15 +42,32 @@
     const status = document.getElementById('status');
     let surahs = [];
 
+    document.getElementById('searchForm').addEventListener('submit', event => event.preventDefault());
+
     function renderSurahs(query = '') {
       const search = query.trim().toLowerCase();
-      const matches = surahs.filter(surah => [surah.id, surah.name, surah.englishName].some(value => String(value).toLowerCase().includes(search)));
-      grid.innerHTML = matches.map(surah => `
-        <a class="surah-tile" href="quiz.html?surah=${encodeURIComponent(surah.id)}">
-          <span class="surah-number">Surah ${surah.id}</span>
-          <span class="surah-arabic" lang="ar" dir="rtl">${surah.name}</span>
-          <span class="surah-name">${surah.englishName}</span>
-        </a>`).join('');
+      const matches = surahs.filter(surah => [surah.id, surah.name, surah.englishName]
+        .some(value => String(value ?? '').toLowerCase().includes(search)));
+      grid.replaceChildren(...matches.map(surah => {
+        const tile = document.createElement('a');
+        tile.className = 'surah-tile';
+        tile.href = `quiz.html?surah=${encodeURIComponent(surah.id)}`;
+
+        const number = document.createElement('span');
+        number.className = 'surah-number';
+        number.textContent = `Surah ${surah.id}`;
+        const arabicName = document.createElement('span');
+        arabicName.className = 'surah-arabic';
+        arabicName.lang = 'ar';
+        arabicName.dir = 'rtl';
+        arabicName.textContent = surah.name;
+        const englishName = document.createElement('span');
+        englishName.className = 'surah-name';
+        englishName.textContent = surah.englishName;
+
+        tile.append(number, arabicName, englishName);
+        return tile;
+      }));
       status.textContent = matches.length ? '' : 'No Surahs found.';
     }
 
@@ -63,7 +78,10 @@
         if (!response.ok) throw new Error('Unavailable');
         return response.json();
       })
-      .then(data => { surahs = data; renderSurahs(); })
+      .then(data => {
+        surahs = Array.isArray(data) ? data : [];
+        renderSurahs(input.value);
+      })
       .catch(() => { status.textContent = 'Unable to load the Surah list.'; });
   </script>
 </body>
