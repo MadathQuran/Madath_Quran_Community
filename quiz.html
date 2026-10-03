@@ -61,10 +61,11 @@
     #ayahText { width: 100%; margin: 0 10px; color: #333; font: var(--ayah-size)/1.45 'Noto Naskh Arabic', serif; direction: rtl; }
     .ayah-word { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; direction: rtl; cursor: pointer; border-radius: 6px; transition: color .9s cubic-bezier(.22, 1, .36, 1), background-color .9s cubic-bezier(.22, 1, .36, 1), text-shadow .9s cubic-bezier(.22, 1, .36, 1); }
     .arabic-word { opacity: .86; transition: opacity .9s cubic-bezier(.22, 1, .36, 1); }
-    #currentWordMeaning { order: 0; display: flex; flex: 0 0 auto; align-items: center; justify-content: center; width: 100%; height: calc(var(--answer-size) * 1.5); margin: 0 0 12px; padding: 0 8px; overflow: hidden; color: var(--green); font: var(--answer-size)/1.2 Poppins, sans-serif; direction: ltr; white-space: nowrap; text-overflow: ellipsis; }
-    body:not(.read-mode) #currentWordMeaning { display: none; }
-
-    #ayahText.answers-hidden .word-answer { visibility: hidden; }
+    #currentWordMeaning { display: none !important; }
+    .word-answer { display: none; max-width: 12em; margin-bottom: 6px; color: var(--green); font: var(--answer-size)/1.2 Poppins, sans-serif; direction: ltr; text-align: center; white-space: normal; overflow-wrap: anywhere; }
+    body.read-mode .word-answer { display: block; }
+    body.read-mode .ayah-word:not(.meaning-revealed) .word-answer { visibility: hidden; }
+    #ayahText.answers-hidden .word-answer { visibility: hidden !important; }
     .ayah-word:hover, .ayah-word:focus { background: #eaf5ec; outline: none; }
     .highlight { color: #4caf50; font-weight: bold; background-color: rgba(76,175,80,.08); text-shadow: 1px 1px 8px rgba(40,167,69,.28); }
     .play-highlight { color: inherit; font-weight: bold; background-color: rgba(20,120,212,.08); text-shadow: none; }
@@ -125,6 +126,8 @@
     .settings-panel.open .below-loop-content { display: block; }
     .ayah-picker { display: inline-flex; align-items: center; gap: 4px; color: #555; font-size: 13px; white-space: nowrap; }
     .ayah-picker select { padding: 5px 7px; }
+    .ayah-picker-row { display: flex; justify-content: center; align-items: center; gap: 8px; margin: 4px 0 12px; }
+    .ayah-picker-row select { width: 68px; min-height: 34px; padding: 6px 8px; border: 1px solid #c8d8cc; border-radius: 8px; background: #fff; text-align: center; font: 14px Poppins, sans-serif; }
     .quiz-score { display: flex; align-items: center; gap: 7px; font-weight: 600; }
     .quiz-score:not(.visible) { display: none; }
     .quiz-score span { min-width: 18px; }
@@ -388,6 +391,9 @@
       <div class="root-word-line"><span id="rootWordContainer">Root: <span class="root-word" id="rootWord">N/A</span></span></div>
     </div>
     <div id="basmala" lang="ar" dir="rtl" aria-label="Bismillah">﷽</div>
+    <div class="ayah-picker-row">
+      <label class="ayah-picker" for="ayahSelect">Ayah <select id="ayahSelect" aria-label="Ayah number"></select></label>
+    </div>
     <div id="currentWordMeaning" aria-live="polite"></div>
     <div id="surahInfo" class="ayah-control"></div>
     <div id="ayahContainer"><p id="ayahText"></p></div>
@@ -437,7 +443,6 @@
         </div>
       </section>
       <div class="navigation-controls">
-        <label class="ayah-picker" for="ayahSelect"><span aria-hidden="true">A</span><select id="ayahSelect" aria-label="Ayah number"></select></label>
         <button id="ayahLoopButton" class="ayah-loop" type="button" aria-label="Loop current ayah" aria-pressed="false" title="Loop current ayah">↺</button>
         <span class="loop-range"><label for="loopStartSelect">L</label><select id="loopStartSelect" aria-label="Loop start ayah"></select><label for="loopEndSelect">–</label><select id="loopEndSelect" aria-label="Loop end ayah"></select><button id="loopButton" class="loop-toggle" type="button" aria-label="Enable range loop" aria-pressed="false" title="Enable range loop">↻</button></span>
       </div>
@@ -493,6 +498,10 @@
       }
     }
 
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
+    }
+
     function displayWord() {
       const ayah = ayahs[currentAyah], word = ayah[currentWord];
       const ayahText = $('ayahText');
@@ -501,7 +510,7 @@
 
       // Keep the word elements in place while progressing so their highlight can ease between words.
       if (ayahChanged || modeChanged || ayahText.querySelectorAll('.ayah-word').length !== ayah.length) {
-        ayahText.innerHTML = ayah.map((item, i) => `<span class="ayah-word" data-word-index="${i}" tabindex="${isPlayMode ? '-1' : '0'}" lang="ar" dir="rtl"><span class="arabic-word">${item.word}</span></span>`).join(' ');
+        ayahText.innerHTML = ayah.map((item, i) => `<span class="ayah-word" data-word-index="${i}" tabindex="${isPlayMode ? '-1' : '0'}" lang="ar" dir="rtl"><span class="word-answer" lang="en">${escapeHtml(item.correctMeaning || '')}</span><span class="arabic-word">${item.word}</span></span>`).join(' ');
         ayahText.dataset.ayahIndex = currentAyah;
         ayahText.dataset.playMode = isPlayMode;
         if (!isPlayMode) {
@@ -514,6 +523,7 @@
       ayahText.querySelectorAll('.ayah-word').forEach((element, index) => {
         element.classList.toggle('highlight', !isPlayMode && index === currentWord);
         element.classList.toggle('play-highlight', isPlayMode && index === currentWord);
+        element.classList.toggle('meaning-revealed', isPlayMode && index === currentWord);
       });
       $('currentWordMeaning').textContent = isPlayMode ? word.correctMeaning : '';
       $('currentWordMeaning').title = isPlayMode ? word.correctMeaning : '';
@@ -546,7 +556,7 @@
     function showOptions(word) { $('optionsContainer').classList.remove('play-answer'); const optionCount = Number($('optionCountSelect').value); const answers = [...new Set([word.correctMeaning, ...(word.options || [])])].slice(0, optionCount).sort(() => Math.random() - .5); $('optionsContainer').innerHTML = ''; answers.forEach(answer => { const button = document.createElement('button'); button.type = 'button'; button.textContent = answer; button.onclick = () => checkAnswer(button, answer, word.correctMeaning); $('optionsContainer').appendChild(button); }); applyAnswerVisibility(); }
     function applyAnswerVisibility() {
       $('optionsContainer').style.visibility = answersHidden ? 'hidden' : 'visible';
-      $('ayahText').classList.toggle('answers-hidden', answersHidden && isPlayMode);
+      $('ayahText').classList.toggle('answers-hidden', answersHidden);
       $('answerVisibilityButton').textContent = answersHidden ? 'A' : 'H';
       $('answerVisibilityButton').setAttribute('aria-label', answersHidden ? 'Show answers' : 'Hide answers');
       $('answerVisibilityButton').title = answersHidden ? 'Show answers' : 'Hide answers';
