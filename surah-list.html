@@ -8,14 +8,18 @@
   <style>
     * { box-sizing: border-box; }
     body { margin: 0; padding: 32px 16px; min-height: 100vh; background: #fff; color: #333; font-family: Poppins, sans-serif; text-align: center; }
-    .arabic-title { margin: 0 auto 4px; color: #347a49; font: 32px/1.5 'Noto Naskh Arabic', serif; }
-    h1 { margin: 0 0 4px; color: #347a49; font-size: 28px; }
+    .arabic-title { margin: 0 auto 4px; color: #a87908; font: 32px/1.5 'Noto Naskh Arabic', serif; background: linear-gradient(110deg, #8a6500 15%, #f5d76e 30%, #fff3b0 42%, #b8860b 55%, #f5d76e 70%, #8a6500 85%); background-size: 220% auto; background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gold-shimmer 3s linear infinite; }
+    @keyframes gold-shimmer { to { background-position: 220% center; } }
+    h1 { margin: 0 0 4px; color: #fff; font-size: 30px; font-weight: 700; letter-spacing: .08em; -webkit-text-fill-color: #fff; text-shadow: 0 1px 2px #47634e, 0 0 5px rgba(255,255,255,.95), 0 0 12px rgba(212,167,44,.85), 0 0 22px rgba(212,167,44,.55); }
     .intro { margin: 0 auto 20px; color: #666; }
+    .intro strong { display: block; color: #347a49; font-size: 20px; letter-spacing: .12em; }
     .search-form { display: flex; justify-content: center; gap: 8px; width: min(560px, 100%); margin: 0 auto 24px; }
     #searchInput { flex: 1; min-width: 0; padding: 10px 14px; border: 1px solid #d4e2d7; border-radius: 999px; font: 14px Poppins, sans-serif; text-align: center; }
     .surah-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; width: min(900px, 100%); margin: 0 auto; }
     .surah-tile { display: block; padding: 18px 14px; border: 1px solid #d4e2d7; border-radius: 14px; background: #f8fbf8; color: #347a49; text-decoration: none; box-shadow: 0 3px 9px rgba(52,122,73,.08); transition: .2s ease; }
-    .surah-tile:hover, .surah-tile:focus { background: #eaf5ec; box-shadow: 0 6px 14px rgba(52,122,73,.16); transform: translateY(-2px); outline: none; }
+    .surah-tile:hover, .surah-tile:focus, .surah-tile:active { background: radial-gradient(circle at 15% 20%, rgba(255,255,255,.95) 0 2px, transparent 4px), radial-gradient(circle at 82% 72%, rgba(255,255,255,.9) 0 2px, transparent 4px), linear-gradient(120deg, #f6e8b5, #fff4ce, #fffdf5, #f4e1a2, #fff7dc, #f6e8b5); background-size: 180% 180%, 180% 180%, 250% 250%; border-color: #dfca84; box-shadow: 0 0 8px rgba(212,167,44,.35), 0 0 16px rgba(245,210,110,.3), inset 0 0 14px rgba(255,255,255,.9); animation: tile-glitter 1.4s ease-in-out infinite alternate; transform: translateY(-2px) scale(1.01); outline: 1px solid #dfca84; outline-offset: 2px; }
+    @keyframes tile-glitter { from { background-position: 0% 50%, 100% 0%, 0% 50%; } to { background-position: 100% 50%, 0% 100%, 100% 50%; } }
+    @media (prefers-reduced-motion: reduce) { .arabic-title, .surah-tile:hover, .surah-tile:focus, .surah-tile:active { animation: none; } }
     .surah-number, .surah-arabic, .surah-name { display: block; }
     .surah-number { margin-bottom: 5px; font-size: 14px; font-weight: 600; }
     .surah-arabic { margin-bottom: 5px; color: #333; font: 25px 'Noto Naskh Arabic', serif; }
@@ -25,9 +29,9 @@
   </style>
 </head>
 <body>
+  <h1>ALLAH'S WORDS</h1>
   <div class="arabic-title" lang="ar" dir="rtl">وَعَلَّمَ ءَادَمَ ٱلْأَسْمَآءَ كُلَّهَا</div>
-  <h1>Know Quran by Words</h1>
-  <p class="intro">(an initiative by Madath Good Startups)</p>
+  <p class="intro">(by Madath Good Startups)</p>
 
   <form id="searchForm" class="search-form">
     <input id="searchInput" type="search" placeholder="Search by surah number or name" aria-label="Search Surahs">
