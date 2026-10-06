@@ -61,10 +61,28 @@
     #ayahText { width: 100%; margin: 0 10px; color: #333; font: var(--ayah-size)/1.45 'Noto Naskh Arabic', serif; direction: rtl; }
     .ayah-word { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; direction: rtl; cursor: pointer; border-radius: 6px; transition: color .9s cubic-bezier(.22, 1, .36, 1), background-color .9s cubic-bezier(.22, 1, .36, 1), text-shadow .9s cubic-bezier(.22, 1, .36, 1); }
     .arabic-word { opacity: .86; transition: opacity .9s cubic-bezier(.22, 1, .36, 1); }
+    body.trace-mode .arabic-word {
+      color: transparent;
+      opacity: 1;
+      background-image: linear-gradient(to left, #b8860b 0 var(--trace-progress, 0%), transparent var(--trace-progress, 0%) 100%), radial-gradient(circle, #999 1px, transparent 1.5px);
+      background-size: 100% 100%, 5px 5px;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    body.trace-mode .meaning-revealed .arabic-word {
+      background: none;
+      color: #b8860b;
+      -webkit-text-fill-color: #b8860b;
+    }
     #currentWordMeaning { display: none !important; }
     .word-answer { display: none; max-width: 12em; margin-bottom: 6px; color: var(--green); font: var(--answer-size)/1.2 Poppins, sans-serif; direction: ltr; text-align: center; white-space: normal; overflow-wrap: anywhere; }
-    body.read-mode .word-answer { display: block; }
-    body.read-mode .ayah-word:not(.meaning-revealed) .word-answer { visibility: hidden; }
+    body.read-mode .word-answer,
+    body.trace-mode .word-answer { display: block; }
+    body.read-mode .ayah-word:not(.meaning-revealed) .word-answer,
+    body.trace-mode .ayah-word:not(.meaning-revealed) .word-answer { visibility: hidden; }
+    body.trace-mode #optionsContainer { display: none !important; }
+    body.trace-mode #ayahText { touch-action: pan-y; -webkit-user-select: none; user-select: none; }
     #ayahText.answers-hidden .word-answer { visibility: hidden !important; }
     .ayah-word:hover, .ayah-word:focus { background: #eaf5ec; outline: none; }
     .highlight { color: #4caf50; font-weight: bold; background-color: rgba(76,175,80,.08); text-shadow: 1px 1px 8px rgba(40,167,69,.28); }
@@ -522,6 +540,23 @@
       .right-controls { grid-area: right; justify-self: end; }
       .toolbar-left, .toolbar-center, .right-controls { gap: 4px; }
     }
+    .mode-controls { gap: 4px; }
+    .mode-controls .mode-button {
+      min-width: 32px;
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      border: 1px solid #d8b84b;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #fff5d2, #e8cf79);
+      color: #654b00;
+      box-shadow: 0 2px 6px rgba(184, 134, 11, .16);
+    }
+    .mode-controls .mode-button.active-mode {
+      background: linear-gradient(135deg, #d2ad42, #f5e4a5);
+      color: #503b00;
+      box-shadow: 0 0 0 2px rgba(212, 167, 44, .3), 0 3px 8px rgba(184, 134, 11, .24);
+    }
   </style>
 </head>
 <body class="quiz-mode">
@@ -605,8 +640,10 @@
       </div>
       <div class="right-controls">
         <div id="quizScore" class="quiz-score visible" aria-label="Quiz score"><span id="rightCountBottom" class="correct-value">0</span><span id="wrongCountBottom" class="wrong-value">0</span></div>
-        <div class="mode-controls">
-          <button id="modeButton" class="mode-button" type="button" aria-label="Switch to Read mode"><strong>R</strong></button>
+        <div class="mode-controls" aria-label="Choose mode">
+          <button id="quizModeButton" class="mode-button active-mode" type="button" aria-label="Quiz mode" aria-pressed="true"><strong>Q</strong></button>
+          <button id="readModeButton" class="mode-button" type="button" aria-label="Read mode" aria-pressed="false"><strong>R</strong></button>
+          <button id="traceModeButton" class="mode-button" type="button" aria-label="Trace mode" aria-pressed="false"><strong>T</strong></button>
         </div>
       </div>
     </div>
@@ -616,7 +653,11 @@
 
   <script>
     const surahId = new URLSearchParams(location.search).get('surah') || '1';
-    let surah, ayahs = [], currentAyah = 0, currentWord = 0, isPlayMode = false, isLoopMode = false;
+    let surah, ayahs = [], currentAyah = 0, currentWord = 0, isPlayMode = false, isTraceMode = false, isLoopMode = false;
+    let isTracingWords = false;
+    let activeTrace = null;
+    const tracedWords = new Set();
+    const traceProgress = new Map();
     let rootWordVisible = true;
     let loopStartAyah = 0, loopEndAyah = 0, rightAttempts = 0, wrongAttempts = 0, timer, startTime;
     let speed = 1500, zoomLevel = 1, answersHidden = false, isPaused = false, isAyahLoopMode = false;
@@ -660,31 +701,39 @@
       const ayah = ayahs[currentAyah], word = ayah[currentWord];
       const ayahText = $('ayahText');
       const ayahChanged = ayahText.dataset.ayahIndex !== String(currentAyah);
-      const modeChanged = ayahText.dataset.playMode !== String(isPlayMode);
+      const modeChanged = ayahText.dataset.playMode !== `${isPlayMode}-${isTraceMode}`;
+      if (ayahChanged || modeChanged) {
+        tracedWords.clear();
+        traceProgress.clear();
+        activeTrace = null;
+        isTracingWords = false;
+      }
 
       // Keep the word elements in place while progressing so their highlight can ease between words.
       if (ayahChanged || modeChanged || ayahText.querySelectorAll('.ayah-word').length !== ayah.length) {
-        ayahText.innerHTML = ayah.map((item, i) => `<span class="ayah-word" data-word-index="${i}" tabindex="${isPlayMode ? '-1' : '0'}" lang="ar" dir="rtl"><span class="word-answer" lang="en">${escapeHtml(item.correctMeaning || '')}</span><span class="arabic-word">${item.word}</span></span>`).join(' ');
+        ayahText.innerHTML = ayah.map((item, i) => `<span class="ayah-word" data-word-index="${i}" tabindex="0" lang="ar" dir="rtl"><span class="word-answer" lang="en">${escapeHtml(item.correctMeaning || '')}</span><span class="arabic-word">${item.word}</span></span>`).join(' ');
         ayahText.dataset.ayahIndex = currentAyah;
-        ayahText.dataset.playMode = isPlayMode;
-        if (!isPlayMode) {
-          ayahText.querySelectorAll('.ayah-word').forEach(element => {
-            element.onclick = () => changeWord(Number(element.dataset.wordIndex));
-            element.onkeydown = event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); changeWord(Number(element.dataset.wordIndex)); } };
-          });
-        }
+        ayahText.dataset.playMode = `${isPlayMode}-${isTraceMode}`;
+        ayahText.querySelectorAll('.ayah-word').forEach(element => {
+          element.onclick = () => changeWord(Number(element.dataset.wordIndex));
+          element.onkeydown = event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); changeWord(Number(element.dataset.wordIndex)); } };
+        });
       }
       ayahText.querySelectorAll('.ayah-word').forEach((element, index) => {
-        element.classList.toggle('highlight', !isPlayMode && index === currentWord);
+        element.classList.toggle('highlight', !isPlayMode && !isTraceMode && index === currentWord);
         element.classList.toggle('play-highlight', isPlayMode && index === currentWord);
-        element.classList.toggle('meaning-revealed', isPlayMode && index === currentWord);
+        element.classList.toggle('meaning-revealed', isPlayMode && index === currentWord || isTraceMode && tracedWords.has(index));
+        const arabicWord = element.querySelector('.arabic-word');
+        arabicWord.style.setProperty('--trace-progress', `${traceProgress.get(index) || 0}%`);
       });
       $('currentWordMeaning').textContent = isPlayMode ? word.correctMeaning : '';
       $('currentWordMeaning').title = isPlayMode ? word.correctMeaning : '';
       $('transliterationText').textContent = word.transliteration;
       $('rootWord').textContent = word.rootWord || 'N/A';
       $('ayahSelect').value = currentAyah;
-      isPlayMode ? showCorrectAnswer(word) : showOptions(word);
+      if (isPlayMode) showCorrectAnswer(word);
+      else if (isTraceMode) { clearTimeout(timer); $('optionsContainer').classList.remove('play-answer'); $('optionsContainer').innerHTML = ''; }
+      else showOptions(word);
       keepActiveWordVisible();
     }
 
@@ -706,7 +755,49 @@
     }
 
     function showCorrectAnswer(word) { $('optionsContainer').classList.add('play-answer'); $('optionsContainer').innerHTML = ''; applyAnswerVisibility(); if (!isPaused) startAutoProgress(); }
-    function changeWord(wordIndex) { if (isPlayMode || !surah) return; currentWord = wordIndex; clearTimeout(timer); displayWord(); }
+    function finishWordTrace(index) {
+      tracedWords.add(index);
+      const element = $('ayahText').querySelector(`[data-word-index="${index}"]`);
+      element?.classList.add('meaning-revealed');
+    }
+    function changeWord(wordIndex) {
+      if (!surah) return;
+      if (isTraceMode) return;
+      currentWord = wordIndex;
+      clearTimeout(timer);
+      displayWord();
+    }
+    $('ayahText').addEventListener('pointerdown', event => {
+      if (!isTraceMode) return;
+      const word = event.target.closest('.ayah-word');
+      if (!word || tracedWords.has(Number(word.dataset.wordIndex))) return;
+      const rect = word.getBoundingClientRect();
+      const startProgress = Math.max(0, Math.min(100, ((rect.right - event.clientX) / rect.width) * 100));
+      activeTrace = { index: Number(word.dataset.wordIndex), startX: event.clientX, rect, startProgress };
+      isTracingWords = true;
+      $('ayahText').setPointerCapture(event.pointerId);
+      const progress = startProgress;
+      traceProgress.set(activeTrace.index, Math.max(traceProgress.get(activeTrace.index) || 0, progress));
+      word.querySelector('.arabic-word').style.setProperty('--trace-progress', `${traceProgress.get(activeTrace.index)}%`);
+    });
+    function updateWordTrace(event) {
+      if (!isTraceMode || !isTracingWords || !activeTrace) return;
+      const { index, rect, startProgress } = activeTrace;
+      const progress = Math.max(0, Math.min(100, ((rect.right - event.clientX) / rect.width) * 100));
+      const currentProgress = Math.max(traceProgress.get(index) || 0, progress);
+      traceProgress.set(index, currentProgress);
+      const element = $('ayahText').querySelector(`[data-word-index="${index}"]`);
+      element?.querySelector('.arabic-word').style.setProperty('--trace-progress', `${currentProgress}%`);
+      if (startProgress <= 30 && currentProgress >= 88) finishWordTrace(index);
+    }
+    $('ayahText').addEventListener('pointermove', updateWordTrace);
+    const stopWordTrace = event => {
+      updateWordTrace(event);
+      isTracingWords = false;
+      activeTrace = null;
+    };
+    $('ayahText').addEventListener('pointerup', stopWordTrace);
+    $('ayahText').addEventListener('pointercancel', stopWordTrace);
     function showOptions(word) { $('optionsContainer').classList.remove('play-answer'); const optionCount = Number($('optionCountSelect').value); const answers = [...new Set([word.correctMeaning, ...(word.options || [])])].slice(0, optionCount).sort(() => Math.random() - .5); $('optionsContainer').innerHTML = ''; answers.forEach(answer => { const button = document.createElement('button'); button.type = 'button'; button.textContent = answer; button.onclick = () => checkAnswer(button, answer, word.correctMeaning); $('optionsContainer').appendChild(button); }); applyAnswerVisibility(); }
     function applyAnswerVisibility() {
       $('optionsContainer').style.visibility = answersHidden ? 'hidden' : 'visible';
@@ -765,7 +856,27 @@
       return Math.max(650, Math.min(3200, speed + (wordLength - 5) * 140));
     }
     function startAutoProgress() { clearTimeout(timer); timer = setTimeout(navigateNext, getWordDuration(ayahs[currentAyah][currentWord])); }
-    function togglePlay() { clearTimeout(timer); isPlayMode = !isPlayMode; document.body.classList.toggle('read-mode', isPlayMode); isPaused = false; $('modeButton').innerHTML = isPlayMode ? '<strong>Q</strong>' : '<strong>R</strong>'; $('modeButton').setAttribute('aria-label', isPlayMode ? 'Switch to Quiz mode' : 'Switch to Read mode'); $('modeButton').title = isPlayMode ? 'Switch to Quiz mode' : 'Switch to Read mode'; $('modeButton').classList.toggle('reading', isPlayMode); $('speedControls').classList.toggle('visible', isPlayMode); $('quizScore').classList.toggle('visible', !isPlayMode); $('pausePlayButton').textContent = 'Ⅱ'; $('pausePlayButton').setAttribute('aria-label', 'Pause reading'); if (isPlayMode) startTime = Date.now(); displayWord(); applyAnswerVisibility(); }
+    function setMode(mode) {
+      clearTimeout(timer);
+      isPlayMode = mode === 'read';
+      isTraceMode = mode === 'trace';
+      isPaused = false;
+      document.body.classList.toggle('read-mode', isPlayMode);
+      document.body.classList.toggle('trace-mode', isTraceMode);
+      document.querySelectorAll('.mode-button').forEach(button => {
+        const selected = button.id === `${mode}ModeButton`;
+        button.classList.toggle('active-mode', selected);
+        button.classList.toggle('reading', selected && mode !== 'quiz');
+        button.setAttribute('aria-pressed', String(selected));
+      });
+      $('speedControls').classList.toggle('visible', isPlayMode);
+      $('quizScore').classList.toggle('visible', !isPlayMode && !isTraceMode);
+      $('pausePlayButton').textContent = 'Ⅱ';
+      $('pausePlayButton').setAttribute('aria-label', 'Pause reading');
+      if (isPlayMode) startTime = Date.now();
+      displayWord();
+      applyAnswerVisibility();
+    }
     function togglePause() { if (!isPlayMode) return; isPaused = !isPaused; if (isPaused) clearTimeout(timer); else startAutoProgress(); $('pausePlayButton').textContent = isPaused ? '▶' : 'Ⅱ'; $('pausePlayButton').setAttribute('aria-label', isPaused ? 'Resume reading' : 'Pause reading'); }
     function toggleLoop() {
       isLoopMode = !isLoopMode;
@@ -814,7 +925,9 @@
       if (!$('settingsPanel').contains(event.target)) closeSettings();
     });
     $('answerVisibilityButton').onclick = () => { answersHidden = !answersHidden; applyAnswerVisibility(); };
-    $('modeButton').onclick = () => { closeSettings(); togglePlay(); };
+    $('quizModeButton').onclick = () => { closeSettings(); setMode('quiz'); };
+    $('readModeButton').onclick = () => { closeSettings(); setMode('read'); };
+    $('traceModeButton').onclick = () => { closeSettings(); setMode('trace'); };
     $('pausePlayButton').onclick = togglePause;
     $('previousAyah').onclick = () => moveAyah(-1);
     $('nextAyah').onclick = () => moveAyah(1);
