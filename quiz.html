@@ -478,16 +478,43 @@
       }
     }
 
-    /* Center the read-mode play/pause control in the toolbar. */
-    .controls-row .speed-controls.visible .pause-play {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+    /* Keep the answer visibility and playback controls together at the bar's center. */
+    .controls-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      justify-content: initial;
+      align-items: center;
+      overflow: visible;
     }
-    .controls-row .speed-controls.visible .pause-play:hover,
-    .controls-row .speed-controls.visible .pause-play:focus {
-      transform: translate(-50%, -50%) scale(1.06);
+    .toolbar-left, .toolbar-center, .right-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      min-width: 0;
+    }
+    .toolbar-left { justify-self: start; }
+    .toolbar-center { justify-self: center; }
+    .right-controls { justify-self: end; margin-left: 0; }
+    .settings-panel { margin-right: 0; }
+    .highlight, .play-highlight {
+      color: #654b00;
+      background-color: rgba(212, 167, 44, .38);
+      box-shadow: inset 0 0 0 1px rgba(184, 134, 11, .22);
+      text-shadow: none;
+    }
+    .ayah-word:hover, .ayah-word:focus { background-color: rgba(212, 167, 44, .2); }
+    @media (max-width: 600px) {
+      .controls-row {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        grid-template-areas: "left right" "center center";
+        justify-content: initial;
+        gap: 4px 6px;
+        overflow: visible;
+      }
+      .toolbar-left { grid-area: left; }
+      .toolbar-center { grid-area: center; justify-self: center; }
+      .right-controls { grid-area: right; justify-self: end; }
+      .toolbar-left, .toolbar-center, .right-controls { gap: 4px; }
     }
   </style>
 </head>
@@ -513,6 +540,7 @@
     <div id="transliterationContainer"><p id="transliterationText"></p></div>
     <div id="optionsContainer"></div>
     <div class="controls-row">
+      <div class="toolbar-left">
       <section id="settingsPanel" class="settings-panel">
         <button id="settingsButton" class="settings-trigger" type="button" aria-label="Open Quran settings" aria-expanded="false">⚙</button>
         <div class="below-loop-content">
@@ -558,14 +586,19 @@
       <div class="navigation-controls">
         <span class="loop-range"><label for="loopStartSelect">L</label><select id="loopStartSelect" aria-label="Loop start ayah"></select><label for="loopEndSelect">–</label><select id="loopEndSelect" aria-label="Loop end ayah"></select><button id="loopButton" class="loop-toggle" type="button" aria-label="Enable range loop" aria-pressed="false" title="Enable range loop">↻</button></span>
       </div>
+      </div>
+      <div class="toolbar-center">
       <div class="answer-visibility"><button id="answerVisibilityButton" type="button" aria-label="Hide answers">H</button></div>
       <div id="speedControls" class="speed-controls" aria-label="Read speed">
         <label class="speed-range" for="speedSelect"><span>S</span><select id="speedSelect" aria-label="Reading speed"><option value="500">0.5s</option><option value="1000">1s</option><option value="1500" selected>1.5s</option><option value="2000">2s</option><option value="2500">2.5s</option><option value="3000">3s</option></select></label>
         <button id="pausePlayButton" class="pause-play" type="button" aria-label="Pause reading">Ⅱ</button>
       </div>
-      <div id="quizScore" class="quiz-score visible" aria-label="Quiz score"><span id="rightCountBottom" class="correct-value">0</span><span id="wrongCountBottom" class="wrong-value">0</span></div>
-      <div class="mode-controls">
-        <button id="modeButton" class="mode-button" type="button" aria-label="Switch to Read mode"><strong>R</strong></button>
+      </div>
+      <div class="right-controls">
+        <div id="quizScore" class="quiz-score visible" aria-label="Quiz score"><span id="rightCountBottom" class="correct-value">0</span><span id="wrongCountBottom" class="wrong-value">0</span></div>
+        <div class="mode-controls">
+          <button id="modeButton" class="mode-button" type="button" aria-label="Switch to Read mode"><strong>R</strong></button>
+        </div>
       </div>
     </div>
   </main>
@@ -754,6 +787,11 @@
     function updateAyahNavigation() { $('previousAyah').disabled = !surah || currentAyah === 0; $('nextAyah').disabled = !surah || currentAyah === ayahs.length - 1; }
     function updateLoop() { loopStartAyah = Number($('loopStartSelect').value); loopEndAyah = Number($('loopEndSelect').value); if (loopStartAyah > loopEndAyah) [loopStartAyah, loopEndAyah] = [loopEndAyah, loopStartAyah]; $('loopStartSelect').value = loopStartAyah; $('loopEndSelect').value = loopEndAyah; if (isPlayMode) startAutoProgress(); }
     function setFont(type, amount) { const root = document.documentElement, styles = { ayah: ['--ayah-size', 18, 72], answer: ['--answer-size', 12, 36], trans: ['--trans-size', 12, 36] }; const [property, min, max] = styles[type]; const current = parseFloat(getComputedStyle(root).getPropertyValue(property)); root.style.setProperty(property, `${Math.max(min, Math.min(max, current + amount))}px`); keepActiveWordVisible(); }
+    $('ayahContainer').addEventListener('wheel', event => {
+      if (!event.deltaY || !surah) return;
+      event.preventDefault();
+      setFont('ayah', event.deltaY < 0 ? 2 : -2);
+    }, { passive: false });
     function showCompletion() { $('totalRight').textContent = rightAttempts; $('totalWrong').textContent = wrongAttempts; $('timeTaken').textContent = formatTime(Math.floor((Date.now() - (startTime || Date.now())) / 1000)); $('completionModal').style.display = 'flex'; }
     function formatTime(seconds) { return [Math.floor(seconds / 3600), Math.floor(seconds / 60) % 60, seconds % 60].map(n => String(n).padStart(2, '0')).join(':'); }
     function startOver() { $('completionModal').style.display = 'none'; currentAyah = currentWord = rightAttempts = wrongAttempts = 0; updateScore(); startTime = Date.now(); displayWord(); }
