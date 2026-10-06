@@ -557,6 +557,28 @@
       color: #503b00;
       box-shadow: 0 0 0 2px rgba(212, 167, 44, .3), 0 3px 8px rgba(184, 134, 11, .24);
     }
+    @media (max-width: 600px) {
+      .controls-row {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        gap: 5px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+      }
+      .controls-row > * { flex: 0 0 auto; }
+      .toolbar-left, .toolbar-center, .right-controls { flex: 0 0 auto; gap: 4px; }
+      .toolbar-left { margin-right: auto; }
+      .right-controls { margin-left: 0; }
+      .navigation-controls select:not(#speedSelect) { width: 44px; max-width: 44px; padding: 4px 2px; font-size: 12px; }
+      .navigation-controls .loop-toggle, .navigation-controls .ayah-loop { min-width: 26px; width: 26px; height: 28px; font-size: 16px; }
+      #settingsButton { width: 28px; height: 28px; font-size: 15px; }
+      #answerVisibilityButton { min-width: 26px; width: 26px; height: 28px; }
+      #speedSelect { max-width: 42px; padding: 3px 1px !important; font-size: 10px; }
+      .speed-controls .pause-play { min-width: 26px; width: 26px; height: 28px; }
+      .mode-controls .mode-button { min-width: 27px; width: 27px; height: 28px; }
+    }
   </style>
 </head>
 <body class="quiz-mode">
@@ -870,6 +892,10 @@
         button.setAttribute('aria-pressed', String(selected));
       });
       $('speedControls').classList.toggle('visible', isPlayMode);
+      if (isTraceMode) {
+        document.documentElement.style.setProperty('--ayah-size', '72px');
+        $('ayahSizeSlider').value = 72;
+      }
       $('quizScore').classList.toggle('visible', !isPlayMode && !isTraceMode);
       $('pausePlayButton').textContent = 'Ⅱ';
       $('pausePlayButton').setAttribute('aria-label', 'Pause reading');
