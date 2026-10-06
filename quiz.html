@@ -377,6 +377,118 @@
       #modeButton { min-width: 30px; width: 30px; height: 30px; }
       #answerVisibilityButton { min-width: 28px; width: 28px; height: 28px; }
     }
+
+    /* Gold accents for navigation, quiz choices, and the fixed toolbar. */
+    .page-navigation .navigation-button,
+    #completionMessage .navigation-button {
+      border-color: #d8b84b;
+      background: linear-gradient(135deg, #f6e8b5, #fff5d2, #e8cf79);
+      color: #654b00;
+      box-shadow: 0 3px 9px rgba(184, 134, 11, .2);
+      transition: .2s ease;
+    }
+    .page-navigation .navigation-button:hover,
+    .page-navigation .navigation-button:focus,
+    #completionMessage .navigation-button:hover,
+    #completionMessage .navigation-button:focus {
+      background: linear-gradient(120deg, #f6e8b5, #fffdf5, #e8cf79);
+      border-color: #b8860b;
+      box-shadow: 0 0 10px rgba(212, 167, 44, .45);
+      color: #654b00;
+      transform: translateY(-2px);
+    }
+    body.quiz-mode #optionsContainer button {
+      height: 64px;
+      min-height: 64px;
+      padding: 10px 12px;
+      border: 2px solid #d8b84b;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #fff8df, #f4e2a1);
+      color: #654b00;
+      box-shadow: 0 4px 0 #d2b253, 0 5px 10px rgba(184, 134, 11, .16);
+      font-weight: 600;
+      line-height: 1.25;
+      white-space: normal;
+      overflow: visible;
+      text-overflow: clip;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+      touch-action: manipulation;
+    }
+    body.quiz-mode #optionsContainer button:hover,
+    body.quiz-mode #optionsContainer button:focus {
+      background: linear-gradient(135deg, #f6e8b5, #fffdf5, #ead07a);
+      color: #654b00;
+      outline: 2px solid #c8a43a;
+      outline-offset: 2px;
+      transform: translateY(-2px);
+    }
+    body.quiz-mode #optionsContainer button:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #d2b253;
+    }
+    body.quiz-mode #optionsContainer button.correct {
+      background: linear-gradient(135deg, #4caf50, #319b59) !important;
+      border-color: #347a49;
+      box-shadow: 0 3px 0 #28613a;
+      color: #fff !important;
+    }
+    body.quiz-mode #optionsContainer button.incorrect {
+      background: linear-gradient(135deg, #e65050, #c62828) !important;
+      border-color: #b71c1c;
+      box-shadow: 0 3px 0 #9d1717;
+      color: #fff !important;
+    }
+    .controls-row button {
+      border-color: #d8b84b;
+      background: linear-gradient(135deg, #f6e8b5, #fff5d2, #e8cf79);
+      color: #654b00;
+      box-shadow: 0 2px 6px rgba(184, 134, 11, .16);
+    }
+    .controls-row button:hover,
+    .controls-row button:focus {
+      border-color: #b8860b;
+      background: linear-gradient(120deg, #f6e8b5, #fffdf5, #ead07a);
+      color: #654b00;
+      outline: 2px solid rgba(200, 164, 58, .35);
+      outline-offset: 1px;
+    }
+    .controls-row .loop-toggle.looping,
+    .controls-row .ayah-loop.looping {
+      border-color: #b8860b;
+      background: linear-gradient(135deg, #d2ad42, #f5e4a5);
+      color: #503b00;
+      box-shadow: 0 0 0 3px rgba(212, 167, 44, .2);
+    }
+    .controls-row .mode-button.reading {
+      background: linear-gradient(135deg, #d2ad42, #f5e4a5);
+      color: #503b00;
+    }
+    .controls-row .pause-play:hover,
+    .controls-row .pause-play:focus { background: linear-gradient(135deg, #d2ad42, #f5e4a5); }
+    .settings-trigger { border-color: #d8b84b; background: linear-gradient(135deg, #f6e8b5, #e8cf79); color: #654b00 !important; }
+    .settings-trigger:hover,
+    .settings-trigger:focus { color: #654b00 !important; }
+
+    @media (max-width: 600px) {
+      body.quiz-mode #optionsContainer button {
+        height: 64px;
+        min-height: 64px;
+        padding: 8px 6px;
+        font-size: 13px;
+      }
+    }
+
+    /* Center the read-mode play/pause control in the toolbar. */
+    .controls-row .speed-controls.visible .pause-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .controls-row .speed-controls.visible .pause-play:hover,
+    .controls-row .speed-controls.visible .pause-play:focus {
+      transform: translate(-50%, -50%) scale(1.06);
+    }
   </style>
 </head>
 <body class="quiz-mode">
