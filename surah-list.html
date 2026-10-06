@@ -3,90 +3,802 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Quran Word Quiz - Surah List</title>
+  <title>Modern Quranic Word Quiz</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Noto+Naskh+Arabic&display=swap" rel="stylesheet">
   <style>
+    :root { --green: #347a49; --light: #f1f5f2; --border: #d4e2d7; --ayah-size: 32px; --answer-size: 16px; --trans-size: 18px; }
+    .root-word { font-size: 20px; font-weight: 600; color: #347a49; }
     * { box-sizing: border-box; }
-    body { margin: 0; padding: 32px 16px; min-height: 100vh; background: #fff; color: #333; font-family: Poppins, sans-serif; text-align: center; }
-    .arabic-title { margin: 0 auto 4px; color: #a87908; font: 32px/1.5 'Noto Naskh Arabic', serif; background: linear-gradient(110deg, #8a6500 15%, #f5d76e 30%, #fff3b0 42%, #b8860b 55%, #f5d76e 70%, #8a6500 85%); background-size: 220% auto; background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gold-shimmer 3s linear infinite; }
-    @keyframes gold-shimmer { to { background-position: 220% center; } }
-    h1 { margin: 0 0 4px; color: #fff; font-size: 30px; font-weight: 700; letter-spacing: .08em; -webkit-text-fill-color: #fff; text-shadow: 0 1px 2px #47634e, 0 0 5px rgba(255,255,255,.95), 0 0 12px rgba(212,167,44,.85), 0 0 22px rgba(212,167,44,.55); }
-    .intro { margin: 0 auto 20px; color: #666; }
-    .intro strong { display: block; color: #347a49; font-size: 20px; letter-spacing: .12em; }
-    .search-form { display: flex; justify-content: center; gap: 8px; width: min(560px, 100%); margin: 0 auto 24px; }
-    #searchInput { flex: 1; min-width: 0; padding: 10px 14px; border: 1px solid #d4e2d7; border-radius: 999px; font: 14px Poppins, sans-serif; text-align: center; }
-    .surah-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; width: min(900px, 100%); margin: 0 auto; }
-    .surah-tile { display: block; padding: 18px 14px; border: 1px solid #d4e2d7; border-radius: 14px; background: #f8fbf8; color: #347a49; text-decoration: none; box-shadow: 0 3px 9px rgba(52,122,73,.08); transition: .2s ease; }
-    .surah-tile:hover, .surah-tile:focus, .surah-tile:active { background: radial-gradient(circle at 15% 20%, rgba(255,255,255,.95) 0 2px, transparent 4px), radial-gradient(circle at 82% 72%, rgba(255,255,255,.9) 0 2px, transparent 4px), linear-gradient(120deg, #f6e8b5, #fff4ce, #fffdf5, #f4e1a2, #fff7dc, #f6e8b5); background-size: 180% 180%, 180% 180%, 250% 250%; border-color: #dfca84; box-shadow: 0 0 8px rgba(212,167,44,.35), 0 0 16px rgba(245,210,110,.3), inset 0 0 14px rgba(255,255,255,.9); animation: tile-glitter 1.4s ease-in-out infinite alternate; transform: translateY(-2px) scale(1.01); outline: 1px solid #dfca84; outline-offset: 2px; }
-    @keyframes tile-glitter { from { background-position: 0% 50%, 100% 0%, 0% 50%; } to { background-position: 100% 50%, 0% 100%, 100% 50%; } }
-    @media (prefers-reduced-motion: reduce) { .arabic-title, .surah-tile:hover, .surah-tile:focus, .surah-tile:active { animation: none; } }
-    .surah-number, .surah-arabic, .surah-name { display: block; }
-    .surah-number { margin-bottom: 5px; font-size: 14px; font-weight: 600; }
-    .surah-arabic { margin-bottom: 5px; color: #8a6500; font: 25px 'Noto Naskh Arabic', serif; }
-    .surah-name { color: #8a6500; font-size: 14px; }
-    #status { margin: 20px 0 0; color: #666; font-size: 14px; }
-    @media (max-width: 420px) { .search-form { flex-direction: column; } }
-  </style>
-</head>
-<body>
-  <h1>ALLAH'S WORDS</h1>
-  <div class="arabic-title" lang="ar" dir="rtl">وَعَلَّمَ ءَادَمَ ٱلْأَسْمَآءَ كُلَّهَا</div>
-  <p class="intro">(by Madath Good Startups)</p>
+    body { margin: 0; padding: 32px 0 0; min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; font-family: Poppins, sans-serif; text-align: center; color: #333; }
+    .container { width: min(760px, 96%); padding: 12px 16px 0; }
+    .top-line { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 8px; width: 100%; height: 48px; min-height: 48px; margin-bottom: 4px; overflow: visible; }
+    .page-navigation { justify-self: start; margin: 0; }
+    .top-line #surahName { flex: 0 0 auto; margin: 0; font-size: 22px; }
+    .top-line .surah-heading { justify-self: center; }
+    .top-line .root-word-line { justify-self: end; min-width: 0; max-width: 100%; min-height: 0; margin: 0; align-items: center; }
+    .top-line #rootWordContainer { max-width: 100%; justify-content: flex-end; white-space: normal; overflow-wrap: anywhere; text-align: right; }
+    .navigation-button, button { font: 600 13px Poppins, sans-serif; cursor: pointer; }
+    .navigation-button { display: inline-block; padding: 8px 14px; border: 1px solid var(--border); border-radius: 999px; background: var(--light); color: var(--green); text-decoration: none; }
+    .navigation-button:hover, .navigation-button:focus, button:hover, button:focus { background: #4caf50; color: #fff; outline: none; }
+    #surahName { color: #333; font: 600 24px/1.35 'Noto Naskh Arabic', serif; }
+    #surahInfo { display: flex; justify-content: center; align-items: center; width: 100%; margin: 0 0 14px; color: #555; font-size: 15px; }
+    #surahInfo:empty { display: none; }
+    .surah-heading { display: flex; align-items: center; justify-content: center; min-width: 0; }
+    .root-word-line { display: flex; justify-content: center; align-items: center; min-height: 24px; margin: 0 0 4px; }
+    #rootWordContainer { display: inline-flex; align-items: center; gap: 4px; color: #666; font-size: 12px; white-space: nowrap; }
+    #rootWordContainer[hidden] { display: none; }
+    #rootWord { font-size: 20px; }
+    #basmala { margin: 4px 0 10px; color: var(--green); font: 18px/1.4 'Noto Naskh Arabic', serif; }
+    .navigation-controls { display: flex; align-items: center; gap: 5px; white-space: nowrap; }
+    .navigation-controls .ayah-picker, .navigation-controls .loop-range { display: inline-flex; align-items: center; gap: 3px; color: #555; font-size: 11px; }
+    .navigation-controls select:not(#speedSelect) {
+      width: 68px;
+      max-width: 68px;
+      min-height: 34px;
+      padding: 6px 8px;
+      border: 1px solid #c8d8cc;
+      border-radius: 8px;
+      background: #fff;
+      color: #333;
+      text-align: center;
+      font: 14px Poppins, sans-serif;
+    }
+    .navigation-controls select:not(#speedSelect):focus {
+      border-color: var(--green);
+      outline: 2px solid rgba(52, 122, 73, .16);
+    }
+    .navigation-controls .loop-toggle { min-width: 32px; width: 32px; height: 30px; font-size: 18px; }
+    .navigation-controls .ayah-loop { min-width: 32px; width: 32px; height: 30px; font-size: 18px; }
+    #surahInfo .loop-range label { color: #555; font-size: 13px; }
+    .ayah-loop { min-width: 44px; width: 44px; height: 38px; padding: 0; border: 1px solid var(--border); border-radius: 999px; background: var(--light); color: var(--green); font-size: 22px; line-height: 1; }
+    .ayah-loop.looping { background: linear-gradient(135deg,#1478d4,#0759a7); color: #fff; box-shadow: 0 0 0 3px rgba(20,120,212,.16); }
+    #ayahContainer { display: flex; justify-content: center; align-items: center; height: clamp(150px, 25vh, 240px); margin: 14px 0 18px; padding: 8px 0; }
+    .ayah-navigation { position: fixed; top: 50%; z-index: 5; width: 42px; height: 42px; padding: 0; border: 1px solid var(--border); border-radius: 50%; background: var(--light); color: var(--green); font-size: 24px; line-height: 1; transform: translateY(-50%); }
+    .ayah-navigation.left { left: 8px; }
+    .ayah-navigation.right { right: 8px; }
+    .ayah-navigation:disabled { opacity: .35; cursor: not-allowed; }
+    .ayah-navigation:disabled:hover { background: var(--light); color: var(--green); }
+    #ayahText { width: 100%; margin: 0 10px; color: #333; font: var(--ayah-size)/1.45 'Noto Naskh Arabic', serif; direction: rtl; }
+    .ayah-word { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; direction: rtl; cursor: pointer; border-radius: 6px; transition: color .9s cubic-bezier(.22, 1, .36, 1), background-color .9s cubic-bezier(.22, 1, .36, 1), text-shadow .9s cubic-bezier(.22, 1, .36, 1); }
+    .arabic-word { opacity: .86; transition: opacity .9s cubic-bezier(.22, 1, .36, 1); }
+    #currentWordMeaning { display: none !important; }
+    .word-answer { display: none; max-width: 12em; margin-bottom: 6px; color: var(--green); font: var(--answer-size)/1.2 Poppins, sans-serif; direction: ltr; text-align: center; white-space: normal; overflow-wrap: anywhere; }
+    body.read-mode .word-answer { display: block; }
+    body.read-mode .ayah-word:not(.meaning-revealed) .word-answer { visibility: hidden; }
+    #ayahText.answers-hidden .word-answer { visibility: hidden !important; }
+    .ayah-word:hover, .ayah-word:focus { background: #eaf5ec; outline: none; }
+    .highlight { color: #4caf50; font-weight: bold; background-color: rgba(76,175,80,.08); text-shadow: 1px 1px 8px rgba(40,167,69,.28); }
+    .play-highlight { color: inherit; font-weight: bold; background-color: rgba(20,120,212,.08); text-shadow: none; }
+    .highlight .arabic-word, .play-highlight .arabic-word { opacity: 1; }
+    @media (prefers-reduced-motion: reduce) {
+      .ayah-word, .arabic-word { transition: none; }
+    }
+    .controls-row { position: fixed; left: 12px; right: 12px; bottom: 10px; z-index: 8; display: flex; justify-content: center; align-items: center; flex-wrap: nowrap; gap: 8px; width: auto; max-width: 728px; margin: 0 auto; padding: 8px 10px; overflow-x: auto; border: 1px solid var(--border); border-radius: 999px; background: rgba(255,255,255,.96); box-shadow: 0 4px 14px rgba(0,0,0,.12); scrollbar-width: thin; }
+    .controls-row > * { flex: 0 0 auto; margin: 0; }
+    .settings-panel { margin: 0; width: auto; }
+    .speed-range { display: flex; align-items: center; gap: 6px; margin: 0; color: #555; font-size: 13px; }
+    #speedSlider { width: 120px; accent-color: var(--green); }
+    .mode-controls { margin: 0; }
+    .speed-controls { margin: 0; }
+    .answer-visibility { margin: 12px 0 0; }
+    #optionsContainer { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; gap: 8px; min-height: 0; width: 100%; margin-top: 18px; padding: 4px 0 0; }
+    #optionsContainer.play-answer { display: none; min-height: 0; }
+    #optionsContainer button { width: 100%; min-height: 0; margin: 0; padding: 7px 10px; border: 2px solid #ddd; border-radius: 16px; background: #f8f9fa; color: #333; font-size: var(--answer-size); line-height: 1.2; }
+    .correct { background: #4caf50 !important; color: #fff !important; }
+    .incorrect { background: #dc3545 !important; color: #fff !important; }
+    #transliterationContainer { min-height: 42px; margin-top: 15px; }
+    .ayah-control { display: flex; justify-content: center; align-items: center; gap: 8px; margin: 12px 0; }
+    .ayah-control label { color: #555; font-size: 13px; }
+    .mode-controls { display: flex; justify-content: center; align-items: center; gap: 8px; margin: 0; }
+    .mode-button { min-width: 100px; padding: 10px 14px; border: 0; border-radius: 999px; background: linear-gradient(135deg,#4caf50,#319b59); color: #fff; }
+    .mode-button.reading { background: linear-gradient(135deg,#1478d4,#0759a7); }
+    #transliterationText { margin: 0 15px; color: #666; font-size: var(--trans-size); }
+    .speed-controls { display: flex; visibility: hidden; justify-content: center; align-items: center; gap: 6px; margin: 10px 0 4px; color: #666; font-size: 13px; }
+    .speed-controls .pause-play { min-width: 42px; width: 42px; height: 36px; padding: 0; border: 0; border-radius: 50%; background: #333; color: #fff; font-size: 18px; line-height: 1; box-shadow: 0 3px 8px rgba(0,0,0,.2); transition: transform .15s ease, background-color .15s ease; }
+    .speed-controls .pause-play:hover, .speed-controls .pause-play:focus { background: #111; transform: scale(1.06); outline: none; }
+    .speed-controls.visible { visibility: visible; }
 
-  <form id="searchForm" class="search-form">
-    <input id="searchInput" type="search" placeholder="Search by surah number or name" aria-label="Search Surahs">
-  </form>
+    .settings-panel { position: relative; display: flex; justify-content: center; align-items: center; margin: 0; width: auto; }
+    .settings-trigger { display: flex; align-items: center; justify-content: center; width: 50px; height: 46px; margin: 0 auto; padding: 0; border: 1px solid #d8e6dc; border-radius: 999px; background: linear-gradient(135deg,#4caf50,#319b59); color: #111 !important; font-size: 24px; line-height: 1; box-shadow: 0 4px 10px rgba(76,175,80,.22); }
+    .settings-trigger:hover, .settings-trigger:focus { color: #111 !important; }
+    .below-loop-content { display: none; position: fixed; top: 50%; left: 50%; z-index: 20; width: min(520px, calc(100vw - 32px)); max-height: min(620px, calc(100vh - 48px)); overflow-y: auto; padding: 56px 20px 24px; border: 1px solid var(--border); border-radius: 18px; background: rgba(255,255,255,.98); box-shadow: 0 8px 30px rgba(0,0,0,.22); transform: translate(-50%, -50%); }
+    @media (max-width: 600px) {
+      body { padding-top: 8px; }
+      .container { width: 100%; padding: 8px 12px 110px; }
+      .top-line #surahName { font-size: 19px; }
+      #surahInfo { justify-content: flex-start; font-size: 13px; }
+      #ayahContainer { height: clamp(160px, 30vh, 260px); }
+      #ayahText { margin: 0 34px; }
+      .ayah-navigation { width: 36px; height: 36px; font-size: 20px; }
+      .controls-row { left: 6px; right: 6px; bottom: 6px; gap: 4px; padding: 4px 6px; border-radius: 18px; overflow-x: auto; overflow-y: hidden; }
+      .controls-row > * { flex: 0 1 auto; max-width: 100%; }
+      .controls-row button, .controls-row .navigation-button { padding: 6px 8px; font-size: 11px; }
+      .settings-trigger { width: 38px; height: 36px; font-size: 19px; }
+      .speed-controls { flex: 1 1 100%; justify-content: center; min-width: 0; gap: 4px; }
+      .speed-range { max-width: 100%; gap: 3px; font-size: 11px; }
+      #speedSlider { width: clamp(65px, 25vw, 100px); }
+      .speed-controls .pause-play { width: 32px; min-width: 32px; height: 30px; font-size: 14px; }
+      .mode-button { min-width: 68px; padding: 7px 8px; }
+      #answerVisibilityButton { padding: 6px 8px; }
+      #optionsContainer { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin-top: 12px; margin-bottom: 12px; }
+      #optionsContainer button { padding: 6px 7px; font-size: 13px; border-radius: 12px; }
+    }
+    .settings-panel.open .below-loop-content { display: block; }
+    .ayah-picker { display: inline-flex; align-items: center; gap: 4px; color: #555; font-size: 13px; white-space: nowrap; }
+    .ayah-picker select { padding: 5px 7px; }
+    .ayah-picker-row { display: flex; justify-content: center; align-items: center; gap: 8px; margin: 4px 0 12px; }
+    .ayah-picker-row select { width: 68px; min-height: 34px; padding: 6px 8px; border: 1px solid #c8d8cc; border-radius: 8px; background: #fff; text-align: center; font: 14px Poppins, sans-serif; }
+    .quiz-score { display: flex; align-items: center; gap: 7px; font-weight: 600; }
+    .quiz-score:not(.visible) { display: none; }
+    .quiz-score span { min-width: 18px; }
+    #quizScore { font-size: 17px; }
+    @media (max-width: 600px) { #quizScore { font-size: 15px; } }
+    .controls-row { bottom: 10px; }
+    #ayahContainer { min-height: 150px; height: auto; margin: 24px 0 22px; padding: 18px 0; }
+    #transliterationContainer { margin: 0 0 16px; padding: 0 8px; }
+    #optionsContainer { margin: 0 0 150px; padding: 0 4px; gap: 8px; }
+    #optionsContainer button { width: max-content; max-width: 100%; justify-self: center; padding: 7px 10px; }
+    #speedControls { overflow: visible; }
+    #speedControls select { padding: 5px 6px; border-radius: 999px; color: var(--green); }
+    @media (max-width: 600px) {
+      .top-line { gap: 5px; min-height: 40px; overflow: visible; }
+      .top-line #surahName { font-size: 18px; }
+      .navigation-button { padding: 6px 8px; font-size: 11px; }
+      #surahInfo { justify-content: center; flex-wrap: wrap; gap: 5px 8px; min-height: 44px; overflow: visible; white-space: normal; }
+      #surahInfo .loop-range { flex-wrap: nowrap; }
+      #surahInfo select { padding: 4px 5px; }
+      .ayah-loop, .loop-toggle { min-width: 36px; width: 36px; height: 32px; font-size: 18px; }
+      #ayahContainer { margin-top: 24px; padding: 18px 0; }
+      #optionsContainer { margin-bottom: 125px; }
+      #optionsContainer button { padding: 6px 7px; font-size: 13px; border-radius: 12px; }
+      .controls-row { left: 4px; right: 4px; bottom: 5px; gap: 3px; padding: 4px; }
+      .controls-row button, .controls-row .navigation-button { padding: 5px 6px; font-size: 10px; }
+      .quiz-score { gap: 3px; font-size: 11px; }
+      .speed-range select { max-width: 62px; font-size: 10px; }
+      .speed-controls .pause-play { width: 28px; min-width: 28px; height: 28px; font-size: 13px; }
+    }
+    .settings-close { position: absolute; top: 8px; right: 10px; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%; background: var(--light); color: var(--green); font-size: 22px; line-height: 1; }
+    .settings-close:hover, .settings-close:focus { background: #4caf50; color: #fff; }
+    .answer-visibility { display: flex; justify-content: center; align-items: center; margin: 0; }
+    #answerVisibilityButton { padding: 7px 14px; border: 1px solid var(--border); border-radius: 999px; background: var(--light); color: var(--green); font: 600 13px Poppins, sans-serif; cursor: pointer; }
+    #answerVisibilityButton:hover, #answerVisibilityButton:focus { background: #4caf50; color: #fff; outline: none; }
+    #optionsContainer.play-answer { grid-template-columns: 1fr; }
+    #optionsContainer.play-answer button { max-width: 320px; margin: 0 auto; }
+    .ayah-selectors, .text-size-controls-row, .control-buttons, .zoom-controls, #scoreWrapper { display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .ayah-selectors { direction: ltr; }
+    .ayah-selectors label, .size-label, .quiz-options-control label { color: #555; font-size: 13px; }
+    select { padding: 6px 10px; border: 1px solid #ccc; border-radius: 8px; background: #fff; }
+    .quiz-options-control { display: flex; justify-content: center; align-items: center; gap: 8px; margin: 10px 0; }
+    .loop-range { display: flex; align-items: center; gap: 5px; }
+    .control-buttons { margin: 10px 0; }
+    .control-buttons button, .speedButton { min-width: 92px; padding: 10px 14px; border: 0; border-radius: 999px; background: linear-gradient(135deg,#4caf50,#319b59); color: #fff; }
+    .control-buttons button.playing { background: linear-gradient(135deg,#1478d4,#0759a7); }
+    .loop-toggle { min-width: 44px; width: 44px; height: 38px; padding: 0; border: 1px solid var(--border); border-radius: 999px; background: var(--light); color: var(--green); font-size: 22px; line-height: 1; }
+    .loop-toggle:hover, .loop-toggle:focus { background: #eaf5ec; color: var(--green); }
+    .loop-toggle.looping { background: linear-gradient(135deg,#1478d4,#0759a7); color: #fff; box-shadow: 0 0 0 3px rgba(20,120,212,.16); }
+    .speed-controls { display: flex; visibility: hidden; justify-content: center; align-items: center; gap: 6px; margin: 0; }
+    .speed-controls.visible { visibility: visible; }
+    .answer-visibility { display: flex; justify-content: center; align-items: center; margin: 0; }
+    #answerVisibilityButton { white-space: nowrap; }
+    .speedButton { min-width: 78px; padding: 8px 14px; border: 0; border-radius: 999px; color: #fff; font-weight: 600; transition: transform .15s ease, filter .15s ease; }
+    .speedButton:hover, .speedButton:focus { filter: brightness(.95); transform: translateY(-1px); outline: none; }
+    .speedButton[data-speed="slow"] { background: #1976b9; }
+    .speedButton[data-speed="fast"] { background: #d99719; }
+    .speedButton.active-speed { color: #fff; box-shadow: 0 0 0 3px rgba(52,122,73,.18); }
+    .text-size-controls-row { margin: 12px auto; }
+    .text-size-controls { display: flex; align-items: center; gap: 6px; }
+    .text-size-controls button, .zoom-button { width: 36px; height: 32px; padding: 0; border: 1px solid var(--border); border-radius: 9px; background: var(--light); color: var(--green); }
+    .size-label { min-width: 48px; }
+    .zoom-controls { margin-top: 14px; }
+    .zoom-button { width: 42px; height: 38px; font-size: 18px; }
+    #scoreWrapper { margin: 12px 0 0; color: #555; font-size: 14px; }
+    .score-value { margin: 0 5px; font-weight: bold; } .correct-value { color: #4caf50; } .wrong-value { color: #dc3545; }
+    #completionModal { display: none; position: fixed; inset: 0; z-index: 20; justify-content: center; align-items: center; background: rgba(0,50,0,.6); }
+    #completionMessage { width: min(400px,90%); padding: 20px; border-radius: 15px; background: #fff; }
+    #completionMessage .navigation-button { margin: 10px 4px 0; }
+    @media (max-width: 480px) { #surahName { font-size: 20px; } #ayahContainer { height: 130px; } #ayahText { font-size: var(--ayah-size); } #transliterationText { font-size: var(--trans-size); } #optionsContainer button { font-size: var(--answer-size); padding: 8px; } }
 
-  <main id="surahGrid" class="surah-grid" aria-label="Surah list"></main>
-  <p id="status" role="status"></p>
-
-  <script>
-    const grid = document.getElementById('surahGrid');
-    const input = document.getElementById('searchInput');
-    const status = document.getElementById('status');
-    let surahs = [];
-
-    document.getElementById('searchForm').addEventListener('submit', event => event.preventDefault());
-
-    function renderSurahs(query = '') {
-      const search = query.trim().toLowerCase();
-      const matches = surahs.filter(surah => [surah.id, surah.name, surah.englishName]
-        .some(value => String(value ?? '').toLowerCase().includes(search)));
-      grid.replaceChildren(...matches.map(surah => {
-        const tile = document.createElement('a');
-        tile.className = 'surah-tile';
-        tile.href = `./quiz.html?surah=${encodeURIComponent(surah.id)}`;
-
-        const number = document.createElement('span');
-        number.className = 'surah-number';
-        number.textContent = `Surah ${surah.id}`;
-        const arabicName = document.createElement('span');
-        arabicName.className = 'surah-arabic';
-        arabicName.lang = 'ar';
-        arabicName.dir = 'rtl';
-        arabicName.textContent = surah.name;
-        const englishName = document.createElement('span');
-        englishName.className = 'surah-name';
-        englishName.textContent = surah.englishName;
-
-        tile.append(number, arabicName, englishName);
-        return tile;
-      }));
-      status.textContent = matches.length ? '' : 'No Surahs found.';
+    /* Give long ayahs their own scroll area without moving surrounding controls. */
+    body.quiz-mode #ayahContainer {
+      flex: 1 1 0;
+      min-height: 0;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      align-items: flex-start;
+      scrollbar-gutter: stable;
+    }
+    body.quiz-mode #ayahText {
+      flex: 0 0 auto;
+      width: calc(100% - 20px);
+      margin: auto 10px;
+    }
+    @media (max-width: 600px) {
+      body.quiz-mode #ayahText {
+        width: calc(100% - 68px);
+        margin-right: 34px;
+        margin-left: 34px;
+      }
     }
 
-    input.addEventListener('input', () => renderSurahs(input.value));
+    /* Keep the header stable and let the content stack naturally above the fixed controls. */
+    .container { display: flex; flex-direction: column; padding-bottom: 52px; }
+    .top-line, #surahInfo { flex: 0 0 auto; }
+    #surahInfo { margin-bottom: 24px; }
+    #ayahContainer { order: 1; height: auto; min-height: clamp(150px, 25vh, 240px); margin: 0 0 24px; padding: 12px 0; }
+    #currentWordMeaning { order: 2; }
+    body.read-mode #currentWordMeaning { order: 1; }
+    #transliterationContainer { order: 3; min-height: 0; margin: 0 0 18px; padding: 0 8px; }
+    #optionsContainer { order: 3; min-height: 0; margin: 0; padding: 0 4px; gap: 8px; }
+    #optionsContainer button { min-height: 0; padding: 8px 10px; }
+    #optionsContainer.play-answer { min-height: 0; margin: 0; }
+    .controls-row { order: 4; }
 
-    fetch('./data/surahs.json')
-      .then(response => {
+    @media (max-width: 600px) {
+      .container { padding-bottom: 52px; }
+      #surahInfo { margin-bottom: 22px; }
+      #ayahContainer { min-height: clamp(150px, 30vh, 260px); margin-bottom: 22px; }
+      #transliterationContainer { margin-bottom: 16px; }
+      #optionsContainer { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 0; }
+      #optionsContainer button { width: 100%; justify-self: stretch; padding: 6px 7px; }
+    }
+
+    /* Keep bottom controls anchored to their own areas. */
+    .controls-row { max-width: none; justify-content: space-between; overflow-x: auto; overflow-y: hidden; }
+    .controls-row .answer-visibility { margin-right: 0; }
+    .quiz-score { position: static; transform: none; }
+    .right-controls { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+    .speed-controls .pause-play { position: static; transform: none; }
+    .speed-controls .pause-play:hover,
+    .speed-controls .pause-play:focus { transform: scale(1.06); }
+    .speed-range span { display: inline-block; }
+    @media (max-width: 600px) {
+      .controls-row { left: 4px; right: 4px; gap: 3px; padding: 4px 5px; overflow-x: auto; overflow-y: hidden; }
+      .controls-row > * { flex: 0 0 auto; max-width: none; }
+      .navigation-controls { gap: 3px; }
+      .right-controls { gap: 3px; }
+      .speed-range { gap: 2px; font-size: 10px; }
+      .speed-range select { max-width: 58px; padding: 4px 3px !important; }
+      .mode-button { min-width: 56px; padding: 5px 6px; }
+      .settings-trigger { width: 34px; height: 32px; font-size: 17px; }
+      #answerVisibilityButton { padding: 5px 7px; }
+    }
+
+    /* Keep quiz answers directly above the fixed control bar. */
+    .container { min-height: 100vh; padding-bottom: calc(var(--controls-height, 56px) + 1px); }
+    body.quiz-mode .container { display: flex; }
+    body.quiz-mode #optionsContainer { margin-top: auto; margin-bottom: 1px !important; padding-bottom: 0; }
+    .controls-row { bottom: 0; }
+    @media (max-width: 600px) {
+      .controls-row { bottom: 0; }
+    }
+
+    /* Keep quiz answers in the viewport, directly above the fixed controls. */
+    body.quiz-mode {
+      height: 100vh;
+      overflow: hidden;
+    }
+    body.quiz-mode .container {
+      height: calc(100vh - 32px);
+      min-height: 0;
+      overflow: hidden;
+      padding-bottom: calc(var(--controls-height, 56px) + 1px);
+    }
+    body.quiz-mode #optionsContainer {
+      min-height: 0;
+      max-height: 100%;
+      overflow-y: auto;
+      margin-bottom: 0 !important;
+      padding-bottom: 0;
+      flex-shrink: 1;
+    }
+
+    /* Standardize quiz answer boxes and keep them just above the control bar. */
+    body.quiz-mode .container {
+      padding-bottom: calc(var(--controls-height, 56px) + 8px);
+    }
+    body.quiz-mode #optionsContainer {
+      row-gap: 8px;
+      column-gap: 8px;
+      margin-bottom: 7px !important;
+      padding-bottom: 0;
+    }
+    body.quiz-mode #optionsContainer button {
+      width: 100%;
+      height: 48px;
+      min-height: 48px;
+      padding: 8px 12px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    @media (max-width: 600px) {
+      body.quiz-mode .container {
+        height: calc(100vh - 8px);
+        padding-bottom: calc(var(--controls-height, 56px) + 8px);
+      }
+      body.quiz-mode #optionsContainer {
+        margin-bottom: 7px !important;
+      }
+      body.quiz-mode #optionsContainer button {
+        height: 44px;
+        min-height: 44px;
+        padding: 6px 8px;
+        font-size: 13px;
+      }
+    }
+
+    /* Compact, ordered bottom toolbar. */
+    .controls-row {
+      left: 8px;
+      right: 8px;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      gap: 5px;
+      padding: 5px 7px;
+      overflow-x: auto;
+    }
+    .settings-panel { margin-right: auto; }
+    .navigation-controls { gap: 4px; }
+    .navigation-controls .loop-range { gap: 2px; }
+    .speed-controls:not(.visible) { display: none; }
+    .speed-controls.visible { margin: 0; }
+    .speed-range { gap: 3px; }
+    #modeButton { min-width: 34px; width: 34px; height: 34px; padding: 0; }
+    #modeButton strong { font-weight: 700; }
+    #answerVisibilityButton { min-width: 30px; width: 30px; height: 30px; padding: 0; }
+
+    @media (max-width: 600px) {
+      .controls-row {
+        left: 3px;
+        right: 3px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 4px;
+        padding: 4px;
+        overflow: visible;
+        border-radius: 14px;
+      }
+      .controls-row > * { flex: 0 0 auto; }
+      .settings-panel { margin-right: 0; }
+      .settings-trigger { width: 30px; height: 30px; font-size: 16px; }
+      .navigation-controls { gap: 2px; }
+      .navigation-controls .ayah-picker { gap: 2px; font-size: 11px; }
+      #rootWord { font-size: 18px; }
+      .navigation-controls select:not(#speedSelect) { width: 62px; max-width: 62px; min-height: 32px; padding: 5px 6px; font-size: 14px; }
+      .navigation-controls .loop-toggle,
+      .navigation-controls .ayah-loop { min-width: 29px; width: 29px; height: 29px; font-size: 17px; }
+      .navigation-controls .loop-range { gap: 1px; font-size: 10px; }
+      .speed-controls.visible { gap: 3px; }
+      .speed-range { gap: 2px; font-size: 10px; }
+      #speedSelect { max-width: 48px; padding: 4px 2px !important; font-size: 10px; }
+      .speed-controls .pause-play { min-width: 29px; width: 29px; height: 29px; font-size: 13px; }
+      .quiz-score { gap: 2px; font-size: 11px; }
+      .quiz-score span { min-width: 12px; }
+      #modeButton { min-width: 30px; width: 30px; height: 30px; }
+      #answerVisibilityButton { min-width: 28px; width: 28px; height: 28px; }
+    }
+
+    /* Gold accents for navigation, quiz choices, and the fixed toolbar. */
+    .page-navigation .navigation-button,
+    #completionMessage .navigation-button {
+      border-color: #d8b84b;
+      background: linear-gradient(135deg, #f6e8b5, #fff5d2, #e8cf79);
+      color: #654b00;
+      box-shadow: 0 3px 9px rgba(184, 134, 11, .2);
+      transition: .2s ease;
+    }
+    .page-navigation .navigation-button:hover,
+    .page-navigation .navigation-button:focus,
+    #completionMessage .navigation-button:hover,
+    #completionMessage .navigation-button:focus {
+      background: linear-gradient(120deg, #f6e8b5, #fffdf5, #e8cf79);
+      border-color: #b8860b;
+      box-shadow: 0 0 10px rgba(212, 167, 44, .45);
+      color: #654b00;
+      transform: translateY(-2px);
+    }
+    body.quiz-mode #optionsContainer button {
+      height: 64px;
+      min-height: 64px;
+      padding: 10px 12px;
+      border: 2px solid #d8b84b;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #fff8df, #f4e2a1);
+      color: #654b00;
+      box-shadow: 0 4px 0 #d2b253, 0 5px 10px rgba(184, 134, 11, .16);
+      font-weight: 600;
+      line-height: 1.25;
+      white-space: normal;
+      overflow: visible;
+      text-overflow: clip;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+      touch-action: manipulation;
+    }
+    body.quiz-mode #optionsContainer button:hover,
+    body.quiz-mode #optionsContainer button:focus {
+      background: linear-gradient(135deg, #f6e8b5, #fffdf5, #ead07a);
+      color: #654b00;
+      outline: 2px solid #c8a43a;
+      outline-offset: 2px;
+      transform: translateY(-2px);
+    }
+    body.quiz-mode #optionsContainer button:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #d2b253;
+    }
+    body.quiz-mode #optionsContainer button.correct {
+      background: linear-gradient(135deg, #4caf50, #319b59) !important;
+      border-color: #347a49;
+      box-shadow: 0 3px 0 #28613a;
+      color: #fff !important;
+    }
+    body.quiz-mode #optionsContainer button.incorrect {
+      background: linear-gradient(135deg, #e65050, #c62828) !important;
+      border-color: #b71c1c;
+      box-shadow: 0 3px 0 #9d1717;
+      color: #fff !important;
+    }
+    .controls-row button {
+      border-color: #d8b84b;
+      background: linear-gradient(135deg, #f6e8b5, #fff5d2, #e8cf79);
+      color: #654b00;
+      box-shadow: 0 2px 6px rgba(184, 134, 11, .16);
+    }
+    .controls-row button:hover,
+    .controls-row button:focus {
+      border-color: #b8860b;
+      background: linear-gradient(120deg, #f6e8b5, #fffdf5, #ead07a);
+      color: #654b00;
+      outline: 2px solid rgba(200, 164, 58, .35);
+      outline-offset: 1px;
+    }
+    .controls-row .loop-toggle.looping,
+    .controls-row .ayah-loop.looping {
+      border-color: #b8860b;
+      background: linear-gradient(135deg, #d2ad42, #f5e4a5);
+      color: #503b00;
+      box-shadow: 0 0 0 3px rgba(212, 167, 44, .2);
+    }
+    .controls-row .mode-button.reading {
+      background: linear-gradient(135deg, #d2ad42, #f5e4a5);
+      color: #503b00;
+    }
+    .controls-row .pause-play:hover,
+    .controls-row .pause-play:focus { background: linear-gradient(135deg, #d2ad42, #f5e4a5); }
+    .settings-trigger { border-color: #d8b84b; background: linear-gradient(135deg, #f6e8b5, #e8cf79); color: #654b00 !important; }
+    .settings-trigger:hover,
+    .settings-trigger:focus { color: #654b00 !important; }
+
+    @media (max-width: 600px) {
+      body.quiz-mode #optionsContainer button {
+        height: 64px;
+        min-height: 64px;
+        padding: 8px 6px;
+        font-size: 13px;
+      }
+    }
+
+    /* Center the read-mode play/pause control in the toolbar. */
+    .controls-row .speed-controls.visible .pause-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .controls-row .speed-controls.visible .pause-play:hover,
+    .controls-row .speed-controls.visible .pause-play:focus {
+      transform: translate(-50%, -50%) scale(1.06);
+    }
+  </style>
+</head>
+<body class="quiz-mode">
+  <button id="nextAyah" class="ayah-navigation left" type="button" aria-label="Next ayah">‹</button>
+  <button id="previousAyah" class="ayah-navigation right" type="button" aria-label="Previous ayah">›</button>
+  <main class="container">
+    <div class="top-line">
+      <div class="page-navigation"><a class="navigation-button" href="./surah-list.html">Surah List</a></div>
+      <div class="surah-heading">
+        <h1 id="surahName">Loading…</h1>
+      </div>
+      <div class="root-word-line"><span id="rootWordContainer">Root: <span class="root-word" id="rootWord">N/A</span></span></div>
+    </div>
+    <div id="basmala" lang="ar" dir="rtl" aria-label="Bismillah">﷽</div>
+    <div class="ayah-picker-row">
+      <label class="ayah-picker" for="ayahSelect">Ayah <select id="ayahSelect" aria-label="Ayah number"></select></label>
+      <button id="ayahLoopButton" class="ayah-loop" type="button" aria-label="Loop current ayah" aria-pressed="false" title="Loop current ayah">↺</button>
+    </div>
+    <div id="currentWordMeaning" aria-live="polite"></div>
+    <div id="surahInfo" class="ayah-control"></div>
+    <div id="ayahContainer"><p id="ayahText"></p></div>
+    <div id="transliterationContainer"><p id="transliterationText"></p></div>
+    <div id="optionsContainer"></div>
+    <div class="controls-row">
+      <section id="settingsPanel" class="settings-panel">
+        <button id="settingsButton" class="settings-trigger" type="button" aria-label="Open Quran settings" aria-expanded="false">⚙</button>
+        <div class="below-loop-content">
+          <button id="settingsCloseButton" class="settings-close" type="button" aria-label="Close settings">×</button>
+          <div class="quiz-options-control">
+            <label for="optionCountSelect">Quiz options:</label>
+            <select id="optionCountSelect">
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+          <div class="quiz-options-control">
+            <label for="endActionSelect">When Surah ends:</label>
+            <select id="endActionSelect">
+              <option value="repeat">Repeat Surah</option>
+              <option value="next">Next Surah</option>
+            </select>
+          </div>
+          <div class="quiz-options-control">
+            <label for="transliterationToggle">Transliteration:</label>
+            <select id="transliterationToggle" aria-label="Show or hide transliteration">
+              <option value="show">Show</option>
+              <option value="hide" selected>Hide</option>
+            </select>
+          </div>
+          <div class="quiz-options-control">
+            <label for="rootWordToggle">Root word:</label>
+            <select id="rootWordToggle" aria-label="Show or hide root word">
+              <option value="show" selected>Show</option>
+              <option value="hide">Hide</option>
+            </select>
+          </div>
+          <div class="text-size-controls-row">
+            <div class="text-size-controls"><span class="size-label">Ayah</span><button data-size="ayah" data-change="-2" type="button">A−</button><button data-size="ayah" data-change="2" type="button">A+</button></div>
+            <div class="text-size-controls"><span class="size-label">Answer</span><button data-size="answer" data-change="-1" type="button">A−</button><button data-size="answer" data-change="1" type="button">A+</button></div>
+            <div class="text-size-controls"><span class="size-label">Trans</span><button data-size="trans" data-change="-1" type="button">A−</button><button data-size="trans" data-change="1" type="button">A+</button></div>
+          </div>
+          <div class="zoom-controls"><button id="zoomIn" class="zoom-button" type="button">＋</button><button id="zoomOut" class="zoom-button" type="button">−</button></div>
+          <div id="scoreWrapper"><span class="score-value correct-value">Correct: <span id="rightCount">0</span></span> | <span class="score-value wrong-value">Wrong: <span id="wrongCount">0</span></span></div>
+        </div>
+      </section>
+      <div class="navigation-controls">
+        <span class="loop-range"><label for="loopStartSelect">L</label><select id="loopStartSelect" aria-label="Loop start ayah"></select><label for="loopEndSelect">–</label><select id="loopEndSelect" aria-label="Loop end ayah"></select><button id="loopButton" class="loop-toggle" type="button" aria-label="Enable range loop" aria-pressed="false" title="Enable range loop">↻</button></span>
+      </div>
+      <div class="answer-visibility"><button id="answerVisibilityButton" type="button" aria-label="Hide answers">H</button></div>
+      <div id="speedControls" class="speed-controls" aria-label="Read speed">
+        <label class="speed-range" for="speedSelect"><span>S</span><select id="speedSelect" aria-label="Reading speed"><option value="500">0.5s</option><option value="1000">1s</option><option value="1500" selected>1.5s</option><option value="2000">2s</option><option value="2500">2.5s</option><option value="3000">3s</option></select></label>
+        <button id="pausePlayButton" class="pause-play" type="button" aria-label="Pause reading">Ⅱ</button>
+      </div>
+      <div id="quizScore" class="quiz-score visible" aria-label="Quiz score"><span id="rightCountBottom" class="correct-value">0</span><span id="wrongCountBottom" class="wrong-value">0</span></div>
+      <div class="mode-controls">
+        <button id="modeButton" class="mode-button" type="button" aria-label="Switch to Read mode"><strong>R</strong></button>
+      </div>
+    </div>
+  </main>
+
+  <div id="completionModal"><div id="completionMessage"><h2>Keep Going</h2><p>May your efforts be accepted by Allah.</p><p>Correct: <span id="totalRight">0</span> | Wrong: <span id="totalWrong">0</span></p><p>Time Taken: <span id="timeTaken"></span></p><button id="startOver" type="button">Start Over</button><button id="nextSurah" type="button">Next Surah</button><a class="navigation-button" href="./surah-list.html">Surah List</a></div></div>
+
+  <script>
+    const surahId = new URLSearchParams(location.search).get('surah') || '1';
+    let surah, ayahs = [], currentAyah = 0, currentWord = 0, isPlayMode = false, isLoopMode = false;
+    let rootWordVisible = true;
+    let loopStartAyah = 0, loopEndAyah = 0, rightAttempts = 0, wrongAttempts = 0, timer, startTime;
+    let speed = 1500, zoomLevel = 1, answersHidden = false, isPaused = false, isAyahLoopMode = false;
+    let transliterationVisible = false;
+    let endAction = 'repeat';
+    const $ = id => document.getElementById(id);
+
+    async function loadSurah() {
+      try {
+        const response = await fetch(`data/surah-${encodeURIComponent(surahId)}.json`);
         if (!response.ok) throw new Error('Unavailable');
-        return response.json();
-      })
-      .then(data => {
-        surahs = Array.isArray(data) ? data : [];
-        renderSurahs(input.value);
-      })
-      .catch(() => { status.textContent = 'Unable to load the Surah list.'; });
+        surah = await response.json();
+        ayahs = surah.ayahs;
+        const firstWord = ayahs[0]?.[0]?.word || '';
+        const normalizedFirstWord = firstWord.replace(/[\u064B-\u065F\u0670\u0640]/g, '');
+        if (Number(surah.id) !== 9 && normalizedFirstWord.startsWith('بسم')) ayahs = ayahs.slice(1);
+        if (!ayahs.length) throw new Error('No ayahs available');
+        currentAyah = currentWord = 0;
+        loopStartAyah = 0;
+        loopEndAyah = ayahs.length - 1;
+        $('surahName').textContent = `${surah.name} ${surah.id}`;
+        $('basmala').hidden = Number(surah.id) === 9;
+        ['ayahSelect','loopStartSelect','loopEndSelect'].forEach(id => {
+          $(id).innerHTML = ayahs.map((_, i) => `<option value="${i}">${i + 1}</option>`).join('');
+        });
+        $('loopEndSelect').value = loopEndAyah;
+        applyRootWordVisibility();
+        displayWord();
+        updateAyahNavigation();
+      } catch (error) {
+        $('surahName').textContent = 'Unable to load this Surah';
+        $('surahInfo').textContent = 'Return to the Surah List and choose an available Surah.';
+      }
+    }
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
+    }
+
+    function displayWord() {
+      const ayah = ayahs[currentAyah], word = ayah[currentWord];
+      const ayahText = $('ayahText');
+      const ayahChanged = ayahText.dataset.ayahIndex !== String(currentAyah);
+      const modeChanged = ayahText.dataset.playMode !== String(isPlayMode);
+
+      // Keep the word elements in place while progressing so their highlight can ease between words.
+      if (ayahChanged || modeChanged || ayahText.querySelectorAll('.ayah-word').length !== ayah.length) {
+        ayahText.innerHTML = ayah.map((item, i) => `<span class="ayah-word" data-word-index="${i}" tabindex="${isPlayMode ? '-1' : '0'}" lang="ar" dir="rtl"><span class="word-answer" lang="en">${escapeHtml(item.correctMeaning || '')}</span><span class="arabic-word">${item.word}</span></span>`).join(' ');
+        ayahText.dataset.ayahIndex = currentAyah;
+        ayahText.dataset.playMode = isPlayMode;
+        if (!isPlayMode) {
+          ayahText.querySelectorAll('.ayah-word').forEach(element => {
+            element.onclick = () => changeWord(Number(element.dataset.wordIndex));
+            element.onkeydown = event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); changeWord(Number(element.dataset.wordIndex)); } };
+          });
+        }
+      }
+      ayahText.querySelectorAll('.ayah-word').forEach((element, index) => {
+        element.classList.toggle('highlight', !isPlayMode && index === currentWord);
+        element.classList.toggle('play-highlight', isPlayMode && index === currentWord);
+        element.classList.toggle('meaning-revealed', isPlayMode && index === currentWord);
+      });
+      $('currentWordMeaning').textContent = isPlayMode ? word.correctMeaning : '';
+      $('currentWordMeaning').title = isPlayMode ? word.correctMeaning : '';
+      $('transliterationText').textContent = word.transliteration;
+      $('rootWord').textContent = word.rootWord || 'N/A';
+      $('ayahSelect').value = currentAyah;
+      isPlayMode ? showCorrectAnswer(word) : showOptions(word);
+      keepActiveWordVisible();
+    }
+
+    function keepActiveWordVisible() {
+      const container = $('ayahContainer');
+      const activeWord = $('ayahText').querySelector('.highlight, .play-highlight');
+      if (!activeWord) return;
+
+      const containerRect = container.getBoundingClientRect();
+      const wordRect = activeWord.getBoundingClientRect();
+      const visibleTop = containerRect.top + container.clientTop;
+      const visibleBottom = visibleTop + container.clientHeight;
+
+      if (wordRect.top < visibleTop) {
+        container.scrollTo({ top: container.scrollTop - (visibleTop - wordRect.top), behavior: 'smooth' });
+      } else if (wordRect.bottom > visibleBottom) {
+        container.scrollTo({ top: container.scrollTop + (wordRect.bottom - visibleBottom), behavior: 'smooth' });
+      }
+    }
+
+    function showCorrectAnswer(word) { $('optionsContainer').classList.add('play-answer'); $('optionsContainer').innerHTML = ''; applyAnswerVisibility(); if (!isPaused) startAutoProgress(); }
+    function changeWord(wordIndex) { if (isPlayMode || !surah) return; currentWord = wordIndex; clearTimeout(timer); displayWord(); }
+    function showOptions(word) { $('optionsContainer').classList.remove('play-answer'); const optionCount = Number($('optionCountSelect').value); const answers = [...new Set([word.correctMeaning, ...(word.options || [])])].slice(0, optionCount).sort(() => Math.random() - .5); $('optionsContainer').innerHTML = ''; answers.forEach(answer => { const button = document.createElement('button'); button.type = 'button'; button.textContent = answer; button.onclick = () => checkAnswer(button, answer, word.correctMeaning); $('optionsContainer').appendChild(button); }); applyAnswerVisibility(); }
+    function applyAnswerVisibility() {
+      $('optionsContainer').style.visibility = answersHidden ? 'hidden' : 'visible';
+      $('ayahText').classList.toggle('answers-hidden', answersHidden);
+      $('answerVisibilityButton').textContent = answersHidden ? 'A' : 'H';
+      $('answerVisibilityButton').setAttribute('aria-label', answersHidden ? 'Show answers' : 'Hide answers');
+      $('answerVisibilityButton').title = answersHidden ? 'Show answers' : 'Hide answers';
+    }
+    function applyTransliterationVisibility() {
+      $('transliterationContainer').hidden = !transliterationVisible;
+    }
+    function applyRootWordVisibility() {
+      $('rootWordContainer').hidden = !rootWordVisible;
+      $('rootWordToggle').value = rootWordVisible ? 'show' : 'hide';
+    }
+    function updateScore() { $('rightCount').textContent = rightAttempts; $('wrongCount').textContent = wrongAttempts; $('rightCountBottom').textContent = rightAttempts; $('wrongCountBottom').textContent = wrongAttempts; }
+    function checkAnswer(button, answer, correct) { if (answer === correct) { button.classList.add('correct'); rightAttempts++; updateScore(); setTimeout(navigateNext, 700); } else { button.classList.add('incorrect'); wrongAttempts++; updateScore(); } }
+    function navigateNext() {
+      clearTimeout(timer);
+      const ayah = ayahs[currentAyah];
+      if (isAyahLoopMode && currentWord === ayah.length - 1) {
+        currentWord = 0;
+        displayWord();
+        return;
+      }
+      if (currentWord < ayah.length - 1) currentWord++;
+      else if (isLoopMode) {
+        currentAyah = currentAyah >= loopStartAyah && currentAyah < loopEndAyah ? currentAyah + 1 : loopStartAyah;
+        currentWord = 0;
+      } else if (currentAyah < ayahs.length - 1) {
+        currentAyah++;
+        currentWord = 0;
+      } else {
+        finishSurah();
+        return;
+      }
+      displayWord();
+    }
+
+    function finishSurah() {
+      clearTimeout(timer);
+      if (isPlayMode) {
+        if (endAction === 'next' && Number(surahId) < 114) {
+          location.href = `quiz.html?surah=${Number(surahId) + 1}`;
+        } else {
+          currentAyah = 0;
+          currentWord = 0;
+          displayWord();
+        }
+        return;
+      }
+      showCompletion();
+    }
+    function getWordDuration(word) {
+      const wordLength = [...word.word].length;
+      return Math.max(650, Math.min(3200, speed + (wordLength - 5) * 140));
+    }
+    function startAutoProgress() { clearTimeout(timer); timer = setTimeout(navigateNext, getWordDuration(ayahs[currentAyah][currentWord])); }
+    function togglePlay() { clearTimeout(timer); isPlayMode = !isPlayMode; document.body.classList.toggle('read-mode', isPlayMode); isPaused = false; $('modeButton').innerHTML = isPlayMode ? '<strong>Q</strong>' : '<strong>R</strong>'; $('modeButton').setAttribute('aria-label', isPlayMode ? 'Switch to Quiz mode' : 'Switch to Read mode'); $('modeButton').title = isPlayMode ? 'Switch to Quiz mode' : 'Switch to Read mode'; $('modeButton').classList.toggle('reading', isPlayMode); $('speedControls').classList.toggle('visible', isPlayMode); $('quizScore').classList.toggle('visible', !isPlayMode); $('pausePlayButton').textContent = 'Ⅱ'; $('pausePlayButton').setAttribute('aria-label', 'Pause reading'); if (isPlayMode) startTime = Date.now(); displayWord(); applyAnswerVisibility(); }
+    function togglePause() { if (!isPlayMode) return; isPaused = !isPaused; if (isPaused) clearTimeout(timer); else startAutoProgress(); $('pausePlayButton').textContent = isPaused ? '▶' : 'Ⅱ'; $('pausePlayButton').setAttribute('aria-label', isPaused ? 'Resume reading' : 'Pause reading'); }
+    function toggleLoop() {
+      isLoopMode = !isLoopMode;
+      const loopButton = $('loopButton');
+      loopButton.classList.toggle('looping', isLoopMode);
+      loopButton.setAttribute('aria-pressed', String(isLoopMode));
+      loopButton.setAttribute('aria-label', isLoopMode ? 'Disable range loop' : 'Enable range loop');
+      loopButton.title = isLoopMode ? 'Disable range loop' : 'Enable range loop';
+      if (isLoopMode && surah && (currentAyah < loopStartAyah || currentAyah > loopEndAyah)) {
+        currentAyah = loopStartAyah;
+        currentWord = 0;
+        displayWord();
+        updateAyahNavigation();
+      }
+      if (isPlayMode && !isPaused) startAutoProgress();
+    }
+    function toggleAyahLoop() {
+      isAyahLoopMode = !isAyahLoopMode;
+      const button = $('ayahLoopButton');
+      button.classList.toggle('looping', isAyahLoopMode);
+      button.setAttribute('aria-pressed', String(isAyahLoopMode));
+      button.setAttribute('aria-label', isAyahLoopMode ? 'Disable current ayah loop' : 'Loop current ayah');
+      button.title = isAyahLoopMode ? 'Disable current ayah loop' : 'Loop current ayah';
+      if (isPlayMode && !isPaused) startAutoProgress();
+    }
+    function changeAyah(value) { currentAyah = Number(value); currentWord = 0; clearTimeout(timer); displayWord(); updateAyahNavigation(); if (isPlayMode) startAutoProgress(); }
+    function moveAyah(amount) { if (!surah) return; const nextAyah = currentAyah + amount; if (nextAyah < 0 || nextAyah >= ayahs.length) return; changeAyah(nextAyah); }
+    function updateAyahNavigation() { $('previousAyah').disabled = !surah || currentAyah === 0; $('nextAyah').disabled = !surah || currentAyah === ayahs.length - 1; }
+    function updateLoop() { loopStartAyah = Number($('loopStartSelect').value); loopEndAyah = Number($('loopEndSelect').value); if (loopStartAyah > loopEndAyah) [loopStartAyah, loopEndAyah] = [loopEndAyah, loopStartAyah]; $('loopStartSelect').value = loopStartAyah; $('loopEndSelect').value = loopEndAyah; if (isPlayMode) startAutoProgress(); }
+    function setFont(type, amount) { const root = document.documentElement, styles = { ayah: ['--ayah-size', 18, 72], answer: ['--answer-size', 12, 36], trans: ['--trans-size', 12, 36] }; const [property, min, max] = styles[type]; const current = parseFloat(getComputedStyle(root).getPropertyValue(property)); root.style.setProperty(property, `${Math.max(min, Math.min(max, current + amount))}px`); keepActiveWordVisible(); }
+    function showCompletion() { $('totalRight').textContent = rightAttempts; $('totalWrong').textContent = wrongAttempts; $('timeTaken').textContent = formatTime(Math.floor((Date.now() - (startTime || Date.now())) / 1000)); $('completionModal').style.display = 'flex'; }
+    function formatTime(seconds) { return [Math.floor(seconds / 3600), Math.floor(seconds / 60) % 60, seconds % 60].map(n => String(n).padStart(2, '0')).join(':'); }
+    function startOver() { $('completionModal').style.display = 'none'; currentAyah = currentWord = rightAttempts = wrongAttempts = 0; updateScore(); startTime = Date.now(); displayWord(); }
+    function goToNextSurah() { if (Number(surahId) < 114) location.href = `quiz.html?surah=${Number(surahId) + 1}`; }
+
+    function closeSettings() { $('settingsPanel').classList.remove('open'); $('settingsButton').setAttribute('aria-expanded', 'false'); }
+    $('settingsButton').onclick = () => { const open = $('settingsPanel').classList.toggle('open'); $('settingsButton').setAttribute('aria-expanded', open); };
+    $('settingsCloseButton').onclick = closeSettings;
+    document.addEventListener('click', event => {
+      if (!$('settingsPanel').contains(event.target)) closeSettings();
+    });
+    $('answerVisibilityButton').onclick = () => { answersHidden = !answersHidden; applyAnswerVisibility(); };
+    $('modeButton').onclick = () => { closeSettings(); togglePlay(); };
+    $('pausePlayButton').onclick = togglePause;
+    $('previousAyah').onclick = () => moveAyah(-1);
+    $('nextAyah').onclick = () => moveAyah(1);
+    $('loopButton').onclick = toggleLoop; $('ayahLoopButton').onclick = toggleAyahLoop; $('ayahSelect').onchange = e => changeAyah(e.target.value); $('loopStartSelect').onchange = updateLoop; $('loopEndSelect').onchange = updateLoop;
+    $('optionCountSelect').onchange = () => { if (!isPlayMode && surah) displayWord(); };
+    $('endActionSelect').onchange = event => { endAction = event.target.value; };
+    $('transliterationToggle').onchange = event => {
+      transliterationVisible = event.target.value === 'show';
+      applyTransliterationVisibility();
+    };
+    $('rootWordToggle').onchange = event => {
+      rootWordVisible = event.target.value === 'show';
+      applyRootWordVisibility();
+    };
+    applyTransliterationVisibility();
+    applyRootWordVisibility();
+    document.querySelectorAll('[data-size]').forEach(button => button.onclick = () => setFont(button.dataset.size, Number(button.dataset.change)));
+    $('speedSelect').onchange = event => {
+      speed = Number(event.target.value);
+      if (isPlayMode && !isPaused) startAutoProgress();
+    };
+    $('zoomIn').onclick = () => { zoomLevel = Math.min(1.5, zoomLevel + .1); document.querySelector('.container').style.transform = `scale(${zoomLevel})`; };
+    $('zoomOut').onclick = () => { zoomLevel = Math.max(.8, zoomLevel - .1); document.querySelector('.container').style.transform = `scale(${zoomLevel})`; };
+    $('startOver').onclick = startOver;
+    $('nextSurah').onclick = goToNextSurah;
+    if (Number(surahId) >= 114) $('nextSurah').disabled = true;
+    const controlsRow = document.querySelector('.controls-row');
+    const updateControlsHeight = () => document.documentElement.style.setProperty('--controls-height', `${controlsRow.offsetHeight}px`);
+    window.addEventListener('resize', updateControlsHeight);
+    new ResizeObserver(updateControlsHeight).observe(controlsRow);
+    updateControlsHeight();
+    loadSurah();
   </script>
 </body>
 </html>
