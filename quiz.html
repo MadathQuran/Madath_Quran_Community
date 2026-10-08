@@ -9,6 +9,7 @@
     :root { --green: #347a49; --light: #f1f5f2; --border: #d4e2d7; --ayah-size: 32px; --answer-size: 16px; --trans-size: 18px; }
     .root-word { font-size: 20px; font-weight: 600; color: #347a49; }
     * { box-sizing: border-box; }
+    html { touch-action: manipulation; }
     body { margin: 0; padding: 32px 0 0; min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; font-family: Poppins, sans-serif; text-align: center; color: #333; }
     .container { width: min(760px, 96%); padding: 12px 16px 0; }
     .top-line { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 8px; width: 100%; height: 48px; min-height: 48px; margin-bottom: 4px; overflow: visible; }
@@ -50,7 +51,22 @@
     .navigation-controls .loop-toggle { min-width: 32px; width: 32px; height: 30px; font-size: 18px; }
     .navigation-controls .ayah-loop { min-width: 32px; width: 32px; height: 30px; font-size: 18px; }
     #surahInfo .loop-range label { color: #555; font-size: 13px; }
-    .ayah-loop { min-width: 44px; width: 44px; height: 38px; padding: 0; border: 1px solid var(--border); border-radius: 999px; background: var(--light); color: var(--green); font-size: 22px; line-height: 1; }
+    .ayah-picker-row select {
+      min-width: 76px;
+      height: 40px;
+      padding: 7px 30px 7px 12px;
+      border: 1px solid #c9d5cc;
+      border-radius: 12px;
+      background: #fff;
+      color: #304737;
+      font: 600 15px Poppins, sans-serif;
+      box-shadow: 0 2px 5px rgba(34, 65, 42, .08);
+      cursor: pointer;
+    }
+    .ayah-picker-row select:focus-visible { outline: 2px solid rgba(52, 122, 73, .35); outline-offset: 2px; }
+    .ayah-loop { min-width: 42px; width: 42px; height: 40px; padding: 0; border: 1px solid #c9d5cc; border-radius: 12px; background: #fff; color: #347a49; font-size: 21px; line-height: 1; box-shadow: 0 2px 5px rgba(34, 65, 42, .08); transition: background-color .15s ease, color .15s ease, border-color .15s ease; }
+    .ayah-loop:hover, .ayah-loop:focus-visible { border-color: #347a49; background: #edf5ef; color: #285f38; outline: none; }
+    .ayah-loop.looping { border-color: #347a49; background: #347a49; color: #fff; box-shadow: 0 0 0 3px rgba(52, 122, 73, .14); }
     .ayah-loop.looping { background: linear-gradient(135deg,#1478d4,#0759a7); color: #fff; box-shadow: 0 0 0 3px rgba(20,120,212,.16); }
     #ayahContainer { display: flex; justify-content: center; align-items: center; height: clamp(150px, 25vh, 240px); margin: 14px 0 18px; padding: 8px 0; }
     .ayah-navigation { position: fixed; top: 50%; z-index: 5; width: 42px; height: 42px; padding: 0; border: 1px solid var(--border); border-radius: 50%; background: var(--light); color: var(--green); font-size: 24px; line-height: 1; transform: translateY(-50%); }
@@ -160,6 +176,9 @@
     .ayah-picker select { padding: 5px 7px; }
     .ayah-picker-row { display: flex; justify-content: center; align-items: center; gap: 8px; margin: 4px 0 12px; }
     .ayah-picker-row select { width: 68px; min-height: 34px; padding: 6px 8px; border: 1px solid #c8d8cc; border-radius: 8px; background: #fff; text-align: center; font: 14px Poppins, sans-serif; }
+    #ayahLoopButton { border-color: #d8b84b; background: linear-gradient(135deg, #f6e8b5, #fff5d2, #e8cf79); color: #654b00; box-shadow: 0 2px 6px rgba(184, 134, 11, .16); }
+    #ayahLoopButton:hover, #ayahLoopButton:focus-visible { border-color: #b8860b; background: linear-gradient(120deg, #f6e8b5, #fffdf5, #ead07a); color: #654b00; outline: 2px solid rgba(200, 164, 58, .35); outline-offset: 1px; }
+    #ayahLoopButton.looping { border-color: #b8860b; background: linear-gradient(135deg, #d2ad42, #f5e4a5); color: #503b00; box-shadow: 0 0 0 2px rgba(212, 167, 44, .2); }
     .ayah-size-bar { display: flex; justify-content: center; align-items: center; width: min(320px, 90%); height: 18px; margin: -4px auto 14px; }
     .ayah-size-bar input { width: 100%; min-width: 0; height: 18px; margin: 0; appearance: none; -webkit-appearance: none; background: transparent; cursor: pointer; }
     .ayah-size-bar input::-webkit-slider-runnable-track { height: 4px; border-radius: 999px; background: linear-gradient(to right, transparent, rgba(212, 167, 44, .35) 10%, #d8b84b 28%, #e8cf79 50%, #d8b84b 72%, rgba(212, 167, 44, .35) 90%, transparent); }
@@ -593,6 +612,39 @@
       .speed-controls .pause-play { min-width: 26px; width: 26px; height: 28px; }
       .mode-controls .mode-button { min-width: 27px; width: 27px; height: 28px; }
     }
+
+    /* Use quiet, readable controls instead of decorative toolbar styling. */
+    .controls-row #answerVisibilityButton {
+      width: auto;
+      min-width: 48px;
+      height: 30px;
+      padding: 0 9px;
+      border: 1px solid #d8e2da;
+      border-radius: 8px;
+      background: #f4f7f4;
+      color: #385644;
+      box-shadow: none;
+      font: 500 12px Poppins, sans-serif;
+    }
+    .controls-row #answerVisibilityButton:hover,
+    .controls-row #answerVisibilityButton:focus-visible {
+      border-color: #a9bdae;
+      background: #eaf1eb;
+      color: #294a34;
+      outline: none;
+    }
+    .controls-row .ayah-loop { border-radius: 10px; }
+    .controls-row .ayah-loop.looping {
+      border-color: #347a49;
+      background: #347a49;
+      color: #fff;
+      box-shadow: 0 0 0 2px rgba(52, 122, 73, .14);
+    }
+    @media (max-width: 600px) {
+      .ayah-picker-row select { min-width: 68px; height: 36px; padding: 5px 22px 5px 8px; font-size: 14px; }
+      .ayah-picker-row .ayah-loop { min-width: 36px; width: 36px; height: 36px; }
+      .controls-row #answerVisibilityButton { min-width: 48px; width: auto; height: 28px; padding: 0 7px; }
+    }
   </style>
 </head>
 <body class="quiz-mode">
@@ -659,8 +711,6 @@
             <div class="text-size-controls"><span class="size-label">Answer</span><button data-size="answer" data-change="-1" type="button">A−</button><button data-size="answer" data-change="1" type="button">A+</button></div>
             <div class="text-size-controls"><span class="size-label">Trans</span><button data-size="trans" data-change="-1" type="button">A−</button><button data-size="trans" data-change="1" type="button">A+</button></div>
           </div>
-          <div class="zoom-controls"><button id="zoomIn" class="zoom-button" type="button">＋</button><button id="zoomOut" class="zoom-button" type="button">−</button></div>
-          <div id="scoreWrapper"><span class="score-value correct-value">Correct: <span id="rightCount">0</span></span> | <span class="score-value wrong-value">Wrong: <span id="wrongCount">0</span></span></div>
         </div>
       </section>
       <div class="navigation-controls">
@@ -696,7 +746,7 @@
     const traceProgress = new Map();
     let rootWordVisible = true;
     let loopStartAyah = 0, loopEndAyah = 0, rightAttempts = 0, wrongAttempts = 0, timer, startTime;
-    let speed = 1500, zoomLevel = 1, answersHidden = false, isPaused = false, isAyahLoopMode = false;
+    let speed = 1500, answersHidden = false, isPaused = false, isAyahLoopMode = false;
     let transliterationVisible = false;
     let endAction = 'repeat';
     const $ = id => document.getElementById(id);
@@ -838,7 +888,7 @@
     function applyAnswerVisibility() {
       $('optionsContainer').style.visibility = answersHidden ? 'hidden' : 'visible';
       $('ayahText').classList.toggle('answers-hidden', answersHidden);
-      $('answerVisibilityButton').textContent = answersHidden ? 'A' : 'H';
+      $('answerVisibilityButton').textContent = answersHidden ? 'Show' : 'Hide';
       $('answerVisibilityButton').setAttribute('aria-label', answersHidden ? 'Show answers' : 'Hide answers');
       $('answerVisibilityButton').title = answersHidden ? 'Show answers' : 'Hide answers';
     }
@@ -849,7 +899,7 @@
       $('rootWordContainer').hidden = !rootWordVisible;
       $('rootWordToggle').value = rootWordVisible ? 'show' : 'hide';
     }
-    function updateScore() { $('rightCount').textContent = rightAttempts; $('wrongCount').textContent = wrongAttempts; $('rightCountBottom').textContent = rightAttempts; $('wrongCountBottom').textContent = wrongAttempts; }
+    function updateScore() { $('rightCountBottom').textContent = rightAttempts; $('wrongCountBottom').textContent = wrongAttempts; }
     function checkAnswer(button, answer, correct) { if (answer === correct) { button.classList.add('correct'); rightAttempts++; updateScore(); setTimeout(navigateNext, 700); } else { button.classList.add('incorrect'); wrongAttempts++; updateScore(); } }
     function navigateNext() {
       clearTimeout(timer);
@@ -944,8 +994,37 @@
     }
     function changeAyah(value) { currentAyah = Number(value); currentWord = 0; clearTimeout(timer); displayWord(); updateAyahNavigation(); if (isPlayMode) startAutoProgress(); }
     function moveAyah(amount) { if (!surah) return; const nextAyah = currentAyah + amount; if (nextAyah < 0 || nextAyah >= ayahs.length) return; changeAyah(nextAyah); }
+    let ayahSwipeStart = null;
+    $('ayahContainer').addEventListener('touchstart', event => {
+      if (event.touches.length !== 1 || event.target.closest('button, select, a, .ayah-word')) return;
+      const touch = event.touches[0];
+      ayahSwipeStart = { x: touch.clientX, y: touch.clientY };
+    }, { passive: true });
+    $('ayahContainer').addEventListener('touchend', event => {
+      if (!ayahSwipeStart || event.changedTouches.length !== 1) return;
+      const touch = event.changedTouches[0];
+      const deltaX = touch.clientX - ayahSwipeStart.x;
+      const deltaY = touch.clientY - ayahSwipeStart.y;
+      ayahSwipeStart = null;
+      if (Math.abs(deltaX) >= 60 && Math.abs(deltaX) > Math.abs(deltaY) * 1.3) {
+        moveAyah(deltaX < 0 ? 1 : -1);
+      }
+    }, { passive: true });
+    $('ayahContainer').addEventListener('touchcancel', () => { ayahSwipeStart = null; }, { passive: true });
     function updateAyahNavigation() { $('previousAyah').disabled = !surah || currentAyah === 0; $('nextAyah').disabled = !surah || currentAyah === ayahs.length - 1; }
-    function updateLoop() { loopStartAyah = Number($('loopStartSelect').value); loopEndAyah = Number($('loopEndSelect').value); if (loopStartAyah > loopEndAyah) [loopStartAyah, loopEndAyah] = [loopEndAyah, loopStartAyah]; $('loopStartSelect').value = loopStartAyah; $('loopEndSelect').value = loopEndAyah; if (isPlayMode) startAutoProgress(); }
+    function updateLoop(event) {
+      const selectedStart = event?.target.id === 'loopStartSelect';
+      loopStartAyah = Number($('loopStartSelect').value);
+      loopEndAyah = Number($('loopEndSelect').value);
+      if (loopStartAyah > loopEndAyah) {
+        if (selectedStart) loopEndAyah = loopStartAyah;
+        else [loopStartAyah, loopEndAyah] = [loopEndAyah, loopStartAyah];
+      }
+      $('loopStartSelect').value = loopStartAyah;
+      $('loopEndSelect').value = loopEndAyah;
+      if (selectedStart) changeAyah(loopStartAyah);
+      else if (isPlayMode) startAutoProgress();
+    }
     function setFont(type, amount) { const root = document.documentElement, styles = { ayah: ['--ayah-size', 18, 72], answer: ['--answer-size', 12, 36], trans: ['--trans-size', 12, 36] }; const [property, min, max] = styles[type]; const current = parseFloat(getComputedStyle(root).getPropertyValue(property)); const next = Math.max(min, Math.min(max, current + amount)); root.style.setProperty(property, `${next}px`); if (type === 'ayah') $('ayahSizeSlider').value = next; keepActiveWordVisible(); }
     $('ayahSizeSlider').oninput = event => { const size = Number(event.target.value); document.documentElement.style.setProperty('--ayah-size', `${size}px`); keepActiveWordVisible(); };
     $('ayahContainer').addEventListener('wheel', event => {
@@ -989,8 +1068,6 @@
       speed = Number(event.target.value);
       if (isPlayMode && !isPaused) startAutoProgress();
     };
-    $('zoomIn').onclick = () => { zoomLevel = Math.min(1.5, zoomLevel + .1); document.querySelector('.container').style.transform = `scale(${zoomLevel})`; };
-    $('zoomOut').onclick = () => { zoomLevel = Math.max(.8, zoomLevel - .1); document.querySelector('.container').style.transform = `scale(${zoomLevel})`; };
     $('startOver').onclick = startOver;
     $('nextSurah').onclick = goToNextSurah;
     if (Number(surahId) >= 114) $('nextSurah').disabled = true;
