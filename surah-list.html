@@ -3,90 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Quran Word Quiz - Surah List</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Noto+Naskh+Arabic&display=swap" rel="stylesheet">
-  <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; padding: 32px 16px; min-height: 100vh; background: #fff; color: #333; font-family: Poppins, sans-serif; text-align: center; }
-    .arabic-title { margin: 0 auto 4px; color: #a87908; font: 32px/1.5 'Noto Naskh Arabic', serif; background: linear-gradient(110deg, #8a6500 15%, #f5d76e 30%, #fff3b0 42%, #b8860b 55%, #f5d76e 70%, #8a6500 85%); background-size: 220% auto; background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gold-shimmer 3s linear infinite; }
-    @keyframes gold-shimmer { to { background-position: 220% center; } }
-    h1 { margin: 0 0 4px; color: #fff; font-size: 30px; font-weight: 700; letter-spacing: .08em; -webkit-text-fill-color: #fff; text-shadow: 0 1px 2px #47634e, 0 0 5px rgba(255,255,255,.95), 0 0 12px rgba(212,167,44,.85), 0 0 22px rgba(212,167,44,.55); }
-    .intro { margin: 0 auto 20px; color: #666; }
-    .intro strong { display: block; color: #347a49; font-size: 20px; letter-spacing: .12em; }
-    .search-form { display: flex; justify-content: center; gap: 8px; width: min(560px, 100%); margin: 0 auto 24px; }
-    #searchInput { flex: 1; min-width: 0; padding: 10px 14px; border: 1px solid #d4e2d7; border-radius: 999px; font: 14px Poppins, sans-serif; text-align: center; }
-    .surah-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; width: min(900px, 100%); margin: 0 auto; }
-    .surah-tile { display: flex; min-height: 132px; flex-direction: column; align-items: center; justify-content: center; padding: 20px 14px; border: 1px solid #d4e2d7; border-radius: 14px; background: #f8fbf8; color: #347a49; text-decoration: none; box-shadow: 0 3px 9px rgba(52,122,73,.08); transition: .2s ease; touch-action: manipulation; }
-    .surah-tile:hover, .surah-tile:focus, .surah-tile:active { background: radial-gradient(circle at 15% 20%, rgba(255,255,255,.95) 0 2px, transparent 4px), radial-gradient(circle at 82% 72%, rgba(255,255,255,.9) 0 2px, transparent 4px), linear-gradient(120deg, #f6e8b5, #fff4ce, #fffdf5, #f4e1a2, #fff7dc, #f6e8b5); background-size: 180% 180%, 180% 180%, 250% 250%; border-color: #dfca84; box-shadow: 0 0 8px rgba(212,167,44,.35), 0 0 16px rgba(245,210,110,.3), inset 0 0 14px rgba(255,255,255,.9); animation: tile-glitter 1.4s ease-in-out infinite alternate; transform: translateY(-2px) scale(1.01); outline: 1px solid #dfca84; outline-offset: 2px; }
-    @keyframes tile-glitter { from { background-position: 0% 50%, 100% 0%, 0% 50%; } to { background-position: 100% 50%, 0% 100%, 100% 50%; } }
-    @media (prefers-reduced-motion: reduce) { .arabic-title, .surah-tile:hover, .surah-tile:focus, .surah-tile:active { animation: none; } }
-    .surah-number, .surah-arabic, .surah-name { display: block; }
-    .surah-number { margin-bottom: 5px; font-size: 14px; font-weight: 600; }
-    .surah-arabic { margin-bottom: 5px; color: #8a6500; font: 25px 'Noto Naskh Arabic', serif; }
-    .surah-name { color: #8a6500; font-size: 14px; }
-    #status { margin: 20px 0 0; color: #666; font-size: 14px; }
-    @media (max-width: 420px) { .search-form { flex-direction: column; } }
-  </style>
+  <meta http-equiv="refresh" content="0; url=./index.html">
+  <title>Redirecting to Allah's Words</title>
+  <script>window.location.replace('./index.html');</script>
 </head>
 <body>
-  <h1>HEALING WORDS</h1>
-  <div class="arabic-title" lang="ar" dir="rtl">وَعَلَّمَ ءَادَمَ ٱلْأَسْمَآءَ كُلَّهَا</div>
-  <p class="intro">(by Madath Good Startups)</p>
-
-  <form id="searchForm" class="search-form">
-    <input id="searchInput" type="search" placeholder="Search by surah number or name" aria-label="Search Surahs">
-  </form>
-
-  <main id="surahGrid" class="surah-grid" aria-label="Surah list"></main>
-  <p id="status" role="status"></p>
-
-  <script>
-    const grid = document.getElementById('surahGrid');
-    const input = document.getElementById('searchInput');
-    const status = document.getElementById('status');
-    let surahs = [];
-
-    document.getElementById('searchForm').addEventListener('submit', event => event.preventDefault());
-
-    function renderSurahs(query = '') {
-      const search = query.trim().toLowerCase();
-      const matches = surahs.filter(surah => [surah.id, surah.name, surah.englishName]
-        .some(value => String(value ?? '').toLowerCase().includes(search)));
-      grid.replaceChildren(...matches.map(surah => {
-        const tile = document.createElement('a');
-        tile.className = 'surah-tile';
-        tile.href = `./quiz.html?surah=${encodeURIComponent(surah.id)}`;
-
-        const number = document.createElement('span');
-        number.className = 'surah-number';
-        number.textContent = `Surah ${surah.id}`;
-        const arabicName = document.createElement('span');
-        arabicName.className = 'surah-arabic';
-        arabicName.lang = 'ar';
-        arabicName.dir = 'rtl';
-        arabicName.textContent = surah.name;
-        const englishName = document.createElement('span');
-        englishName.className = 'surah-name';
-        englishName.textContent = surah.englishName;
-
-        tile.append(number, arabicName, englishName);
-        return tile;
-      }));
-      status.textContent = matches.length ? '' : 'No Surahs found.';
-    }
-
-    input.addEventListener('input', () => renderSurahs(input.value));
-
-    fetch('./data/surahs.json')
-      .then(response => {
-        if (!response.ok) throw new Error('Unavailable');
-        return response.json();
-      })
-      .then(data => {
-        surahs = Array.isArray(data) ? data : [];
-        renderSurahs(input.value);
-      })
-      .catch(() => { status.textContent = 'Unable to load the Surah list.'; });
-  </script>
+  <p>This page has moved. <a href="./index.html">Continue to Allah’s Words</a>.</p>
 </body>
 </html>
