@@ -921,6 +921,7 @@
         return;
       }
       displayWord();
+      updateAyahNavigation();
     }
 
     function finishSurah() {
@@ -932,6 +933,7 @@
           currentAyah = 0;
           currentWord = 0;
           displayWord();
+          updateAyahNavigation();
         }
         return;
       }
