@@ -6,7 +6,7 @@
   <title>Modern Quranic Word Quiz</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Noto+Naskh+Arabic&display=swap" rel="stylesheet">
   <style>
-    :root { --green: #347a49; --light: #f1f5f2; --border: #d4e2d7; --ayah-size: 32px; --answer-size: 16px; --trans-size: 18px; }
+    :root { --green: #347a49; --light: #f1f5f2; --border: #d4e2d7; --ayah-size: 52px; --answer-size: 22px; --trans-size: 32px; }
     .root-word { font-size: 20px; font-weight: 600; color: #347a49; }
     * { box-sizing: border-box; }
     html { touch-action: manipulation; }
@@ -88,7 +88,7 @@
       outline-offset: 2px;
     }
     .ayah-navigation:disabled:hover { background: linear-gradient(135deg, #f6e8b5, #fff5d2, #e8cf79); color: #654b00; }
-    #ayahText { width: 100%; margin: 0 10px; color: #333; font: var(--ayah-size)/1.45 'Noto Naskh Arabic', serif; direction: rtl; }
+    #ayahText { width: 100%; margin: 0 10px; color: #333; font: var(--ayah-size)/1.45 'Noto Naskh Arabic', serif; direction: rtl; text-align: center; }
     .ayah-word { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; direction: rtl; cursor: pointer; border-radius: 6px; transition: color .9s cubic-bezier(.22, 1, .36, 1), background-color .9s cubic-bezier(.22, 1, .36, 1), text-shadow .9s cubic-bezier(.22, 1, .36, 1); }
     .arabic-word { opacity: .86; transition: opacity .9s cubic-bezier(.22, 1, .36, 1); }
     body.trace-mode .arabic-word {
@@ -106,7 +106,7 @@
       -webkit-text-fill-color: #b8860b;
     }
     #currentWordMeaning { display: none !important; }
-    .word-answer { display: none; max-width: 12em; margin-bottom: 6px; color: var(--green); font: var(--answer-size)/1.2 Poppins, sans-serif; direction: ltr; text-align: center; white-space: normal; overflow-wrap: anywhere; }
+    .word-answer { display: none; max-width: 12em; margin-bottom: 10px; color: var(--green); font: var(--answer-size)/1.2 Poppins, sans-serif; direction: ltr; text-align: center; white-space: normal; overflow-wrap: anywhere; }
     body.read-mode .word-answer,
     body.trace-mode .word-answer { display: block; }
     body.read-mode .ayah-word:not(.meaning-revealed) .word-answer,
@@ -344,10 +344,13 @@
       min-height: 0;
       max-height: 100%;
       overflow-y: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
       margin-bottom: 0 !important;
       padding-bottom: 0;
       flex-shrink: 1;
     }
+    body.quiz-mode #optionsContainer::-webkit-scrollbar { display: none; }
 
     /* Standardize quiz answer boxes and keep them just above the control bar. */
     body.quiz-mode .container {
@@ -664,7 +667,7 @@
       <button id="ayahLoopButton" class="ayah-loop" type="button" aria-label="Loop current ayah" aria-pressed="false" title="Loop current ayah">↺</button>
     </div>
     <label class="ayah-size-bar" for="ayahSizeSlider">
-      <input id="ayahSizeSlider" type="range" min="18" max="72" value="32" aria-label="Ayah text size">
+      <input id="ayahSizeSlider" type="range" min="18" max="72" value="52" aria-label="Ayah text size">
     </label>
     <div id="currentWordMeaning" aria-live="polite"></div>
     <div id="surahInfo" class="ayah-control"></div>
@@ -888,7 +891,7 @@
     function applyAnswerVisibility() {
       $('optionsContainer').style.visibility = answersHidden ? 'hidden' : 'visible';
       $('ayahText').classList.toggle('answers-hidden', answersHidden);
-      $('answerVisibilityButton').textContent = answersHidden ? 'Show' : 'Hide';
+      $('answerVisibilityButton').textContent = answersHidden ? '📖' : '📗';
       $('answerVisibilityButton').setAttribute('aria-label', answersHidden ? 'Show answers' : 'Hide answers');
       $('answerVisibilityButton').title = answersHidden ? 'Show answers' : 'Hide answers';
     }
