@@ -13,7 +13,7 @@
     body { margin: 0; padding: 32px 16px; min-height: 100vh; background-color: #f7f6ed; background-image: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.96), transparent 58%), radial-gradient(circle at 12% 18%, rgba(212,167,44,.12), transparent 24%), radial-gradient(circle at 88% 74%, rgba(52,122,73,.11), transparent 30%), linear-gradient(135deg, transparent 48%, rgba(52,122,73,.045) 49%, rgba(52,122,73,.045) 51%, transparent 52%), linear-gradient(45deg, transparent 48%, rgba(168,121,8,.04) 49%, rgba(168,121,8,.04) 51%, transparent 52%); background-size: auto, auto, auto, 64px 64px, 64px 64px; color: #333; font-family: Poppins, sans-serif; text-align: center; }
     .arabic-title { margin: 0 auto 4px; color: #a87908; font: 32px/1.5 'Noto Naskh Arabic', serif; background: linear-gradient(110deg, #8a6500 15%, #f5d76e 30%, #fff3b0 42%, #b8860b 55%, #f5d76e 70%, #8a6500 85%); background-size: 220% auto; background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gold-shimmer 3s linear infinite; }
     @keyframes gold-shimmer { to { background-position: 220% center; } }
-    h1 { margin: 0 0 4px; color: #fff; font-size: 30px; font-weight: 700; letter-spacing: .08em; text-shadow: 0 1px 2px #47634e, 0 0 5px rgba(255,255,255,.95), 0 0 12px rgba(212,167,44,.85), 0 0 22px rgba(212,167,44,.55); }
+    h1 { margin: 0 0 4px; color: #fff; font-size: 38px; font-weight: 700; letter-spacing: .08em; text-shadow: 0 1px 2px #47634e, 0 0 5px rgba(255,255,255,.95), 0 0 12px rgba(212,167,44,.85), 0 0 22px rgba(212,167,44,.55); }
     .intro { margin: 0 auto 20px; color: #666; }
     .search-form { display: flex; justify-content: center; gap: 8px; width: min(560px, 100%); margin: 0 auto 24px; }
     #searchInput { flex: 1; min-width: 0; padding: 10px 14px; border: 1px solid #d4e2d7; border-radius: 999px; font: 14px Poppins, sans-serif; text-align: center; }
@@ -21,11 +21,13 @@
     .surah-tile { display: block; padding: 18px 14px; border: 1px solid #d4e2d7; border-radius: 14px; background: #f8fbf8; color: #347a49; text-decoration: none; box-shadow: 0 3px 9px rgba(52,122,73,.08); transition: .2s ease; }
     .surah-tile:hover, .surah-tile:focus, .surah-tile:active { background: radial-gradient(circle at 15% 20%, rgba(255,255,255,.95) 0 2px, transparent 4px), radial-gradient(circle at 82% 72%, rgba(255,255,255,.9) 0 2px, transparent 4px), linear-gradient(120deg, #f6e8b5, #fff4ce, #fffdf5, #f4e1a2, #fff7dc, #f6e8b5); background-size: 180% 180%, 180% 180%, 250% 250%; border-color: #dfca84; box-shadow: 0 0 8px rgba(212,167,44,.35), 0 0 16px rgba(245,210,110,.3), inset 0 0 14px rgba(255,255,255,.9); animation: tile-glitter 1.4s ease-in-out infinite alternate; transform: translateY(-2px) scale(1.01); outline: 1px solid #dfca84; outline-offset: 2px; }
     @keyframes tile-glitter { from { background-position: 0% 50%, 100% 0%, 0% 50%; } to { background-position: 100% 50%, 0% 100%, 100% 50%; } }
-    @media (prefers-reduced-motion: reduce) { .arabic-title, .surah-tile:hover, .surah-tile:focus, .surah-tile:active { animation: none; } }
+    @media (prefers-reduced-motion: reduce) { .arabic-title, .surah-arabic, .surah-name, .surah-tile:hover, .surah-tile:focus, .surah-tile:active { animation: none; } }
     .surah-number, .surah-arabic, .surah-name { display: block; }
-    .surah-number { margin-bottom: 5px; font-size: 14px; font-weight: 600; }
-    .surah-arabic { margin-bottom: 5px; color: #333; font: 25px 'Noto Naskh Arabic', serif; }
-    .surah-name { color: #666; font-size: 14px; }
+    .surah-number { margin-bottom: 5px; color: #111; font-size: 14px; font-weight: 600; }
+    .surah-arabic, .surah-name { background: linear-gradient(110deg, #176b36 15%, #65c77b 32%, #c9f2cb 45%, #278a49 58%, #8cdda0 74%, #176b36 88%); background-size: 220% auto; background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: green-shimmer 3s linear infinite; }
+    .surah-arabic { margin-bottom: 5px; font: 30px/1.5 'Noto Naskh Arabic', serif; }
+    .surah-name { font-size: 17px; font-weight: 600; color: #000; background: none; -webkit-text-fill-color: #000; animation: none; }
+    @keyframes green-shimmer { to { background-position: 220% center; } }
     #status { margin: 20px 0 0; color: #666; font-size: 14px; }
     #installDialog { width: min(420px, calc(100% - 32px)); padding: 26px; border: 1px solid #d4e2d7; border-radius: 18px; color: #333; text-align: center; box-shadow: 0 16px 50px rgba(0,0,0,.2); }
     #installDialog::backdrop { background: rgba(27, 45, 32, .48); }
@@ -49,51 +51,7 @@
   <main id="surahGrid" class="surah-grid" aria-label="Surah list"></main>
   <p id="status" role="status"></p>
 
-  <dialog id="installDialog" aria-labelledby="installTitle">
-    <h2 id="installTitle">Add this quiz to your device?</h2>
-    <p id="installMessage">Save Allah’s Words to your home screen for quick access as a web app.</p>
-    <div class="install-actions">
-      <button id="installButton" type="button">Add to Home Screen</button>
-      <button id="dismissInstall" class="secondary" type="button">Not now</button>
-    </div>
-  </dialog>
-
   <script>
-    let deferredInstallPrompt = null;
-    const installDialog = document.getElementById('installDialog');
-    const installMessage = document.getElementById('installMessage');
-    const installButton = document.getElementById('installButton');
-
-    window.addEventListener('beforeinstallprompt', event => {
-      event.preventDefault();
-      deferredInstallPrompt = event;
-    });
-
-    function finishInstallPrompt() {
-      try { localStorage.setItem('install-prompt-handled', 'true'); } catch (_) {}
-      if (installDialog.open) installDialog.close();
-    }
-
-    installButton.addEventListener('click', async () => {
-      if (!deferredInstallPrompt) {
-        installMessage.textContent = 'Use your browser menu and choose “Install app” or “Add to Home Screen.” On iPhone or iPad, open the Share menu and tap “Add to Home Screen.”';
-        installButton.hidden = true;
-        return;
-      }
-      deferredInstallPrompt.prompt();
-      await deferredInstallPrompt.userChoice;
-      deferredInstallPrompt = null;
-      finishInstallPrompt();
-    });
-
-    document.getElementById('dismissInstall').addEventListener('click', finishInstallPrompt);
-    window.addEventListener('appinstalled', finishInstallPrompt);
-
-    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
-    let installPromptHandled = false;
-    try { installPromptHandled = localStorage.getItem('install-prompt-handled') === 'true'; } catch (_) {}
-    if (!isStandalone && !installPromptHandled) installDialog.showModal();
-
     if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
       navigator.serviceWorker.register('./service-worker.js').catch(() => {});
     }
