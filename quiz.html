@@ -12,12 +12,15 @@
     html { touch-action: manipulation; }
     body { margin: 0; padding: 32px 0 0; min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; font-family: Poppins, sans-serif; text-align: center; color: #333; }
     .container { width: min(760px, 96%); padding: 12px 16px 0; }
-    .top-line { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 8px; width: 100%; height: 48px; min-height: 48px; margin-bottom: 4px; overflow: visible; }
+    .top-line { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 8px; width: 100%; height: auto; min-height: 48px; margin-bottom: 4px; overflow: visible; }
     .page-navigation { justify-self: start; margin: 0; }
     .top-line #surahName { flex: 0 0 auto; margin: 0; font-size: 22px; }
     .top-line .surah-heading { justify-self: center; }
-    .top-line .root-word-line { justify-self: end; min-width: 0; max-width: 100%; min-height: 0; margin: 0; align-items: center; }
+    .top-line .root-word-line { justify-self: end; min-width: 0; max-width: 100%; min-height: 0; margin: 0; flex-direction: column; align-items: flex-end; gap: 2px; }
     .top-line #rootWordContainer { max-width: 100%; justify-content: flex-end; white-space: normal; overflow-wrap: anywhere; text-align: right; }
+    .community-symbol { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border: 1px solid #d8b84b; border-radius: 50%; background: linear-gradient(145deg, #fff8df, #ead07a); color: #8a6500; text-decoration: none; box-shadow: 0 3px 9px rgba(184, 134, 11, .22); transition: transform .18s ease, box-shadow .18s ease, background .18s ease; }
+    .community-symbol svg { display: block; width: 25px; height: 25px; fill: currentColor; }
+    .community-symbol:hover, .community-symbol:focus-visible { background: linear-gradient(145deg, #fffdf5, #e8cf79); color: #654b00; outline: 2px solid rgba(184, 134, 11, .3); outline-offset: 2px; box-shadow: 0 5px 12px rgba(184, 134, 11, .3); transform: translateY(-2px); }
     .navigation-button, button { font: 600 13px Poppins, sans-serif; cursor: pointer; }
     .navigation-button { display: inline-block; padding: 8px 14px; border: 1px solid var(--border); border-radius: 999px; background: var(--light); color: var(--green); text-decoration: none; }
     .navigation-button:hover, .navigation-button:focus, button:hover, button:focus { background: #4caf50; color: #fff; outline: none; }
@@ -659,7 +662,12 @@
       <div class="surah-heading">
         <h1 id="surahName">Loading…</h1>
       </div>
-      <div class="root-word-line"><span id="rootWordContainer">Root: <span class="root-word" id="rootWord">N/A</span></span></div>
+      <div class="root-word-line">
+        <span id="rootWordContainer">Root: <span class="root-word" id="rootWord">N/A</span></span>
+        <a class="community-symbol" href="https://forms.gle/WviZvivnFGzu11Mu9" target="_blank" rel="noopener noreferrer" aria-label="Join our community and open the Google Form" title="Join our community">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm6.5-1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7ZM9 13c-3.3 0-6 1.7-6 3.8V20h12v-3.2C15 14.7 12.3 13 9 13Zm6.5-1c-.7 0-1.4.1-2 .3 1.5.8 2.5 2 2.5 3.5V20h5v-3c0-2.2-2.5-4-5.5-4Z"/></svg>
+        </a>
+      </div>
     </div>
     <div id="basmala" lang="ar" dir="rtl" aria-label="Bismillah">﷽</div>
     <div class="ayah-picker-row">
