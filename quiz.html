@@ -650,6 +650,11 @@
       .ayah-picker-row select { min-width: 68px; height: 36px; padding: 5px 22px 5px 8px; font-size: 14px; }
       .ayah-picker-row .ayah-loop { min-width: 36px; width: 36px; height: 36px; }
       .controls-row #answerVisibilityButton { min-width: 48px; width: auto; height: 28px; padding: 0 7px; }
+
+      /* Follow Android's visible viewport so the quiz choices stay above the fixed toolbar. */
+      body.quiz-mode { height: 100dvh; }
+      body.quiz-mode .container { height: calc(100dvh - 8px); }
+      body.quiz-mode #optionsContainer { margin-bottom: 12px !important; }
     }
   </style>
 </head>
