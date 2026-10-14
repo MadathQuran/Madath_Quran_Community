@@ -656,6 +656,14 @@
       body.quiz-mode .container { height: calc(100dvh - 8px); }
       body.quiz-mode #optionsContainer { margin-bottom: 12px !important; }
     }
+
+    /* Give the ayah more room on desktop while keeping Arabic text comfortable on phones. */
+    @media (min-width: 601px) {
+      .container { width: min(1100px, 96%); }
+    }
+    @media (max-width: 600px) {
+      :root { --ayah-size: 42px; }
+    }
   </style>
 </head>
 <body class="quiz-mode">
