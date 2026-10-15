@@ -110,13 +110,7 @@
     }
     #currentWordMeaning { display: none !important; }
     .word-answer { display: none; max-width: 12em; margin-bottom: 10px; color: var(--green); font: var(--answer-size)/1.2 Poppins, sans-serif; direction: ltr; text-align: center; white-space: normal; overflow-wrap: anywhere; }
-    body.read-mode .word-answer {
-      display: block;
-      height: 2.4em;
-      overflow: hidden;
-      font-size: 16px;
-      line-height: 1.2;
-    }
+    body.read-mode .word-answer { font-size: 16px; }
     body.read-mode .word-answer,
     body.trace-mode .word-answer { display: block; }
     body.read-mode .ayah-word:not(.meaning-revealed) .word-answer,
@@ -671,6 +665,62 @@
     @media (max-width: 600px) {
       :root { --ayah-size: 42px; }
     }
+
+    /* Keep the header controls in fixed slots while the active word changes. */
+    .top-line {
+      height: 116px;
+      min-height: 116px;
+      grid-template-columns: minmax(86px, 1fr) auto minmax(110px, 1fr);
+      align-items: start;
+    }
+    .page-navigation { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+    .page-navigation .community-symbol { width: 32px; height: 32px; }
+    .page-navigation .community-symbol svg { width: 22px; height: 22px; }
+    .top-line .surah-heading { align-self: start; }
+    .top-line .root-word-line {
+      width: 100%;
+      height: 116px;
+      min-height: 116px;
+      justify-content: flex-start;
+      overflow: hidden;
+      gap: 5px;
+    }
+    #rootWordContainer {
+      display: block;
+      width: 100%;
+      min-height: 24px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    #rootWord { font-size: 17px; }
+    .ayah-picker-row { flex-direction: column; align-items: flex-end; gap: 5px; margin: 0; }
+    .ayah-picker-row .ayah-loop { min-width: 34px; width: 34px; height: 32px; }
+    #basmala { margin: 0 0 2px; font-size: 14px; line-height: 1.25; }
+    .ayah-size-bar { margin: 0 auto 12px; }
+
+    /* Reserve space for the fixed toolbar so choices never sit behind it. */
+    .controls-row { bottom: env(safe-area-inset-bottom, 0px); min-height: 42px; }
+    body.quiz-mode .container {
+      padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px));
+    }
+    body.quiz-mode #optionsContainer { margin-bottom: 0 !important; }
+    @media (max-width: 600px) {
+      .top-line {
+        height: 108px;
+        min-height: 108px;
+        grid-template-columns: minmax(65px, .8fr) minmax(0, 1fr) minmax(100px, 1fr);
+        gap: 4px;
+      }
+      .top-line .root-word-line { height: 108px; min-height: 108px; }
+      .page-navigation .navigation-button { padding: 5px 6px; font-size: 10px; }
+      .page-navigation .community-symbol { width: 28px; height: 28px; }
+      .ayah-picker-row .ayah-loop { min-width: 30px; width: 30px; height: 29px; }
+      #rootWord { font-size: 15px; }
+      #basmala { font-size: 13px; }
+      body.quiz-mode .container { padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px)); }
+    }
+    #basmala { margin-top: -72px; }
   </style>
 </head>
 <body class="quiz-mode">
@@ -678,22 +728,24 @@
   <button id="previousAyah" class="ayah-navigation right" type="button" aria-label="Previous ayah">›</button>
   <main class="container">
     <div class="top-line">
-      <div class="page-navigation"><a class="navigation-button" href="./surah-list.html">Surah List</a></div>
+      <div class="page-navigation">
+        <a class="navigation-button" href="./surah-list.html">Surah List</a>
+        <a class="community-symbol" href="https://forms.gle/WviZvivnFGzu11Mu9" target="_blank" rel="noopener noreferrer" aria-label="Join our community and open the Google Form" title="Join our community">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm6.5-1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7ZM9 13c-3.3 0-6 1.7-6 3.8V20h12v-3.2C15 14.7 12.3 13 9 13Zm6.5-1c-.7 0-1.4.1-2 .3 1.5.8 2.5 2 2.5 3.5V20h5v-3c0-2.2-2.5-4-5.5-4Z"/></svg>
+        </a>
+      </div>
       <div class="surah-heading">
         <h1 id="surahName">Loading…</h1>
       </div>
       <div class="root-word-line">
         <span id="rootWordContainer">Root: <span class="root-word" id="rootWord">N/A</span></span>
-        <a class="community-symbol" href="https://forms.gle/WviZvivnFGzu11Mu9" target="_blank" rel="noopener noreferrer" aria-label="Join our community and open the Google Form" title="Join our community">
-          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm6.5-1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7ZM9 13c-3.3 0-6 1.7-6 3.8V20h12v-3.2C15 14.7 12.3 13 9 13Zm6.5-1c-.7 0-1.4.1-2 .3 1.5.8 2.5 2 2.5 3.5V20h5v-3c0-2.2-2.5-4-5.5-4Z"/></svg>
-        </a>
+        <div class="ayah-picker-row">
+          <label class="ayah-picker" for="ayahSelect">Ayah <select id="ayahSelect" aria-label="Ayah number"></select></label>
+          <button id="ayahLoopButton" class="ayah-loop" type="button" aria-label="Loop current ayah" aria-pressed="false" title="Loop current ayah">↺</button>
+        </div>
       </div>
     </div>
     <div id="basmala" lang="ar" dir="rtl" aria-label="Bismillah">﷽</div>
-    <div class="ayah-picker-row">
-      <label class="ayah-picker" for="ayahSelect">Ayah <select id="ayahSelect" aria-label="Ayah number"></select></label>
-      <button id="ayahLoopButton" class="ayah-loop" type="button" aria-label="Loop current ayah" aria-pressed="false" title="Loop current ayah">↺</button>
-    </div>
     <label class="ayah-size-bar" for="ayahSizeSlider">
       <input id="ayahSizeSlider" type="range" min="18" max="72" value="52" aria-label="Ayah text size">
     </label>
@@ -781,6 +833,15 @@
     let transliterationVisible = false;
     let endAction = 'repeat';
     const $ = id => document.getElementById(id);
+
+    // Disable legacy touch-swipe navigation; the on-screen arrows remain available.
+    ['touchstart', 'touchmove', 'touchend', 'touchcancel'].forEach(type => {
+      document.addEventListener(type, event => {
+        if (event.target instanceof Element && event.target.closest('#ayahContainer')) {
+          event.stopImmediatePropagation();
+        }
+      }, true);
+    });
 
     async function loadSurah() {
       try {
