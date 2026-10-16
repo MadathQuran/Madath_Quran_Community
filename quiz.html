@@ -824,7 +824,7 @@
     }
     @media (max-width: 600px) {
       .top-line {
-        grid-template-columns: 64px minmax(0, 1fr) 120px;
+        grid-template-columns: minmax(0, 1fr) minmax(0, auto) minmax(0, 1fr);
         gap: 6px;
       }
       .top-line .surah-heading,
@@ -832,6 +832,103 @@
       .top-line .root-word-line { grid-column: 3; }
       .top-line #rootWordContainer { font-size: 11px; }
       .top-line .ayah-picker-row { row-gap: 10px; }
+    }
+
+    /* Center the Surah title, Bismillah, and size slider on the page axis. */
+    .top-line {
+      grid-template-columns: minmax(0, 1fr) minmax(0, auto) minmax(0, 1fr);
+      gap: 8px;
+    }
+    .top-line .page-navigation { grid-column: 1; }
+    .top-line .surah-heading {
+      grid-column: 2;
+      justify-self: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      align-self: start;
+      width: max-content;
+      max-width: 100%;
+      min-width: 0;
+      gap: 0;
+    }
+    .top-line .root-word-line {
+      grid-column: 3;
+      width: 100%;
+      min-width: 0;
+      justify-self: stretch;
+      align-items: flex-end;
+    }
+    .top-line #surahName {
+      width: 100%;
+      margin: 0;
+      text-align: center;
+    }
+    .top-line #basmala {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.2;
+      text-align: center;
+    }
+    .top-line .ayah-size-bar {
+      width: min(320px, 42vw);
+      margin: 0 auto;
+    }
+    @media (max-width: 600px) {
+      .top-line #basmala { font-size: 13px; }
+      .top-line .ayah-size-bar { width: min(180px, 42vw); }
+    }
+
+    /* Keep the centered Surah stack separate from the right-side word controls. */
+    .top-line { position: relative; display: block; }
+    .top-line .page-navigation { position: absolute; top: 0; left: 0; z-index: 1; }
+    .top-line .surah-heading {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      z-index: 0;
+      width: max-content;
+      max-width: calc(100% - 330px);
+      transform: translateX(-50%);
+      gap: 4px;
+    }
+    .top-line #surahName { width: 100%; }
+    .top-line #basmala { margin: 4px 0 0; }
+    .top-line .ayah-size-bar { margin: 4px auto 0; }
+    .top-line .root-word-line {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 1;
+      display: grid;
+      grid-template-rows: 26px 76px;
+      row-gap: 12px;
+      width: 180px;
+      height: 116px;
+      min-height: 0;
+      justify-items: end;
+      overflow: hidden;
+    }
+    .top-line #rootWordContainer { grid-row: 1; }
+    .top-line .ayah-picker-row {
+      grid-row: 2;
+      width: 100%;
+      height: auto;
+      min-height: 0;
+      align-items: flex-end;
+      justify-content: flex-start;
+      gap: 8px;
+    }
+    @media (max-width: 600px) {
+      .top-line .surah-heading { max-width: calc(100% - 190px); }
+      .top-line .root-word-line {
+        width: 112px;
+        height: 108px;
+        grid-template-rows: 24px 76px;
+        row-gap: 8px;
+      }
+      .top-line .ayah-picker-row { gap: 8px; }
     }
   </style>
 </head>
@@ -848,6 +945,10 @@
       </div>
       <div class="surah-heading">
         <h1 id="surahName">Loading…</h1>
+        <div id="basmala" lang="ar" dir="rtl" aria-label="Bismillah">﷽</div>
+        <label class="ayah-size-bar" for="ayahSizeSlider">
+          <input id="ayahSizeSlider" type="range" min="18" max="72" value="52" aria-label="Ayah text size">
+        </label>
       </div>
       <div class="root-word-line">
         <span id="rootWordContainer">Root: <span class="root-word" id="rootWord">N/A</span></span>
@@ -857,10 +958,6 @@
         </div>
       </div>
     </div>
-    <div id="basmala" lang="ar" dir="rtl" aria-label="Bismillah">﷽</div>
-    <label class="ayah-size-bar" for="ayahSizeSlider">
-      <input id="ayahSizeSlider" type="range" min="18" max="72" value="52" aria-label="Ayah text size">
-    </label>
     <div id="currentWordMeaning" aria-live="polite"></div>
     <div id="surahInfo" class="ayah-control"></div>
     <div id="ayahContainer"><p id="ayahText"></p></div>
