@@ -721,6 +721,118 @@
       body.quiz-mode .container { padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px)); }
     }
     #basmala { margin-top: -72px; }
+
+    /* Reserve fixed header slots so changing root words cannot move the selectors. */
+    .top-line .root-word-line {
+      display: grid;
+      grid-template-rows: 26px 76px;
+      align-content: start;
+      justify-items: end;
+      row-gap: 8px;
+    }
+    .top-line #rootWordContainer {
+      grid-row: 1;
+      height: 26px;
+      min-height: 26px;
+      line-height: 26px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .top-line .ayah-picker-row {
+      grid-row: 2;
+      height: 76px;
+      min-height: 76px;
+      justify-content: flex-start;
+      gap: 6px;
+    }
+
+    /* Keep every quiz choice above the fixed toolbar with a visible gap. */
+    body.quiz-mode .container {
+      padding-bottom: calc(var(--controls-height, 56px) + env(safe-area-inset-bottom, 0px) + 16px);
+    }
+    body.quiz-mode #optionsContainer {
+      flex: 0 0 auto;
+      max-height: none;
+      overflow: visible;
+      margin-top: auto;
+      margin-bottom: 12px !important;
+    }
+    @media (max-width: 600px) {
+      .top-line .root-word-line { grid-template-rows: 24px 76px; row-gap: 6px; }
+      .top-line #rootWordContainer { height: 24px; min-height: 24px; line-height: 24px; }
+      body.quiz-mode .container {
+        padding-bottom: calc(var(--controls-height, 56px) + env(safe-area-inset-bottom, 0px) + 16px);
+      }
+    }
+
+    /* Give the root and its selectors an independent, right-aligned header column. */
+    .top-line {
+      grid-template-columns: minmax(110px, 1fr) minmax(0, auto) minmax(145px, 1fr);
+    }
+    .top-line .page-navigation { grid-column: 1; }
+    .top-line .surah-heading { grid-column: 2; max-width: 100%; }
+    .top-line #surahName { max-width: 100%; overflow-wrap: anywhere; }
+    .top-line .root-word-line {
+      grid-column: 3;
+      justify-self: end;
+      width: 100%;
+      min-width: 0;
+      align-items: flex-end;
+    }
+    .top-line .ayah-picker-row { align-items: flex-end; }
+    @media (max-width: 600px) {
+      .top-line {
+        grid-template-columns: minmax(65px, .8fr) minmax(0, 1fr) minmax(96px, 1fr);
+        gap: 4px;
+      }
+      .top-line .root-word-line { grid-column: 3; }
+      .top-line .surah-heading { grid-column: 2; }
+    }
+
+    /* Keep the title and root controls in separate, non-overlapping grid tracks. */
+    .top-line {
+      grid-template-columns: minmax(130px, 1fr) minmax(0, 2fr) 180px;
+      gap: 8px;
+    }
+    .top-line .page-navigation { grid-column: 1; }
+    .top-line .surah-heading {
+      grid-column: 2;
+      min-width: 0;
+      justify-self: stretch;
+    }
+    .top-line #surahName {
+      width: 100%;
+      min-width: 0;
+      text-align: center;
+    }
+    .top-line .root-word-line {
+      grid-column: 3;
+      width: 100%;
+      min-width: 0;
+      justify-self: stretch;
+      align-items: flex-end;
+    }
+    .top-line #rootWordContainer {
+      width: 100%;
+      text-align: right;
+    }
+    .top-line .ayah-picker-row {
+      align-items: flex-end;
+      justify-content: flex-start;
+      row-gap: 10px;
+    }
+    @media (max-width: 600px) {
+      .top-line {
+        grid-template-columns: 64px minmax(0, 1fr) 120px;
+        gap: 6px;
+      }
+      .top-line .surah-heading,
+      .top-line #surahName { min-width: 0; }
+      .top-line .root-word-line { grid-column: 3; }
+      .top-line #rootWordContainer { font-size: 11px; }
+      .top-line .ayah-picker-row { row-gap: 10px; }
+    }
   </style>
 </head>
 <body class="quiz-mode">
