@@ -992,6 +992,13 @@
             </select>
           </div>
           <div class="quiz-options-control">
+            <label for="readMeaningSelect">Read meanings:</label>
+            <select id="readMeaningSelect" aria-label="How word meanings appear in read mode">
+              <option value="single">Highlighted word only</option>
+              <option value="continuous">Keep previous meanings visible</option>
+            </select>
+          </div>
+          <div class="quiz-options-control">
             <label for="rootWordToggle">Root word:</label>
             <select id="rootWordToggle" aria-label="Show or hide root word">
               <option value="show" selected>Show</option>
@@ -1040,8 +1047,15 @@
     let loopStartAyah = 0, loopEndAyah = 0, rightAttempts = 0, wrongAttempts = 0, timer, startTime;
     let speed = 1500, answersHidden = false, isPaused = false, isAyahLoopMode = false;
     let transliterationVisible = false;
+    let readMeaningMode = localStorage.getItem('readMeaningMode') === 'continuous' ? 'continuous' : 'single';
     let endAction = 'repeat';
     const $ = id => document.getElementById(id);
+    $('readMeaningSelect').value = readMeaningMode;
+    $('readMeaningSelect').addEventListener('change', event => {
+      readMeaningMode = event.target.value;
+      localStorage.setItem('readMeaningMode', readMeaningMode);
+      if (ayahs.length) displayWord();
+    });
 
     // Disable legacy touch-swipe navigation; the on-screen arrows remain available.
     ['touchstart', 'touchmove', 'touchend', 'touchcancel'].forEach(type => {
@@ -1109,7 +1123,7 @@
       ayahText.querySelectorAll('.ayah-word').forEach((element, index) => {
         element.classList.toggle('highlight', !isPlayMode && !isTraceMode && index === currentWord);
         element.classList.toggle('play-highlight', isPlayMode && index === currentWord);
-        element.classList.toggle('meaning-revealed', isPlayMode && index === currentWord || isTraceMode && tracedWords.has(index));
+        element.classList.toggle('meaning-revealed', (isPlayMode && (index === currentWord || readMeaningMode === 'continuous' && index <= currentWord)) || isTraceMode && tracedWords.has(index));
         const arabicWord = element.querySelector('.arabic-word');
         arabicWord.style.setProperty('--trace-progress', `${traceProgress.get(index) || 0}%`);
       });
