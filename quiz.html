@@ -945,6 +945,37 @@
         overflow-y: auto;
       }
     }
+
+    /* Reclaim vertical space for the quiz choices on iPad-sized landscape screens. */
+    @media (min-width: 601px) and (max-width: 1366px) and (orientation: landscape) and (max-height: 700px) {
+      body { padding-top: 8px; }
+      body.quiz-mode .container {
+        height: calc(100dvh - 8px);
+        padding-bottom: calc(var(--controls-height, 56px) + env(safe-area-inset-bottom, 0px) + 8px);
+      }
+      .top-line { height: 84px; min-height: 84px; }
+      .top-line .root-word-line {
+        height: 84px;
+        grid-template-rows: 24px 52px;
+        row-gap: 4px;
+      }
+      .top-line .ayah-picker-row { height: 52px; min-height: 0; gap: 4px; }
+      #surahInfo { margin-bottom: 10px; }
+      #ayahContainer {
+        min-height: 90px;
+        margin-bottom: 10px;
+        padding: 6px 0;
+      }
+      body.quiz-mode #optionsContainer {
+        max-height: min(32dvh, 144px);
+        margin-bottom: 8px !important;
+      }
+      body.quiz-mode #optionsContainer button {
+        height: 50px;
+        min-height: 50px;
+        padding: 6px 10px;
+      }
+    }
   </style>
 </head>
 <body class="quiz-mode">
