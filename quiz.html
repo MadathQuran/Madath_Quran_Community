@@ -930,6 +930,21 @@
       }
       .top-line .ayah-picker-row { gap: 8px; }
     }
+
+    /* Use the iPad's visible viewport and keep quiz choices scrollable above the toolbar. */
+    @media (min-width: 601px) and (max-width: 1024px) {
+      body.quiz-mode { height: 100dvh; }
+      body.quiz-mode .container {
+        height: calc(100dvh - 32px);
+        padding-bottom: calc(var(--controls-height, 56px) + env(safe-area-inset-bottom, 0px) + 16px);
+      }
+      body.quiz-mode #optionsContainer {
+        flex: 0 1 auto;
+        min-height: 0;
+        max-height: min(36dvh, 180px);
+        overflow-y: auto;
+      }
+    }
   </style>
 </head>
 <body class="quiz-mode">
@@ -994,8 +1009,8 @@
           <div class="quiz-options-control">
             <label for="readMeaningSelect">Read meanings:</label>
             <select id="readMeaningSelect" aria-label="How word meanings appear in read mode">
-              <option value="single">Highlighted word only</option>
-              <option value="continuous">Keep previous meanings visible</option>
+              <option value="single">One word</option>
+              <option value="continuous">Continuous</option>
             </select>
           </div>
           <div class="quiz-options-control">
@@ -1047,7 +1062,7 @@
     let loopStartAyah = 0, loopEndAyah = 0, rightAttempts = 0, wrongAttempts = 0, timer, startTime;
     let speed = 1500, answersHidden = false, isPaused = false, isAyahLoopMode = false;
     let transliterationVisible = false;
-    let readMeaningMode = localStorage.getItem('readMeaningMode') === 'continuous' ? 'continuous' : 'single';
+    let readMeaningMode = localStorage.getItem('readMeaningMode') === 'single' ? 'single' : 'continuous';
     let endAction = 'repeat';
     const $ = id => document.getElementById(id);
     $('readMeaningSelect').value = readMeaningMode;
@@ -1215,7 +1230,7 @@
       $('rootWordToggle').value = rootWordVisible ? 'show' : 'hide';
     }
     function updateScore() { $('rightCountBottom').textContent = rightAttempts; $('wrongCountBottom').textContent = wrongAttempts; }
-    function checkAnswer(button, answer, correct) { if (answer === correct) { button.classList.add('correct'); rightAttempts++; updateScore(); setTimeout(navigateNext, 700); } else { button.classList.add('incorrect'); wrongAttempts++; updateScore(); } }
+    function checkAnswer(button, answer, correct) { if (answer === correct) { button.classList.add('correct'); rightAttempts++; updateScore(); setTimeout(navigateNext, 700); } else { button.classList.add('incorrect'); wrongAttempts++; updateScore(); if (typeof navigator.vibrate === 'function') navigator.vibrate(120); } }
     function navigateNext() {
       clearTimeout(timer);
       const ayah = ayahs[currentAyah];
